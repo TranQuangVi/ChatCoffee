@@ -4,7 +4,7 @@
 <head th:fragment="head-link">
 
   <meta charset="utf-8" />
-  <title>Horizontal Layout | Skote - Admin & Dashboard Template</title>
+  <title>Add Product | Skote - Admin & Dashboard Template</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -18,38 +18,35 @@
   <!-- App Css-->
   <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet"  />
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
-
-<body data-topbar="dark" data-layout="horizontal" >
-
+<body data-sidebar="dark" data-layout-mode="light">
 <!-- Begin page -->
 <div id="layout-wrapper">
-  <header id="page-topbar" th:fragment="header-page">
-    <div class="navbar-header" >
+  <header id="page-topbar"  th:fragment="header-page">
+    <div class="navbar-header">
       <div class="d-flex">
         <!-- LOGO -->
         <div class="navbar-brand-box">
           <a href="index.html" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="assets/images/logo.svg" alt="" height="22">
-                                </span>
+                                    <span class="logo-sm">
+                                        <img src="assets/images/logo.svg" alt="" height="22">
+                                    </span>
             <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
-                                </span>
+                                        <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    </span>
           </a>
 
           <a href="index.html" class="logo logo-light">
-                                <span class="logo-sm">
-                                    <img src="assets/images/logo-light.svg" alt="" height="22">
-                                </span>
+                                    <span class="logo-sm">
+                                        <img src="assets/images/logo-light.svg" alt="" height="22">
+                                    </span>
             <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="19">
-                                </span>
+                                        <img src="assets/images/logo-light.png" alt="" height="19">
+                                    </span>
           </a>
         </div>
 
-        <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
           <i class="fa fa-fw fa-bars"></i>
         </button>
 
@@ -206,9 +203,10 @@
             <form class="p-3">
               <div class="form-group m-0">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search ..." aria-label="Search input">
-
-                  <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>s
+                  <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                  </div>
                 </div>
               </div>
             </form>
@@ -223,7 +221,7 @@
           <div class="dropdown-menu dropdown-menu-end">
 
             <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="eng">
+            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
               <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
             </a>
             <!-- item-->
@@ -276,7 +274,7 @@
                 </div>
               </div>
 
-              <div class="row no-gutters">
+              <div class="row g-0">
                 <div class="col">
                   <a class="dropdown-icon-item" href="#">
                     <img src="assets/images/brands/dropbox.png" alt="dropbox">
@@ -328,9 +326,9 @@
               <a href="javascript: void(0);" class="text-reset notification-item">
                 <div class="d-flex">
                   <div class="avatar-xs me-3">
-                                                <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                                    <i class="bx bx-cart"></i>
-                                                </span>
+                                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                                        <i class="bx bx-cart"></i>
+                                                    </span>
                   </div>
                   <div class="flex-grow-1">
                     <h6 class="mb-1" key="t-your-order">Your order is placed</h6>
@@ -357,9 +355,9 @@
               <a href="javascript: void(0);" class="text-reset notification-item">
                 <div class="d-flex">
                   <div class="avatar-xs me-3">
-                                                <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                    <i class="bx bx-badge-check"></i>
-                                                </span>
+                                                    <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                        <i class="bx bx-badge-check"></i>
+                                                    </span>
                   </div>
                   <div class="flex-grow-1">
                     <h6 class="mb-1" key="t-shipped">Your item is shipped</h6>
@@ -421,221 +419,106 @@
       </div>
     </div>
   </header>
-  <div class="topnav" th:fragment="topnav">
-    <div class="container-fluid">
-      <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
-        <div class="collapse navbar-collapse" id="topnav-menu-content">
-          <ul class="navbar-nav">
+  <!-- ========== Left Sidebar Start ========== -->
+  <div class="vertical-menu" th:fragment="menu">
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button"
-              >
-                <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Dashboards</span> <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
+    <div data-simplebar class="h-100">
 
-                <a href="index.html" class="dropdown-item" key="t-default">Default</a>
+      <!--- Sidemenu -->
+      <div id="sidebar-menu">
+        <!-- Left Menu Start -->
+        <ul class="metismenu list-unstyled" id="side-menu">
+          <li class="menu-title" key="t-menu">Menu</li>
 
-              </div>
-            </li>
+          <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+              <i class="bx bx-home-circle"></i>
+              <span key="t-dashboards">Dashboards</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+              <li><a href="index.html" key="t-default">Default</a></li>
+              <li><a href="dashboard-saas.html" key="t-saas">Saas</a></li>
+              <li><a href="dashboard-crypto.html" key="t-crypto">Crypto</a></li>
+              <li><a href="dashboard-blog.html" key="t-blog">Blog</a></li>
+              <li><a href="dashboard-job.html"><span class="badge rounded-pill text-bg-success float-end" key="t-new">New</span> <span key="t-jobs">Jobs</span></a></li>
+            </ul>
+          </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button"
-              >
-                <i class="bx bx-tone me-2"></i>
-                <span key="t-ui-elements"> UI Elements</span>
-                <div class="arrow-down"></div>
-              </a>
+          <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+              <i class="bx bx-layout"></i>
+              <span key="t-layouts">Layouts</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="true">
+              <li>
+                <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Vertical</a>
+                <ul class="sub-menu" aria-expanded="true">
+                  <li><a href="layouts-light-sidebar.html" key="t-light-sidebar">Light Sidebar</a></li>
+                  <li><a href="layouts-compact-sidebar.html" key="t-compact-sidebar">Compact Sidebar</a></li>
+                  <li><a href="layouts-icon-sidebar.html" key="t-icon-sidebar">Icon Sidebar</a></li>
+                  <li><a href="layouts-boxed.html" key="t-boxed-width">Boxed Width</a></li>
+                  <li><a href="layouts-preloader.html" key="t-preloader">Preloader</a></li>
+                  <li><a href="layouts-colored-sidebar.html" key="t-colored-sidebar">Colored Sidebar</a></li>
+                  <li><a href="layouts-scrollable.html" key="t-scrollable">Scrollable</a></li>
+                </ul>
+              </li>
 
-              <div class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-xl"
-                   aria-labelledby="topnav-uielement">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div>
-                      <a href="ui-alerts.html" class="dropdown-item" key="t-alerts">Alerts</a>
+              <li>
+                <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Horizontal</a>
+                <ul class="sub-menu" aria-expanded="true">
+                  <li><a href="layouts-horizontal.html" key="t-horizontal">Horizontal</a></li>
+                  <li><a href="layouts-hori-topbar-light.html" key="t-topbar-light">Topbar light</a></li>
+                  <li><a href="layouts-hori-boxed-width.html" key="t-boxed-width">Boxed width</a></li>
+                  <li><a href="layouts-hori-preloader.html" key="t-preloader">Preloader</a></li>
+                  <li><a href="layouts-hori-colored-header.html" key="t-colored-topbar">Colored Header</a></li>
+                  <li><a href="layouts-hori-scrollable.html" key="t-scrollable">Scrollable</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
 
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div>
-                      <a href="ui-modals.html" class="dropdown-item" key="t-modals">Modals</a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div>
-                      <a href="ui-typography.html" class="dropdown-item" key="t-typography">Typography</a>
-                    </div>
-                  </div>
-                </div>
+          <li class="menu-title" key="t-apps">Apps</li>
 
-              </div>
-            </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
-              >
-                <i class="bx bx-customize me-2"></i><span key="t-apps">Apps</span> <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
-                     role="button">
-                    <span key="t-calendar">Calendar</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-email">
-                    <a href="calendar.html" class="dropdown-item" key="t-tui-calendar">TUI Calendar</a>
-                    <a href="calendar-full.html" class="dropdown-item" key="t-full-calender">Full Calendar</a>
-                  </div>
-                </div>
-              </div>
+          <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+              <i class="bx bx-calendar"></i>
+              <span key="t-dashboards">Calendars</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+              <li><a href="calendar.html" key="t-tui-calendar">TUI Calendar</a></li>
+              <li><a href="calendar-full.html" key="t-full-calendar">Full Calendar</a></li>
+            </ul>
+          </li>
 
-            </li>
+          <li>
+            <a href="chat.html" class="waves-effect">
+              <i class="bx bx-chat"></i>
+              <span key="t-chat">Chat</span>
+            </a>
+          </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
-              >
-                <i class="bx bx-collection me-2"></i><span key="t-components">Components</span> <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-components">
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
-                     role="button">
-                    <span key="t-forms">Forms</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-form">
-                    <a href="form-elements.html" class="dropdown-item" key="t-form-elements">Form Elements</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
-                     role="button">
-                    <span key="t-tables">Tables</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-table">
-                    <a href="tables-basic.html" class="dropdown-item" key="t-basic-tables">Basic Tables</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-charts"
-                     role="button">
-                    <span key="t-charts">Charts</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-charts">
-                    <a href="charts-apex.html" class="dropdown-item" key="t-apex-charts">Apex charts</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-icons"
-                     role="button">
-                    <span key="t-icons">Icons</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-icons">
-                    <a href="icons-boxicons.html" class="dropdown-item" key="t-boxicons">Boxicons</a>
-                    <a href="icons-materialdesign.html" class="dropdown-item" key="t-material-design">Material Design</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-map"
-                     role="button">
-                    <span key="t-maps">Maps</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-map">
-                    <a href="maps-google.html" class="dropdown-item" key="t-g-maps">Google Maps</a>
-                    <a href="maps-vector.html" class="dropdown-item" key="t-v-maps">Vector Maps</a>
-                    <a href="maps-leaflet.html" class="dropdown-item" key="t-l-maps">Leaflet Maps</a>
-                  </div>
-                </div>
-              </div>
-            </li>
+          <li>
+            <a href="apps-filemanager.html" class="waves-effect">
+              <i class="bx bx-file"></i>
+              <span key="t-file-manager">File Manager</span>
+            </a>
+          </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button"
-              >
-                <i class="bx bx-file me-2"></i><span key="t-extra-pages">Extra pages</span> <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-more">
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-invoice"
-                     role="button">
-                    <span key="t-invoices">Invoices</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-invoice">
-                    <a href="invoices-list.html" class="dropdown-item" key="t-invoice-list">Invoice List</a>
-                    <a href="invoices-detail.html" class="dropdown-item" key="t-invoice-detail">Invoice Detail</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-auth"
-                     role="button">
-                    <span key="t-authentication">Authentication</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-auth">
-                    <a href="auth-login.html" class="dropdown-item" key="t-login">Login</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-utility"
-                     role="button">
-                    <span key="t-utility">Utility</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-utility">
-                    <a href="pages-starter.html" class="dropdown-item" key="t-starter-page">Starter Page</a>
-                    <a href="pages-maintenance.html" class="dropdown-item" key="t-maintenance">Maintenance</a>
-                    <a href="pages-comingsoon.html" class="dropdown-item" key="t-coming-soon">Coming Soon</a>
-                    <a href="pages-timeline.html" class="dropdown-item" key="t-timeline">Timeline</a>
-                  </div>
-                </div>
-              </div>
-            </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button"
-              >
-                <i class="bx bx-layout me-2"></i><span key="t-layouts">Layouts</span> <div class="arrow-down"></div>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-layout">
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-layout-verti"
-                     role="button">
-                    <span key="t-vertical">Vertical</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-layout-verti">
-                    <a href="layouts-light-sidebar.html" class="dropdown-item" key="t-light-sidebar">Light Sidebar</a>
-                    <a href="layouts-compact-sidebar.html" class="dropdown-item" key="t-compact-sidebar">Compact Sidebar</a>
-                    <a href="layouts-icon-sidebar.html" class="dropdown-item" key="t-icon-sidebar">Icon Sidebar</a>
-                    <a href="layouts-scrollable.html" class="dropdown-item" key="t-scrollable">Scrollable</a>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-layout-hori"
-                     role="button">
-                    <span key="t-horizontal">Horizontal</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-layout-hori">
-                    <a href="layouts-horizontal.html" class="dropdown-item" key="t-horizontal">Horizontal</a>
-                    <a href="layouts-hori-topbar-light.html" class="dropdown-item" key="t-topbar-light">Topbar light</a>
-                    <a href="layouts-hori-scrollable.html" class="dropdown-item" key="t-scrollable">Scrollable</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
+        </ul>
+      </div>
+      <!-- Sidebar -->
     </div>
   </div>
+  <!-- Left Sidebar End -->
 
   <!--Nội dung-->
   <div th:insert = "~{::${content}}"></div>
-  <!--Hết nội dung-->
-
+  <!--Hết Nội dung-->
 </div>
-<!-- END layout-wrapper -->
-
   <footer class="footer" th:fragment="footer">
     <div class="container-fluid">
       <div class="row">
@@ -651,6 +534,9 @@
     </div>
   </footer>
 
+
+<!-- END layout-wrapper -->
+
 <!-- JAVASCRIPT -->
 <div th:fragment="link-js">
   <script th:src="@{libs/jquery.min.js}"></script>
@@ -658,12 +544,8 @@
   <script type="text/javascript" src="libs/metisMenu.min.js"></script>
   <script type="text/javascript" src="libs/simplebar.min.js"></script>
   <script type="text/javascript" src="libs/waves.min.js"></script>
-
   <script th:src="@{libs/apexcharts.min.js}"></script>
-
   <script th:src="@{js/pages/dashboard.init.js}"></script>
-
-
   <script th:src="@{js/app.js}"></script>
 </div>
 </body>

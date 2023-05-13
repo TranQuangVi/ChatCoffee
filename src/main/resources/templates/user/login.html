@@ -7,8 +7,9 @@
 <div id="layout-wrapper">
   <header th:replace="layout :: header-page"></header>
   <div th:replace="layout :: topnav"></div>
-  <div class="main-content">
 
+  <!--Nội dung-->
+  <div class="main-content">
     <div class="page-content">
       <div class="container-fluid">
         <div class="row">
@@ -23,29 +24,13 @@
         </div><!-- end row -->
       </div> <!-- container-fluid -->
     </div><!-- End Page-content -->
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6">
-            <script>document.write(new Date().getFullYear())</script> © Skote.
-          </div>
-          <div class="col-sm-6">
-            <div class="text-sm-end d-none d-sm-block">
-              Design & Develop by Themesbrand
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
   </div>
-  <!-- end main content-->
-
+  <!--Hết nội dung-->
 </div>
+<footer th:replace="layout :: footer"></footer>
 
-<div th:replace="layout ::right-bar"></div>
-<!-- Right bar overlay-->
-<div class="rightbar-overlay"></div>
 <div th:replace="layout :: link-js"></div>
+
 </body>
 
 </html>

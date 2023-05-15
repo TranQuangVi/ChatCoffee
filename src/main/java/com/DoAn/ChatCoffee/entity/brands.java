@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "thuonghieu")
@@ -26,6 +28,6 @@ public class brands {
     @Size(max = 100)
     private String AnhTH;
 
-    //@OneToMany(mappedBy = "MaTH", cascade = CascadeType.ALL)
-    //private List<product>products;
+    @OneToMany(mappedBy = "brands", cascade = CascadeType.ALL)
+    private List<Product> products;
 }

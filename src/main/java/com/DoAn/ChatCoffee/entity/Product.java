@@ -55,4 +55,8 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "brands_id")
     private brands brands;
+
+
+    @OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
+    private List<CartDetails> cartDetails;
 }

@@ -11,4 +11,14 @@ public class ManagerCategories {
     public String index(){
         return "admin/managerCategory/index";
     }
+
+    @GetMapping("/addCategory")
+    public String addCategory(){
+        return "admin/managerCategory/addCategory";
+    }
+
+    @GetMapping("/deleteCategory")
+    public String deleteCategory(){
+        return "admin/managerCategory/deleteCategory";
+    }
 }

@@ -11,4 +11,14 @@ public class ManagerAccounts {
     public String index(){
         return "admin/managerAccounts/index";
     }
+
+    @GetMapping("/editAccount")
+    public String editAccount(){
+        return "admin/managerAccounts/editAccount";
+    }
+
+    @GetMapping("/deleteAccount")
+    public String deleteAccount(){
+        return "admin/managerAccounts/deleteAccount";
+    }
 }

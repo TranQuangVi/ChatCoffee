@@ -7,9 +7,9 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
+/*@Data
 @Entity
-@Table(name = "phuongthucthanhtoan")
+@Table(name = "phuongthucthanhtoan")*/
 public class phuongthucthanhtoan {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,10 @@ public class phuongthucthanhtoan {
     private  String hinhthuc;
 
     // trỏ khóa ngoại đên order
+/*
     @OneToMany(mappedBy = "phuongthucthanhtoan",cascade = CascadeType.ALL)
     private List<order>orders;
+*/
 
 
 

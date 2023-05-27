@@ -2,19 +2,32 @@ package com.DoAn.ChatCoffee.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
 @Embeddable
 public class CartDetailsKey implements Serializable {
 
+        @Column(name = "product_id")
+        private Long product_id;
+        @Column(name = "cart_id")
+        private Long cart_id;
 
-        @Column(name = "MaGH")
-        Long CartMaGH;
+        public Long getProduct_id() {
+                return product_id;
+        }
 
-        @Column(name = "id")
-        Long ProductId;
+        public void setProduct_id(Long product_id) {
+                this.product_id = product_id;
+        }
 
-        // standard constructors, getters, and setters
-        // hashcode and equals implementation
-    }
+        public Long getCart_id() {
+                return cart_id;
+        }
+
+        public void setCart_id(Long cart_id) {
+                this.cart_id = cart_id;
+        }
+}

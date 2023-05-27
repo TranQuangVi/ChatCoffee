@@ -13,7 +13,8 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long product_id;
+
     @Column(name = "TenSP")
     @NotEmpty(message = "Tên sản phẩm không được để trống!")
     @Size(max = 100)
@@ -21,7 +22,7 @@ public class Product {
 
     @Column(name = "Gia")
     private Long Gia;
-
+/*
     @Column(name = "Soluong")
     private Long Soluong;
 
@@ -45,8 +46,8 @@ public class Product {
     @Column(name = "Mota")
     @Size(max = 500)
     private String Mota;
-
-    @ManyToOne
+*/
+  /*  @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryProduct categoryProduct;
 
@@ -54,9 +55,10 @@ public class Product {
     private List<Pictures> pictures;
     @ManyToOne
     @JoinColumn(name = "brands_id")
-    private brands brands;
+    private brands brands;*/
 
 
-    @OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<CartDetails> cartDetails;
+
 }

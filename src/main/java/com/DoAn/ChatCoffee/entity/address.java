@@ -5,9 +5,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-@Data
+/*@Data
 @Entity
-@Table(name = "address")
+@Table(name = "address")*/
 public class address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

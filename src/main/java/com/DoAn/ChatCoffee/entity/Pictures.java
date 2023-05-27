@@ -7,9 +7,9 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
+/*@Data
 @Entity
-@Table(name = "pictures")
+@Table(name = "pictures")*/
 public class Pictures {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +18,8 @@ public class Pictures {
     @Column(name = "LinkAnh")
     @Size(max = 100)
     private String LinkAnh;
-
+/*
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product;
+    private Product product;*/
 }

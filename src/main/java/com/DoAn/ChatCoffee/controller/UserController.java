@@ -15,5 +15,9 @@ public class UserController {
     public String formLogin(){
         return "user/login";
     }
+    @GetMapping("/register")
+    public String formregister(){
+        return "user/register";
+    }
 }
 

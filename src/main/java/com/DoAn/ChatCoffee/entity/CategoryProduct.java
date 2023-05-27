@@ -7,9 +7,9 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
+/*@Data
 @Entity
-@Table(name = "categoryProduct")
+@Table(name = "categoryProduct")*/
 public class CategoryProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,6 @@ public class CategoryProduct {
     @Column(name = "Anh")
     @Size(max = 100)
     private String Anh;
-
-    @OneToMany(mappedBy = "categoryProduct", cascade = CascadeType.ALL)
-    private List<Product> products;
+/*    @OneToMany(mappedBy = "categoryProduct", cascade = CascadeType.ALL)
+    private List<Product> products;*/
 }

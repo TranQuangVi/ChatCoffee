@@ -8,9 +8,9 @@ import lombok.Data;
 import java.util.List;
 
 
-@Data
+/*@Data
 @Entity
-@Table(name = "ShippingTypes")
+@Table(name = "ShippingTypes")*/
 public class ShippingTypes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +24,7 @@ public class ShippingTypes {
     @Column(name = "Gia")
     @NotEmpty(message = "Giá không được để trống!")
     private int Gia;
-
+/*
     @OneToMany(mappedBy = "ShippingTypes", cascade = CascadeType.ALL)
-    private List<Bill> bills;
+    private List<order> bills;*/
 }

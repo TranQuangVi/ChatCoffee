@@ -7,9 +7,9 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
-@Entity
-@Table(name = "product")
+//@Data
+//@Entity
+//@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,17 +46,18 @@ public class Product {
     @Size(max = 500)
     private String Mota;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private CategoryProduct categoryProduct;
-
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Pictures> pictures;
-    @ManyToOne
-    @JoinColumn(name = "brands_id")
-    private brands brands;
-
-
-    @OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
-    private List<CartDetails> cartDetails;
+//    @ManyToOne
+//    @JoinColumn(name = "category_id")
+//    private CategoryProduct categoryProduct;
+//
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    private List<Pictures> pictures;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "brands_id")
+//    private brands brands;
+//
+//
+//    @OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
+//    private List<CartDetails> cartDetails;
 }

@@ -5,7 +5,7 @@ import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 
-@Embeddable
+//@Embeddable
 public class CartDetailsKey implements Serializable {
 
 

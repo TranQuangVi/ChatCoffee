@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
     @GetMapping
-    public String product(Model model){
+    public String product(Model model) {
         model.addAttribute("listProducts", productService.getAllProduct());
         return "product/index";
     }
+
     /*giống như cái trên thôi - trả về trang /product*/
     @GetMapping("/list")
-    public String index(){
+    public String index() {
         return "redirect:/product";
     }
 

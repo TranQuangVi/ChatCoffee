@@ -220,7 +220,7 @@
         <div class="dropdown d-none d-lg-inline-block ms-1">
           <button type="button" class="btn header-item noti-icon waves-effect"
                   data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="bx bx-customize"></i>
+            <i class="bx bx-cart-alt"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
             <div class="px-lg-2">
@@ -372,12 +372,12 @@
           </button>
           <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            <a class="dropdown-item" href="/user"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
-            <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">My Wallet</span></a>
+            <a class="dropdown-item" href="/user"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Cá nhân</span></a>
+            <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">Hóa đơn</span></a>
             <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
             <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Lock screen</span></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+            <a class="dropdown-item text-danger" href="/user/login"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Đăng nhập</span></a>
           </div>
         </div>
 
@@ -395,67 +395,45 @@
       <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
         <div class="collapse navbar-collapse" id="topnav-menu-content">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav" style="color:var(--bs-menu-item-color)">
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button"
-              >
-                <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Dashboards</span> <div class="arrow-down"></div>
+              <a class="nav-link dropdown-toggle arrow-none" href="/" id="topnav-dashboard" role="button" >
+                <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Trang chủ</span>
               </a>
-              <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
 
-                <a href="index.html" class="dropdown-item" key="t-default">Default</a>
-
-              </div>
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button"
-              >
+              <a class="nav-link dropdown-toggle arrow-none" href="/product" id="topnav-uielement" role="button">
                 <i class="bx bx-tone me-2"></i>
-                <span key="t-ui-elements"> UI Elements</span>
-                <div class="arrow-down"></div>
+                <span key="t-ui-elements"> Sản phẩm</span>
               </a>
-
-              <div class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-xl"
-                   aria-labelledby="topnav-uielement">
-                <div class="row">
-                  <div class="col-lg-4">
-                    <div>
-                      <a href="ui-alerts.html" class="dropdown-item" key="t-alerts">Alerts</a>
-
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div>
-                      <a href="ui-modals.html" class="dropdown-item" key="t-modals">Modals</a>
-                    </div>
-                  </div>
-                  <div class="col-lg-4">
-                    <div>
-                      <a href="ui-typography.html" class="dropdown-item" key="t-typography">Typography</a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
             </li>
 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
               >
-                <i class="bx bx-customize me-2"></i><span key="t-apps">Apps</span> <div class="arrow-down"></div>
+                <i class="bx bx-customize me-2"></i><span key="t-apps">Loại sản phẩm</span> <div class="arrow-down"></div>
               </a>
               <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
                 <div class="dropdown">
                   <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
                      role="button">
-                    <span key="t-calendar">Calendar</span> <div class="arrow-down"></div>
+                    <span key="t-calendar">Loại 1</span> <div class="arrow-down"></div>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="topnav-email">
-                    <a href="calendar.html" class="dropdown-item" key="t-tui-calendar">TUI Calendar</a>
-                    <a href="calendar-full.html" class="dropdown-item" key="t-full-calender">Full Calendar</a>
+                    <a href="calendar.html" class="dropdown-item" key="t-tui-calendar">sản phẩm 1 </a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
+                     role="button">
+                    <span key="t-calendar">Loại 2</span> <div class="arrow-down"></div>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="topnav-email">
+                    <a href="calendar-full.html" class="dropdown-item" key="t-full-calender">Sản phẩm 2</a>
                   </div>
                 </div>
               </div>
@@ -465,55 +443,25 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
               >
-                <i class="bx bx-collection me-2"></i><span key="t-components">Components</span> <div class="arrow-down"></div>
+                <i class="bx bx-collection me-2"></i><span key="t-components">Thương hiệu</span> <div class="arrow-down"></div>
               </a>
               <div class="dropdown-menu" aria-labelledby="topnav-components">
                 <div class="dropdown">
                   <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
                      role="button">
-                    <span key="t-forms">Forms</span> <div class="arrow-down"></div>
+                    <span key="t-forms">Thương hiệu 1</span> <div class="arrow-down"></div>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="topnav-form">
-                    <a href="form-elements.html" class="dropdown-item" key="t-form-elements">Form Elements</a>
+                    <a href="form-elements.html" class="dropdown-item" key="t-form-elements">Sản phẩm 1</a>
                   </div>
                 </div>
                 <div class="dropdown">
                   <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
                      role="button">
-                    <span key="t-tables">Tables</span> <div class="arrow-down"></div>
+                    <span key="t-tables">Thương hiệu 2</span> <div class="arrow-down"></div>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="topnav-table">
-                    <a href="tables-basic.html" class="dropdown-item" key="t-basic-tables">Basic Tables</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-charts"
-                     role="button">
-                    <span key="t-charts">Charts</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-charts">
-                    <a href="charts-apex.html" class="dropdown-item" key="t-apex-charts">Apex charts</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-icons"
-                     role="button">
-                    <span key="t-icons">Icons</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-icons">
-                    <a href="icons-boxicons.html" class="dropdown-item" key="t-boxicons">Boxicons</a>
-                    <a href="icons-materialdesign.html" class="dropdown-item" key="t-material-design">Material Design</a>
-                  </div>
-                </div>
-                <div class="dropdown">
-                  <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-map"
-                     role="button">
-                    <span key="t-maps">Maps</span> <div class="arrow-down"></div>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="topnav-map">
-                    <a href="maps-google.html" class="dropdown-item" key="t-g-maps">Google Maps</a>
-                    <a href="maps-vector.html" class="dropdown-item" key="t-v-maps">Vector Maps</a>
-                    <a href="maps-leaflet.html" class="dropdown-item" key="t-l-maps">Leaflet Maps</a>
+                    <a href="tables-basic.html" class="dropdown-item" key="t-basic-tables">Sản phẩm 2</a>
                   </div>
                 </div>
               </div>
@@ -622,18 +570,18 @@
 
 <!-- JAVASCRIPT -->
 <div th:fragment="link-js">
-  <script th:src="@{libs/jquery.min.js}"></script>
-  <script type="text/javascript" src="libs/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript" src="libs/metisMenu.min.js"></script>
-  <script type="text/javascript" src="libs/simplebar.min.js"></script>
-  <script type="text/javascript" src="libs/waves.min.js"></script>
+  <script th:src="@{/libs/jquery.min.js}"></script>
+  <script type="text/javascript" src="/libs/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="/libs/metisMenu.min.js"></script>
+  <script type="text/javascript" src="/libs/simplebar.min.js"></script>
+  <script type="text/javascript" src="/libs/waves.min.js"></script>
 
-  <script th:src="@{libs/apexcharts.min.js}"></script>
+  <script th:src="@{/libs/apexcharts.min.js}"></script>
 
-  <script th:src="@{js/pages/dashboard.init.js}"></script>
+  <script th:src="@{/js/pages/dashboard.init.js}"></script>
 
 
-  <script th:src="@{js/app.js}"></script>
+  <script th:src="@{/js/app.js}"></script>
 </div>
 </body>
 </html>

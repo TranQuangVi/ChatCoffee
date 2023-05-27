@@ -7,25 +7,23 @@ import lombok.Data;
 
 import java.util.List;
 
-/*@Data
+@Data
 @Entity
-@Table(name = "phuongthucthanhtoan")*/
-public class phuongthucthanhtoan {
+@Table(name = "Thanhtoan")
+public class Thanhtoan {
      @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private  Long id;
 
 // phương thuc thanh toan
-    @Column(name = "phuongthucthanhtoan", length = 50)
+    @Column(name = "Thanhtoan", length = 50)
     @NotEmpty(message = "Không được để trống ")
     @Size(max = 50,min =1,message = "Tối đa 50 kí tự ")
     private  String hinhthuc;
 
     // trỏ khóa ngoại đên order
-/*
-    @OneToMany(mappedBy = "phuongthucthanhtoan",cascade = CascadeType.ALL)
-    private List<order>orders;
-*/
+    @OneToMany(mappedBy = "Thanhtoan",cascade = CascadeType.ALL)
+    private List<Hoadon> Hoadons;
 
 
 

@@ -7,10 +7,10 @@ import lombok.Data;
 
 import java.util.List;
 
-/*@Data
+@Data
 @Entity
-@Table(name = "categoryProduct")*/
-public class CategoryProduct {
+@Table(name = "Loaisanpham")
+public class Loaisanpham {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +23,7 @@ public class CategoryProduct {
     @Column(name = "Anh")
     @Size(max = 100)
     private String Anh;
-/*    @OneToMany(mappedBy = "categoryProduct", cascade = CascadeType.ALL)
-    private List<Product> products;*/
+
+    @OneToMany(mappedBy = "loaisanpham", cascade = CascadeType.ALL)
+    private List<Sanpham> sanphams;
 }

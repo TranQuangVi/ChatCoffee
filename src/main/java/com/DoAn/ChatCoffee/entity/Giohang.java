@@ -2,18 +2,16 @@ package com.DoAn.ChatCoffee.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "Cart")
-public class Cart {
+@Table(name = "Giohang")
+public class Giohang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cart_id;
+    private Long MaGH;
 
     @Column(name = "TongTien")
     private int TongTien;
@@ -24,8 +22,9 @@ public class Cart {
     @Column(name = "TongSP")
     private int TongSP;
 
-
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-    private List<CartDetails> cartDetails;
-
+    @OneToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private Taikhoan taikhoan;
+   /* @OneToMany(mappedBy = "giohangs", cascade = CascadeType.ALL)
+    private List<CTGiohang> ctGiohangs;*/
 }

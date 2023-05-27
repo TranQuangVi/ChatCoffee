@@ -6,9 +6,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-/*@Data
+import java.util.HashSet;
+import java.util.Set;
+
+@Data
 @Entity
-@Table(name="role")*/
+@Table(name="role")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,10 +25,8 @@ public class Role {
     @Size(max = 250,message = "Description must be less  than 250 characters")
     @Column(name = "description",length = 250)
     private  String description;
-/*
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
-*/
+ /*   @ManyToMany(mappedBy = "roles")
+    private Set<Taikhoan> taikhoan = new HashSet<>();*/
 
 
 }

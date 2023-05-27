@@ -9,10 +9,10 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
-/*@Data
+@Data
 @Entity
-@Table(name = "hoadon")*/
-public class order {
+@Table(name = "hoadon")
+public class Hoadon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long MAHD;
@@ -66,13 +66,17 @@ public class order {
     private String  GIA;
 
     // -- mã thanh toan/
-/*
     @ManyToOne
     @JoinColumn(name = "phuongthuc",referencedColumnName = "id")
-    private phuongthucthanhtoan phuongthucthanhtoan;
+    private Thanhtoan Thanhtoan;
 
-*/
+    @ManyToOne
+    @JoinColumn(name = "vanchuyen",referencedColumnName = "MaVC")
+    private Vanchuyen vanchuyen;
 
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private Taikhoan taikhoan;
 
 
 

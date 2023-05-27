@@ -1,11 +1,10 @@
 package com.DoAn.ChatCoffee.controller;
 
-import com.DoAn.ChatCoffee.entity.Cart;
-import com.DoAn.ChatCoffee.entity.Product;
-import com.DoAn.ChatCoffee.repository.ProductRepository;
-import com.DoAn.ChatCoffee.service.ProductService;
-import com.DoAn.ChatCoffee.service.ShoppingCartDetailService;
-import com.DoAn.ChatCoffee.service.ShoppingCartService;
+import com.DoAn.ChatCoffee.entity.Giohang;
+import com.DoAn.ChatCoffee.entity.Sanpham;
+import com.DoAn.ChatCoffee.service.SanPhamService;
+import com.DoAn.ChatCoffee.service.CTGioHangService;
+import com.DoAn.ChatCoffee.service.GioHangService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,22 +14,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/ShoppingCarts")
 public class ShoppingCartsController {
     @Autowired
-    private ShoppingCartDetailService shoppingCartDetailService;
+    private CTGioHangService CTGioHangService;
     @Autowired
-    private ProductService productService;
+    private SanPhamService sanPhamService;
     @Autowired
-    private ShoppingCartService shoppingCartService;
+    private GioHangService gioHangService;
     @GetMapping
     public String index(Model model){
-        model.addAttribute("productInCarts", shoppingCartDetailService.getAll());
+        model.addAttribute("productInCarts", CTGioHangService.getAll());
         return "ShoppingCart/index";
     }
 
     @GetMapping("/addToCart/{id}")
     public  String addBookForm(@PathVariable Long id){
-        Product product = productService.getProductByID(id);
-        Cart cart = shoppingCartService.getCartByID(1L);
-        shoppingCartDetailService.addToCart(product,cart);
+        Sanpham product = sanPhamService.getProductByID(id);
+        Giohang cart = gioHangService.getCartByID(1L);
+        CTGioHangService.addToCart(product,cart);
         return "redirect:/ShoppingCarts";
     }
 

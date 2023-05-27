@@ -5,8 +5,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "CartDetails")
-public class CartDetails {
+@Table(name = "CTGiohang")
+public class CTGiohang {
 
     @EmbeddedId
     CartDetailsKey id;
@@ -14,12 +14,12 @@ public class CartDetails {
     @ManyToOne
     @MapsId("CartMaHD")
     @JoinColumn(name = "MaHD")
-    Cart cart;
+    Giohang giohang;
 
     @ManyToOne
     @MapsId("ProductId")
     @JoinColumn(name = "id")
-    Product product;
+    Sanpham sanpham;
 
     @Column(name = "TongTien")
     private int TongTien;

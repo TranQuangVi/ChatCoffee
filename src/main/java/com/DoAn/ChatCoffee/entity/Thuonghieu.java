@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "thuonghieu")
-public class brands {
+public class Thuonghieu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long MaTH;
@@ -28,6 +28,6 @@ public class brands {
     @Size(max = 100)
     private String AnhTH;
 
-    @OneToMany(mappedBy = "brands", cascade = CascadeType.ALL)
-    private List<Product> products;
+    @OneToMany(mappedBy = "thuonghieus", cascade = CascadeType.ALL)
+    private List<Sanpham> sanphams;
 }

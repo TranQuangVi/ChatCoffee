@@ -7,29 +7,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "address")
-public class address {
+@Table(name = "Diachi")
+public class Diachi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long MaDC;
 
-    @Column(name = "IdUser")
-    private Long IdUser;
 
     @Column(name = "DiaChi")
     @NotNull(message = "Địa chỉ không được để trống!")
     @Size(max = 120)
-    private String DiaChi;
+    private String TenDiaChi;
 
-    @Column(name = "DiaChi1")
-    @Size(max = 120)
-    private String DiaChi1;
 
-    @Column(name = "DiaChi2")
-    @Size(max = 120)
-    private String DiaChi2;
-
-    //@ManyToOne
-    //@JoinColumn(name = "IdUser", referencedColumnName = "Id")
-    //private User user;
+    @ManyToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private Taikhoan taikhoan;
 }

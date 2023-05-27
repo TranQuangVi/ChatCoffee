@@ -7,8 +7,8 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "Cart")
-public class Cart {
+@Table(name = "Giohang")
+public class Giohang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long MaGH;
@@ -22,8 +22,9 @@ public class Cart {
     @Column(name = "TongSP")
     private int TongSP;
 
-
-
-    @OneToMany(mappedBy = "Cart", cascade = CascadeType.ALL)
-    private List<CartDetails> cartDetails;
+    @OneToOne
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private Taikhoan taikhoan;
+   /* @OneToMany(mappedBy = "giohangs", cascade = CascadeType.ALL)
+    private List<CTGiohang> ctGiohangs;*/
 }

@@ -10,21 +10,21 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "ShippingTypes")
-public class ShippingTypes {
+@Table(name = "Vanchuyen")
+public class Vanchuyen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long MaVT;
+    private Long MaVC;
 
-    @Column(name = "TenVT")
+    @Column(name = "TenVC")
     @NotEmpty(message = "Tên vận chuyển không được để trống!")
     @Size(max = 50)
-    private String TenVT;
+    private String TenVC;
 
     @Column(name = "Gia")
     @NotEmpty(message = "Giá không được để trống!")
     private int Gia;
 
-    @OneToMany(mappedBy = "ShippingTypes", cascade = CascadeType.ALL)
-    private List<Bill> bills;
+    @OneToMany(mappedBy = "vanchuyen", cascade = CascadeType.ALL)
+    private List<Hoadon> hoadons;
 }

@@ -1,13 +1,16 @@
 package com.DoAn.ChatCoffee.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-public class Account {
+import java.util.List;
+
+@Data
+@Entity
+@Table(name = "Taikhoan")
+public class Taikhoan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,14 +36,21 @@ public class Account {
     @Column(name = "image", length = 50, nullable = true)
     private String imgage;
     @Column(name = "dateofbirth", length = 50, nullable = false)
-    @NotBlank(message = "Your fullname is required")
+    @NotBlank(message = "Your dateofbirth is required")
     private String dateofbirth;
     @Column(name = "phonenumber", length = 10, nullable = false)
-    @NotBlank(message = "Your fullname is required")
+    @NotBlank(message = "Your phongnumber is required")
     private String phonenumber;
     @Column(name = "status", nullable = false)
-    @NotBlank(message = "Your fullname is required")
+    @NotBlank(message = "Your status is required")
     private Boolean status;
 
+    @OneToMany(mappedBy = "taikhoan", cascade = CascadeType.ALL)
+    private List<Diachi> diachis;
 
+    @OneToMany(mappedBy = "taikhoan", cascade = CascadeType.ALL)
+    private List<Hoadon> hoadons;
+
+    @OneToOne(mappedBy = "taikhoan", cascade = CascadeType.ALL)
+    private Giohang giohangs;
 }

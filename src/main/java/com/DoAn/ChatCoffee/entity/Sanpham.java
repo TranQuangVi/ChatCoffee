@@ -9,8 +9,8 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "Sanpham")
+public class Sanpham {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,16 +47,16 @@ public class Product {
     private String Mota;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
-    private CategoryProduct categoryProduct;
+    @JoinColumn(name = "loaisp_id")
+    private Loaisanpham loaisanpham;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List<Pictures> pictures;
+    @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
+    private List<Anh> anhs;
     @ManyToOne
-    @JoinColumn(name = "brands_id")
-    private brands brands;
+    @JoinColumn(name = "thuonghieu_id")
+    private Thuonghieu thuonghieus;
 
 
-    @OneToMany(mappedBy = "Product", cascade = CascadeType.ALL)
-    private List<CartDetails> cartDetails;
+    @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
+    private List<CTGiohang> ctGiohangs;
 }

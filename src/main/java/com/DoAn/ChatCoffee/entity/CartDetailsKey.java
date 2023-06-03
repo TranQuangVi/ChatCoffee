@@ -7,7 +7,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Embeddable
+//@Embeddable
 public class CartDetailsKey implements Serializable {
 
         @Column(name = "product_id")

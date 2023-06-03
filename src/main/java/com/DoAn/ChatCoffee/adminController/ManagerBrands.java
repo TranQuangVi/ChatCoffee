@@ -11,4 +11,19 @@ public class ManagerBrands {
     public String index(){
         return "admin/managerBrands/index";
     }
+
+    @GetMapping("/deleteBrand")
+    public String deleteBrand(){
+        return "admin/managerAccounts/deleteBrand";
+    }
+
+    @GetMapping("/editBrand")
+    public String editBrand(){
+        return "admin/managerAccounts/editBrand";
+    }
+
+    @GetMapping("/addBrand")
+    public String addBrand(){
+        return "admin/managerAccounts/addBrand";
+    }
 }

@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-@Data
+/*@Data
 @Entity
-@Table(name = "Anh")
+@Table(name = "Anh")*/
 public class Anh {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +16,7 @@ public class Anh {
     @Size(max = 100)
     private String LinkAnh;
 
-    @ManyToOne
+/*    @ManyToOne
     @JoinColumn(name = "product_id")
-    private Sanpham sanpham;
+    private Sanpham sanpham;*/
 }

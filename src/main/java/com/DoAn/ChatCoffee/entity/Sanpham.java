@@ -46,12 +46,16 @@ public class Sanpham {
     @Size(max = 500)
     private String Mota;
 
+    @Column(name = "anh")
+    @Size(max = 100)
+    private String anh;
+
     @ManyToOne
     @JoinColumn(name = "loaisp_id")
     private Loaisanpham loaisanpham;
 
-    @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
-    private List<Anh> anhs;
+  /*  @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
+    private List<Anh> anhs;*/
     @ManyToOne
     @JoinColumn(name = "thuonghieu_id")
     private Thuonghieu thuonghieus;

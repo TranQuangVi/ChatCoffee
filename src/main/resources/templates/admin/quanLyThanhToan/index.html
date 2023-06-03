@@ -50,13 +50,13 @@
                                     <tr>
                                         <th scope="col" > STT</th>
                                         <th scope="col">Hình thức</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <tr th:each="thanhtoan: ${listThanhToan}" >
-                                        <td ></td>
+                                    <tr th:each="thanhtoan, stt: ${listThanhToan}" >
+                                        <td th:text="${stt.count}"></td>
                                         <td>
                                             <h5 class="text-truncate font-size-14"><a
                                                     href="javascript: void(0);" class="text-dark"

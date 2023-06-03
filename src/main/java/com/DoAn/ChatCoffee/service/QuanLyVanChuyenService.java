@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuanLyVanChuyenService {
@@ -19,13 +20,24 @@ public class QuanLyVanChuyenService {
     }
 
     //xóa
-    public void delete(Vanchuyen vanchuyen){
-        quanLyVanChuyenRepository.deleteById(vanchuyen.getMaVC());
+    public void delete(Long id){
+        quanLyVanChuyenRepository.deleteById(id);
     }
 
     //Lấy dah nh sách
     public List<Vanchuyen> getAllVanChuyen(){
         return quanLyVanChuyenRepository.findAll();
+    }
+
+    //Lấy 1 vận chuyển
+    public Vanchuyen getVanChuyenById(Long id){
+        Optional<Vanchuyen> optionalVanchuyen = quanLyVanChuyenRepository.findById(id);
+        if(optionalVanchuyen.isPresent()){
+            return optionalVanchuyen.get();
+        }
+        else {
+            throw new RuntimeException("Không tìm thấy phương thức vận chuyển này!");
+        }
     }
 
 }

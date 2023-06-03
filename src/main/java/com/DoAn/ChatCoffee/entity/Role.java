@@ -25,8 +25,8 @@ public class Role {
     @Size(max = 250,message = "Description must be less  than 250 characters")
     @Column(name = "description",length = 250)
     private  String description;
- /*   @ManyToMany(mappedBy = "roles")
-    private Set<Taikhoan> taikhoan = new HashSet<>();*/
+    @ManyToMany(mappedBy = "roles")
+    private Set<Taikhoan> taikhoans = new HashSet<>();
 
 
 }

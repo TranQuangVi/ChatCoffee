@@ -13,9 +13,53 @@
     <!-- Left Sidebar End -->
 
     <!-- Nội dung -->
+    <div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+    <div class="card">
+        <div class="card-body">
 
+            <h4 class="card-title">Add Brand</h4>
+            <p class="card-title-desc">Add a new brand</p>
+
+            <form th:action="@{/admin/managerBrands/addBrand}" th:object="${brand}" method="post">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="TenTH">Tên thương hiệu</label>
+                            <input id="TenTH" type="text" th:field="*{TenTH}" class="form-control" placeholder="Tên thương hiệu">
+                        </div>
+                        <div class="mb-3">
+                            <label for="DiaChiTH">Địa chỉ</label>
+                            <input id="DiaChiTH" type="text" th:field="*{DiaChiTH}" class="form-control" placeholder="Địa chỉ">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="AnhTH">Logo thương hiệu</label>
+                            <input class="form-control" id="AnhTH" th:field="*{AnhTH}" placeholder="Logo thương hiệu"></input>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Create</button>
+                    <a class="btn btn-secondary waves-effect waves-light" th:href="@{/admin/managerBrands}">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    </div>
     <!-- hết nội dung-->
-</div>
+    </div>
 <!-- END layout-wrapper -->
 
 <footer th:replace="admin/layout_admin :: footer"></footer>

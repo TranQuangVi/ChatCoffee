@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout_admin :: head-link"></head>
+
+<body data-sidebar="dark" data-layout-mode="light">
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+  <header  th:replace="admin/layout_admin :: header-page"></header>
+
+  <!-- ========== Left Sidebar Start ========== -->
+  <div class="vertical-menu"  th:replace="admin/layout_admin :: menu"></div>
+  <!-- Left Sidebar End -->
+
+  <!-- Nội dung -->
+  <div class="main-content">
+
+    <div class="page-content">
+      <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+              <h4 class="mb-0 font-size-18">Product List</h4>
+
+              <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                  <a class="btn btn-outline-secondary btn-sm create" href="/admin/quan-ly-san-pham/add">
+                    <i class="fa fa-plus"></i>
+                    Thêm mới
+                  </a>
+                </ol>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="">
+              <div class="table-responsive">
+                <table class="table project-list-table table-nowrap align-middle table-borderless">
+                  <thead>
+                  <tr >
+                    <th scope="col" style="width: 100px"></th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Loại sản phẩm</th>
+                    <th scope="col">Thương hiệu</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col"></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr data-id="1" style="cursor: pointer;" th:each = "sanpham: ${dssanpham}">
+                    <td class="text-center"><img th:src="${sanpham.anh}" alt="" class="avatar-sm rounded-circle "></td>
+                    <td>
+                      <h5 th:text = "${sanpham.TenSP}" class="text-truncate font-size-14"></h5>
+                    </td>
+                    <td th:text = "${sanpham.loaisanpham.TenLoai}"></td>
+                    <td th:text = "${sanpham.thuonghieu.MaTH}"></td>
+                    <td th:text = "${sanpham.Gia}"></td>
+                    <td th:text = "${sanpham.Soluong}"></td>
+                    <td th:text = "${sanpham.trangthai}"></td>
+                    <td>
+                      <div class="dropdown">
+                        <a th:href ="@{/admin/quan-ly-san-pham/edit/{id}(id=${sanpham.id})}" class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                          <i class="fa fa-pencil"></i>
+                        </a>
+                        <a th:href ="@{/admin/quan-ly-san-pham/delete/{id}(id=${sanpham.id})}"
+                           onclick="return confirm('Bạn có chắc muốn xóa không?')"  class="btn btn-outline-secondary btn-sm delete" title="Delete">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                        <a th:href ="@{/admin/quan-ly-san-pham/chitietsp/{id}(id=${sanpham.id})}"
+                           class="btn btn-outline-secondary btn-sm " title="ChiTiet">
+                          <i class="fa fa-trash"></i>
+                        </a>
+
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+
+      </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+  </div>
+  <!-- hết nội dung-->
+</div>
+<!-- END layout-wrapper -->
+
+<footer th:replace="admin/layout_admin :: footer"></footer>
+<!-- JAVASCRIPT -->
+<div th:replace="admin/layout_admin :: link-js"></div>
+</body>
+</html>

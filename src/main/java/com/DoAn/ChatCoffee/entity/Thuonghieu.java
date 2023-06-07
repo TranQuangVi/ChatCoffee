@@ -28,6 +28,6 @@ public class Thuonghieu {
     @Size(max = 100)
     private String AnhTH;
 
-    @OneToMany(mappedBy = "thuonghieus", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "thuonghieu", cascade = CascadeType.ALL)
     private List<Sanpham> sanphams;
 }

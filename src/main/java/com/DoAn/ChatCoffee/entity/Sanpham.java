@@ -50,15 +50,19 @@ public class Sanpham {
     @Size(max = 100)
     private String anh;
 
+    @Column(name = "trangthai")
+    private Boolean trangthai;
+
+
+
     @ManyToOne
     @JoinColumn(name = "loaisp_id")
     private Loaisanpham loaisanpham;
 
-  /*  @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
-    private List<Anh> anhs;*/
+
     @ManyToOne
     @JoinColumn(name = "thuonghieu_id")
-    private Thuonghieu thuonghieus;
+    private Thuonghieu thuonghieu;
 
 
     @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)

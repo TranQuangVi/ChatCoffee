@@ -36,6 +36,5 @@ public class LoaiSanPhamService {
     }
     public  void  deleteLoaiSP(Long id){
         loaiSanPhamRespository.deleteById(id);
-
     }
 }

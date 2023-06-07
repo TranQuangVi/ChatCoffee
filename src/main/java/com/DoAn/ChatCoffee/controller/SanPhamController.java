@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/san-pham")
+public class SanPhamController {
     @Autowired
     private SanPhamService sanPhamService;
 
     @GetMapping
     public String product(Model model) {
         model.addAttribute("listProducts", sanPhamService.getAllProduct());
-        return "product/index";
+        return "sanpham/index";
     }
 
     /*giống như cái trên thôi - trả về trang /product*/
-    @GetMapping("/list")
+    @GetMapping("/danh-sach")
     public String index() {
-        return "redirect:/product";
+        return "redirect:/sanpham";
     }
 
 

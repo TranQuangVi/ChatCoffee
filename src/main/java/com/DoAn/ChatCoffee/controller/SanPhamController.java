@@ -25,5 +25,12 @@ public class SanPhamController {
         return "redirect:/sanpham";
     }
 
-
+    @GetMapping("/tim-kiem")
+    //todo: đưa vô 1 string --> list ()
+    public String timkiem(String bien){
+        // gọi service tìm kiếm ()viết trong service
+        //sanPhamService.getlistbySearchTring
+       // model.addAttribute("listProducts", sanPhamService.getAllProduct());
+        return "sanpham/index";
+    }
 }

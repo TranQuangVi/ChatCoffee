@@ -89,7 +89,19 @@
                 <form class="mt-4 mt-sm-0 float-sm-end d-sm-flex align-items-center">
                   <div class="search-box me-2">
                     <div class="position-relative">
-                      <input type="text" class="form-control border-0" placeholder="Tìm kiếm...">
+                      <!--<form th:action="@{/san-pham/tim-kiem}">
+                        Filter: <input type="text" name="search" id="search" size="50" th:value="${search}" required />
+                        &nbsp;
+                        <input type="submit" value="Search" />
+                        &nbsp;
+                        <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+                      </form>
+                      <input th:value="${search}" onclick="clearSearch()" type="text" class="form-control border-0" placeholder="Tìm kiếm...">-->
+                      <input type="text" name="search" id="search" size="50" th:value="${search}" required />
+                      &nbsp;
+                      <input type="submit" value="Search" />
+                      &nbsp;
+                      <input type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
                       <i class="bx bx-search-alt search-icon"></i>
                     </div>
                   </div>
@@ -181,4 +193,8 @@
 </body>
 
 </html>
-
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/}]]";
+    }
+</script>

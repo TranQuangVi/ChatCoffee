@@ -3,6 +3,7 @@ package com.DoAn.ChatCoffee.service;
 import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.repository.ISanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,5 +30,10 @@ public class SanPhamService {
         this.sanPhamRepository.deleteById(product_id);
     }
 
-
+    public List<Sanpham> getListSearchProduct(String search){
+        if (search != null)
+            return sanPhamRepository.search(search);
+        else
+            return null;
+    }
 }

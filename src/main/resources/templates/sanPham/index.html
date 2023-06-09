@@ -110,6 +110,7 @@
               <div class="col-xl-4 col-sm-6" th:each="product : ${listProducts}">
                 <div class="card">
                   <div class="card-body">
+                    <a th:href="@{/san-pham/chi-tiet/{id}(id=${product.id})}">
                     <div class="product-img position-relative">
                       <!--<div class="avatar-sm product-ribbon">
                                                         <span class="avatar-title rounded-circle  bg-primary">
@@ -130,7 +131,11 @@
                         <i class="bx bxs-star text-warning"></i>
                       </p>-->
                       <h5 class="my-2"><span class="text-muted me-2"></span> <b th:text = "${product.Gia} +' vnd'" ></b></h5>
-                      <a  class="btn btn-primary"> Mua ngay</a>
+                     </div>
+                    </a>
+                    <div class="mt-3 text-center">
+                      <a th:href="@{/san-pham/chi-tiet/{id}(id=${product.id})}" class="btn btn-primary"> Thêm vào giỏ hàng</a>
+                      <a th:href="@{/san-pham/chi-tiet/{id}(id=${product.id})}" class="btn btn-primary"> Mua ngay</a>
                     </div>
                   </div>
                 </div>

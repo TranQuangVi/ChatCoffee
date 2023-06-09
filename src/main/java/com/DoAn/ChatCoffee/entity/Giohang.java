@@ -25,6 +25,7 @@ public class Giohang {
     @OneToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     private Taikhoan taikhoan;
-   /* @OneToMany(mappedBy = "giohangs", cascade = CascadeType.ALL)
-    private List<CTGiohang> ctGiohangs;*/
+
+    @OneToMany(mappedBy = "giohang", cascade = CascadeType.ALL)
+    private List<CTGiohang> ctGiohangs;
 }

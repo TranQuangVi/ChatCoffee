@@ -25,8 +25,15 @@ public class ShoppingCartsController {
         return "ShoppingCart/index";
     }
 
-    @GetMapping("/addToCart/{id}")
-    public  String addBookForm(@PathVariable Long id){
+    // Lấy idUser
+    //get giỏ hàng by idUser
+    // get ListSP in CartDetail
+    //Add sp into cart: (idSP, idCart)
+    //Số lượng còn -1; số lượng sp trong GH +1
+    //
+
+    @GetMapping("/themGioHang/{id}")
+    public  String themGioHang(@PathVariable Long id){
         Sanpham product = sanPhamService.getProductByID(id);
         Giohang cart = gioHangService.getCartByID(1L);
         CTGioHangService.addToCart(product,cart);

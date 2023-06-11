@@ -25,8 +25,39 @@ public class Role {
     @Size(max = 250,message = "Description must be less  than 250 characters")
     @Column(name = "description",length = 250)
     private  String description;
+
     @ManyToMany(mappedBy = "roles")
     private Set<Taikhoan> taikhoans = new HashSet<>();
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Taikhoan> getTaikhoans() {
+        return taikhoans;
+    }
+
+    public void setTaikhoans(Set<Taikhoan> taikhoans) {
+        this.taikhoans = taikhoans;
+    }
 }

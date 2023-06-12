@@ -3,6 +3,8 @@ package com.DoAn.ChatCoffee.service;
 import com.DoAn.ChatCoffee.entity.Loaisanpham;
 import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
+import com.DoAn.ChatCoffee.entity.Taikhoan;
+import com.DoAn.ChatCoffee.repository.IRoleRepository;
 import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,15 @@ public class TaiKhoanService {
     public Taikhoan getTaikhoanByID(Long user_id){
         Optional<Taikhoan> optional = taiKhoanRepository.findById(user_id);
         return  optional.orElse(null);
+
+    }
+
+    @Autowired
+    private IRoleRepository itaiRoleRepository;
+
+    @Autowired
+    public TaiKhoanService(ITaiKhoanRepository itaiKhoanRepository) {
+        this.itaiKhoanRepository = itaiKhoanRepository;
     }
 
     public void saveTaikhoan(Taikhoan taikhoan){
@@ -40,5 +51,15 @@ public class TaiKhoanService {
         this.itaiKhoanRepository = itaiKhoanRepository;
     }*/
 
+
+    public void save (Taikhoan tk) {
+        itaiKhoanRepository.save(tk);
+        Long taiKhoanId = itaiKhoanRepository.getUserIdByUsername(tk.getUsername());
+        Long roleId = itaiRoleRepository.getRoleIdByName("USER");
+        if(taiKhoanId != 0 && roleId !=0)
+        {
+            itaiKhoanRepository.addRoleToUser(taiKhoanId, roleId);
+        }
+    }
 
 }

@@ -7,6 +7,7 @@ import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -57,7 +58,7 @@ public class UserController {
         return "user/login";
     }
 
-    @PostMapping("/login")
+/*    @PostMapping("/login")
     public String formLogin(@RequestParam("username") String username,
                             @RequestParam("password") String password) {
         // Kiểm tra xem người dùng có tồn tại và mật khẩu có khớp hay không
@@ -67,8 +68,8 @@ public class UserController {
         } else {
             return "redirect:/user/login";
         }
-    }
-
+    }*/
+    
     @GetMapping("/register")
     public String formRegister(Model model) {
 
@@ -109,9 +110,9 @@ public class UserController {
             return "user/register";
         }
         else
-            iTaiKhoanRepository.save(taikhoan);
+            taikhoan.setPassword(new
+                    BCryptPasswordEncoder().encode(taikhoan.getPassword()));
+        taiKhoanService.save(taikhoan);
         return "redirect:/user/login";
-
     }
 }
-

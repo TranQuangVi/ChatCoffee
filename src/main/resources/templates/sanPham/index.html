@@ -1,7 +1,9 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="layout :: head-link"></head>
-
+<div sec:authorize="hasAnyAuthority('USER', 'ADMIN')">
 <body data-topbar="dark" data-layout="horizontal">
 <!-- Begin page -->
 <div id="layout-wrapper">
@@ -179,6 +181,6 @@
 <div th:replace="layout :: link-js"></div>
 
 </body>
-
+</div>
 </html>
 

@@ -6,6 +6,7 @@ import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,11 +30,12 @@ public class UserController {
     private TaiKhoanService taiKhoanService;
     @Autowired
     private SanPhamService sanPhamService;
-    /*@GetMapping
-    public String index(@PathVariable Long id ,Model model){
-        model.addAttribute("dstaikhoan", taiKhoanService.getTaikhoanByID(id));
-        return "user/login";
-    }*/
+    @GetMapping
+    public String index(Model model, Authentication authentication){
+        model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(taiKhoanService.getTaiKhoanByUserName(authentication.getName()).getId()));
+        model.addAttribute("listProducts", sanPhamService.getAllProduct());
+        return "user/index";
+    }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id ,Model model) {
@@ -50,7 +52,7 @@ public class UserController {
     @PostMapping("/edit")
     public String editSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan){
         taiKhoanService.saveTaikhoan(taikhoan);
-        return "redirect:/user/edit/1";
+        return "redirect:/user";
     }
     @GetMapping("/login")
     public String formLogin() {

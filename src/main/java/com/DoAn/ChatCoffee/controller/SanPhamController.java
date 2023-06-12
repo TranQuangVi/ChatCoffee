@@ -4,6 +4,7 @@ import com.DoAn.ChatCoffee.service.LoaiSanPhamService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.ThuongHieuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,11 +28,13 @@ public class SanPhamController {
 
 
     @GetMapping
-    public String product(Model model) {
-        model.addAttribute("listProducts", sanPhamService.getAllProduct());
-//        model.addAttribute("danhsachXuatxu",sanPhamService.getAllProduct());
+    public String product(Model model, @Param("search") String search) {
+        model.addAttribute("listProducts", sanPhamService.getSearchListProduct(search));
+//        model.addAttribute("listProducts", sanPhamService.getAllProduct());
+
         model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
         model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
+        model.addAttribute("search",search);
         return "sanpham/index";
     }
 
@@ -41,14 +44,7 @@ public class SanPhamController {
         return "redirect:/sanpham";
     }
 
-//    @GetMapping("/tim-kiem")
-//    //todo: đưa vô 1 string --> list ()
-//    public String timkiem(String bien){
-//        // gọi service tìm kiếm ()viết trong service
-//        //sanPhamService.getlistbySearchTring
-//       // model.addAttribute("listProducts", sanPhamService.getAllProduct());
-//        return "sanpham/index";
-//    }
+
 
 
 

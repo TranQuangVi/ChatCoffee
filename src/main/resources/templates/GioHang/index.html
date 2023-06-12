@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head-link"></head>
+
+<body data-topbar="dark" data-layout="horizontal">
+<!-- Begin page -->
+<div id="layout-wrapper">
+  <header th:replace="layout :: header-page"></header>
+  <div th:replace="layout :: topnav"></div>
+
+  <!--Nội dung-->
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+          </div>
+        </div>
+        <!-- end row -->
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table align-middle mb-0 table-nowrap">
+                <thead class="table-light">
+                <tr>
+                  <th>Ảnh</th>
+                  <th>Tên sản phẩm</th>
+                  <th>Giá</th>
+                  <th>Số lượng</th>
+                  <th colspan="2">Tổng giá</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each = "cart: ${sanpham}">
+                  <td >
+                    <a th:href="@{/san-pham/chi-tiet/{id}(id=${cart.sanpham.id})}">
+                    <img th:src="${cart.sanpham.Anh}" alt="product-img" title="product-img" class="avatar-md"></a>
+                  </td>
+                  <td>
+                    <h5 class="font-size-14 text-truncate">
+                      <a class="text-dark" th:text = "${cart.sanpham.TenSP}" th:href="@{/san-pham/chi-tiet/{id}(id=${cart.sanpham.id})}" ></a>
+                    </h5>
+                    <p class="mb-0"><span class="fw-medium" th:text = "'Khối lượng: '+${cart.sanpham.Khoiluong}"></span></p>
+                  </td>
+                  <td th:text = "${cart.sanpham.Gia} + ' $'">
+
+                  </td>
+                  <form th:action="@{/gio-hang/cap-nhat-gio-hang}" method="post">
+                    <td>
+                    <div class="me-3" style="width: 120px;">
+                      <input type="hidden" name="id" th:value="${cart.sanpham.id}" >
+
+                      <input type="number" th:value="${cart.soluong}" name="soluong" class="form-control">
+
+                    </div>
+
+
+
+                  </td>
+                  <td>
+                    <a class="text-dark" th:text ="${cart.sanpham.Gia*cart.soluong}"></a>
+                  </td>
+<!--                  <td>
+                    <a href="javascript:void(0);" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
+
+                  </td>-->
+                  <td style="width: 100px">
+                    <!--<a  th:href="@{/gio-hang/cap-nhat-gio-hang/{id}/{soluong}(id=${cart.sanpham.id}, soluong=${cart.soluong})}"
+                       class="btn btn-outline-secondary btn-sm edit" title="Update">
+                      <i class="bx bx-check"></i>
+                    </a>-->
+
+                    <button type="submit"  class="btn btn-outline-secondary btn-sm edit"> <i class="bx bx-check"></i></button>
+                    <a th:href="@{/gio-hang/xoa- san-pham/{id}(id=${cart.sanpham.id})}"
+                            class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                      <i class="bx bx-trash"></i>
+                    </a>
+                  </td>
+                  </form>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row mt-4">
+              <div class="col-sm-6">
+                <a href="ecommerce-products.html" class="btn btn-secondary">
+                  <i class="mdi mdi-arrow-left me-1"></i> Continue Shopping </a>
+              </div> <!-- end col -->
+              <div class="col-sm-6">
+                <div class="text-sm-end mt-2 mt-sm-0">
+                  <a href="ecommerce-checkout.html" class="btn btn-success">
+                    <i class="mdi mdi-cart-arrow-right me-1"></i> Checkout </a>
+                </div>
+              </div> <!-- end col -->
+            </div> <!-- end row-->
+          </div>
+        </div>
+      </div> <!-- container-fluid -->
+    </div>
+  </div>
+  <!--Hết nội dung-->
+</div>
+<footer th:replace="layout :: footer"></footer>
+
+<div th:replace="layout :: link-js"></div>
+
+</body>
+
+</html>

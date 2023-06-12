@@ -105,7 +105,6 @@ public class QuanLySanPham {
         Path uploadPath = Paths.get(uploadDir);
 
         if (!Files.exists(uploadPath)) {
-
             Files.createDirectories(uploadPath);
         }
 

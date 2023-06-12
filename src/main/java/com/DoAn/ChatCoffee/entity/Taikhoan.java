@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "Taikhoan")
+@Table(name = "taikhoan")
 public class Taikhoan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,8 +65,8 @@ public class Taikhoan {
     @OneToMany(mappedBy = "taikhoan", cascade = CascadeType.ALL)
     private List<Hoadon> hoadons;
 
-    @OneToOne(mappedBy = "taikhoan", cascade = CascadeType.ALL)
-    private Giohang giohangs;
+    @OneToOne(mappedBy = "taikhoan")
+    private Giohang giohang;
     @ManyToMany
     @JoinTable(name ="user_role",
             joinColumns = @JoinColumn(name ="user_id"),
@@ -95,5 +95,85 @@ public class Taikhoan {
 
     public void setDateofbirth(LocalDate dateofbirth) {
         this.dateofbirth = dateofbirth;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getImgage() {
+        return imgage;
+    }
+
+    public void setImgage(String imgage) {
+        this.imgage = imgage;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public List<Diachi> getDiachis() {
+        return diachis;
+    }
+
+    public void setDiachis(List<Diachi> diachis) {
+        this.diachis = diachis;
+    }
+
+    public List<Hoadon> getHoadons() {
+        return hoadons;
+    }
+
+    public void setHoadons(List<Hoadon> hoadons) {
+        this.hoadons = hoadons;
+    }
+
+    public Giohang getGiohang() {
+        return giohang;
+    }
+
+    public void setGiohang(Giohang giohang) {
+        this.giohang = giohang;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

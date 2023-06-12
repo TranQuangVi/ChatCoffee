@@ -59,48 +59,47 @@
                           <p class="text-muted mb-0">Sản phẩm ưu thích</p>
                         </div>
                       </div>
-                     <!-- <div class="mt-4">
-                        <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                      </div>-->
+                      <!-- <div class="mt-4">
+                         <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
+                       </div>-->
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <!-- end card -->
-
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title mb-4">Thông tin</h4>
                 <div class="table-responsive" >
-                  <form th:action ="@{/user/edit}" th:object = "${taikhoan}" method = "post" class="outer-repeater">
+                  <form th:action ="@{/admin/managerAccounts/profile}" th:object = "${taikhoan}" method = "post" class="outer-repeater">
                     <input type="hidden" class="form-control" th:field="*{id}" value="taikhoan.id" >
                     <input type="hidden" class="form-control" th:field="*{password}" value="taikhoan.password" >
                     <input type="hidden" class="form-control" th:field="*{username}" value="taikhoan.username" >
-                  <table class="table table-nowrap mb-0">
-                    <tbody>
-                    <tr>
-                      <th scope="row">Họ tên :</th>
-                      <td>  <input type="text" class="form-control" th:field="*{fullname}" id="fullname" value="taikhoan.fullname"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Số điện thoại :</th>
-                      <td> <input type="text" class="form-control" th:field="*{phonenumber}" id="phonenumber" value="taikhoan.phonenumber"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Email :</th>
-                      <td> <input type="text" class="form-control" th:field="*{email}" id="email" value="taikhoan.email"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Ngày sinh :</th>
-                      <td> <input type="date" class="form-control" th:field="*{dateofbirth}" id="dateofbirth" value="taikhoan.dateofbirth"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Địa chỉ :</th>
-                      <td >adwfqfdqw</td>
-                    </tr>
-                    </tbody>
-                  </table>
+                    <table class="table table-nowrap mb-0">
+                      <tbody>
+                      <tr>
+                        <th scope="row">Họ tên :</th>
+                        <td>  <input type="text" class="form-control" th:field="*{fullname}" id="fullname" value="taikhoan.fullname"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Số điện thoại :</th>
+                        <td> <input type="text" class="form-control" th:field="*{phonenumber}" id="phonenumber" value="taikhoan.phonenumber"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Email :</th>
+                        <td> <input type="text" class="form-control" th:field="*{email}" id="email" value="taikhoan.email"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Ngày sinh :</th>
+                        <td> <input type="date" class="form-control" th:field="*{dateofbirth}" id="dateofbirth" value="taikhoan.dateofbirth"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Địa chỉ :</th>
+                        <td >adwfqfdqw</td>
+                      </tr>
+                      </tbody>
+                    </table>
                     <button type="submit" class="btn btn-primary" value="Save" style="margin-top: 30px; margin-left: 10px;">Cập nhật</button>
                   </form>
                 </div>
@@ -200,7 +199,7 @@
                 <div class="row"  >
 
 
-                  <div th:each = "product: ${listProducts}" class="col-xl-4 col-md-6">
+           <!--       <div th:each = "product: ${listProducts}" class="col-xl-4 col-md-6">
                     <div class="card " style="background-color: aliceblue;">
                       <div class="card-body">
                         <div class="favorite-icon">
@@ -228,7 +227,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div>-->
                   <!--end col-->
 
                 </div>

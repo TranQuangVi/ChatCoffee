@@ -30,6 +30,8 @@ public class LoaiSanPhamService {
     public  void  addLoaiSP(Loaisanpham id){
         loaiSanPhamRespository.save(id);
     }
+
+
     public  Loaisanpham saveLoaiSP(Loaisanpham id){
         return   loaiSanPhamRespository.save(id);
 

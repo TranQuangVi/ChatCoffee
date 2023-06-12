@@ -1,7 +1,9 @@
 package com.DoAn.ChatCoffee.controller;
 
+import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
+import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +27,31 @@ public class UserController {
 
     @Autowired
     private TaiKhoanService taiKhoanService;
+    @Autowired
+    private SanPhamService sanPhamService;
+    /*@GetMapping
+    public String index(@PathVariable Long id ,Model model){
+        model.addAttribute("dstaikhoan", taiKhoanService.getTaikhoanByID(id));
+        return "user/login";
+    }*/
 
-    @GetMapping
-    public String index() {
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Long id ,Model model) {
+        model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(id));
+        model.addAttribute("listProducts", sanPhamService.getAllProduct());
         return "user/index";
     }
+   /* @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Long id , Model model){
+        model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(id));
 
+        return "user/edit";
+    }*/
+    @PostMapping("/edit")
+    public String editSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan){
+        taiKhoanService.saveTaikhoan(taikhoan);
+        return "redirect:/user/edit/1";
+    }
     @GetMapping("/login")
     public String formLogin() {
         return "user/login";
@@ -42,7 +63,7 @@ public class UserController {
         // Kiểm tra xem người dùng có tồn tại và mật khẩu có khớp hay không
         Taikhoan user = iTaiKhoanRepository.findByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
-            return "redirect:/user";
+            return "redirect:/";
         } else {
             return "redirect:/user/login";
         }

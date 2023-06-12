@@ -13,29 +13,33 @@
         <div class="page-content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="card-body">
+                    <div class="card-body" style="padding-left: 20px; padding-right: 20px;">
 
 <!--                        <h4 class="card-title">With indicators</h4>-->
 <!--                        <p class="card-title-desc">You can also add the indicators to the-->
 <!--                            carousel, alongside the controls, too.</p>-->
 
 
-                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 115%;  margin-left: -90px;">
                             <ol class="carousel-indicators">
                                 <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true"></li>
                                 <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class=""></li>
                                 <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class=""></li>
+                                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" class=""></li>
                             </ol>
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
 <!--                                    <img class="d-block img-fluid" src="resources/static/images/backgroundcf.png" style="width: 1615px; object-fit: cover; height: 850px;"/>-->
-                              <img class="d-block img-fluid" src="https://live.themewild.com/coffero/assets/img/slider/slider-1.jpg" style="width: 1615px; object-fit: cover;" alt="First slide">
+                              <img class="d-block img-fluid" src="images/background/bg1.png" style="width: 1615px; object-fit: cover; height: 540px;" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block img-fluid" src="https://live.themewild.com/coffero/assets/img/slider/slider-3.jpg" style="width: 1615px; object-fit: cover; " alt="Second slide">
+                                    <img class="d-block img-fluid" src="images/background/bg4.png" style="width: 1615px; object-fit: cover; height: 540px;" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block img-fluid" src="https://live.themewild.com/coffero/assets/img/slider/slider-2.jpg" style="width: 1615px; object-fit: cover;" alt="Third slide">
+                                    <img class="d-block img-fluid" src="images/background/bg2.png" style="width: 1615px; object-fit: cover; height: 540px;" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block img-fluid" src="images/background/bg3.png" style="width: 1615px; object-fit: cover; height: 540px;" alt="Third slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -53,13 +57,13 @@
                             <div class="col-lg-6 mx-auto">
                                 <div class="site-heading text-center">
                                     <span class="site-title-tagline" style="font-size: 1.5rem;">Menu</span>
-                                    <h2 class="site-title text-black" style="font-weight: 600;  font-size: 2.5rem; margin-bottom: 15px;">Sản phẩm nổi bật </h2>
+                                    <h2 class="site-title text-black" style="font-weight: 600;  font-size: 2.5rem; margin-bottom: 15px;">Tất cả loại cà phê </h2>
                                 </div>
                             </div>
                         </div>
                         <div class="menu-content" style="width: 1173px;">
                             <div class="row" style="margin-left: 50px; margin-right: 50px; margin-bottom: 30px;">
-                                <div class="col-lg-6" th:each = "product: ${listProducts}">
+                                <div class="col-lg-4" th:each = "loaisp: ${listLoais}">
                                     <div class="menu-item">
                                         <div class="menu-item-content">
                                             <div class="menu-item-img">
@@ -68,111 +72,14 @@
                                            <!--     <img src="assets/img/menu/01.jpg" alt="">-->
                                             </div>
                                             <div class="menu-item-info">
-                                                <h5  th:text = "${product.TenSP}"></h5>
+                                                <h5  th:text = "${loaisp.TenLoai}"></h5>
                                                 <p ></p>
                                             </div>
                                         </div>
-                                        <div class="menu-item-price" th:text = "${product.Gia}">đ</div>
+                                        <div class="menu-item-price"></div>
                                     </div>
                                 </div>
-                              <!--  <div class="col-lg-6">
-                                    <div class="menu-item">
-                                        <div class="menu-item-content">
-                                            <div class="menu-item-img">
-                                                <img src="assets/img/menu/02.jpg" alt="">
-                                            </div>
-                                            <div class="menu-item-info">
-                                                <h5>Cappuccino Arabica</h5>
-                                                <p>Fresh milk with vanilla flavored</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item-price">$70.25</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item">
-                                        <div class="menu-item-content">
-                                            <div class="menu-item-img">
-                                                <img src="assets/img/menu/03.jpg" alt="">
-                                            </div>
-                                            <div class="menu-item-info">
-                                                <h5>Milk Cream Coffee</h5>
-                                                <p>Fresh milk with vanilla flavored</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item-price">$30.25</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item">
-                                        <div class="menu-item-content">
-                                            <div class="menu-item-img">
-                                                <img src="assets/img/menu/04.jpg" alt="">
-                                            </div>
-                                            <div class="menu-item-info">
-                                                <h5>Cold Coffee</h5>
-                                                <p>Fresh milk with vanilla flavored</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item-price">$40.25</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item">
-                                        <div class="menu-item-content">
-                                            <div class="menu-item-img">
-                                                <img src="assets/img/menu/05.jpg" alt="">
-                                            </div>
-                                            <div class="menu-item-info">
-                                                <h5>Special Raw Coffee</h5>
-                                                <p>Fresh milk with vanilla flavored</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item-price">$80.25</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item">
-                                        <div class="menu-item-content">
-                                            <div class="menu-item-img">
-                                                <img src="assets/img/menu/06.jpg" alt="">
-                                            </div>
-                                            <div class="menu-item-info">
-                                                <h5>Espresso Coffee</h5>
-                                                <p>Fresh milk with vanilla flavored</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item-price">$90.25</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item">
-                                        <div class="menu-item-content">
-                                            <div class="menu-item-img">
-                                                <img src="assets/img/menu/07.jpg" alt="">
-                                            </div>
-                                            <div class="menu-item-info">
-                                                <h5>Fresh Black Coffee</h5>
-                                                <p>Fresh milk with vanilla flavored</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item-price">$150.25</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="menu-item">
-                                        <div class="menu-item-content">
-                                            <div class="menu-item-img">
-                                                <img src="assets/img/menu/08.jpg" alt="">
-                                            </div>
-                                            <div class="menu-item-info">
-                                                <h5>Fresh Green Tea</h5>
-                                                <p>Fresh milk with vanilla flavored</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu-item-price">$120.25</div>
-                                    </div>
-                                </div>-->
+
                             </div>
                         </div>
                     </div>
@@ -182,11 +89,10 @@
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="counter-box">
                                         <div class="icon" style="width: 260px; height: 130px;">
-                                            <img src="/images/brands/starbucks.png" alt="">
+                                            <img src="/images/brands/trungnguyen2.png" alt="" style="width: 300px; margin-left: -20px;">
                                         </div>
                                         <div>
-                                           <!-- <span class="counter" data-count="+" data-to="1500" data-speed="3000">1500</span>-->
-                                            <h6 class="title"> Trung Nguyên </h6>
+<!--                                            <h6 class="title"> Trung Nguyên </h6>-->
                                         </div>
                                     </div>
                                 </div>
@@ -196,29 +102,29 @@
                                             <img src="/images/brands/starbucks.png"/></div>
                                         <div>
 
-                                            <h6 class="title">Starbucks</h6>
+<!--                                            <h6 class="title">Starbucks</h6>-->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="counter-box">
                                         <div class="icon" style="width: 260px; height: 130px;">
-                                            <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/03/logo-phuc-long-coffee-and-tea.png" alt="">
+                                            <img src="/images/brands/phuclong.png" alt="">
                                         </div>
                                         <div>
 
-                                            <h6 class="title">Phúc Long</h6>
+<!--                                            <h6 class="title">Phúc Long</h6>-->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-sm-6">
                                     <div class="counter-box">
                                         <div class="icon" style="height: 130px;">
-                                            <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/c/c9/Highlands_Coffee_logo.svg/1200px-Highlands_Coffee_logo.svg.png" alt="">
+                                            <img src="/images/brands/highland.png" alt="">
                                         </div>
                                         <div>
                                            <!-- <span class="counter" data-count="+" data-to="50" data-speed="3000">50</span>-->
-                                            <h6 class="title">Highland</h6>
+<!--                                            <h6 class="title">Highland</h6>-->
                                         </div>
                                     </div>
                                 </div>
@@ -234,7 +140,7 @@
                                 <div class="col-lg-5 mx-auto">
                                     <div class="site-heading text-center">
                                         <span class="site-title-tagline" style="font-size: 1.5rem;">Chat Shop</span>
-                                        <h2 class="site-title" style="font-weight: 600; font-size: 2.5rem; margin-bottom: 15px;">Tất cả sản phẩm </h2>
+                                        <h2 class="site-title" style="font-weight: 600; font-size: 2.5rem; margin-bottom: 15px;">Sản phẩm nổi bật </h2>
                                     </div>
                                 </div>
                             </div>

@@ -13,18 +13,37 @@ public class Giohang {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long MaGH;
 
-    @Column(name = "TongTien")
+/*    @Column(name = "TongTien")
     private int TongTien;
 
     @Column(name = "TongSL")
     private int TongSL;
 
     @Column(name = "TongSP")
-    private int TongSP;
+    private int TongSP;*/
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     private Taikhoan taikhoan;
-   /* @OneToMany(mappedBy = "giohangs", cascade = CascadeType.ALL)
-    private List<CTGiohang> ctGiohangs;*/
+
+    @OneToMany(mappedBy = "giohang", cascade = CascadeType.ALL)
+    private List<CTGiohang> ctGiohangs;
+
+    public Long getMaGH() {
+        return MaGH;
+    }
+
+    public void setMaGH(Long maGH) {
+        MaGH = maGH;
+    }
+
+    public Taikhoan getTaikhoan() {
+        return taikhoan;
+    }
+
+    public void setTaikhoan(Taikhoan taikhoan) {
+        this.taikhoan = taikhoan;
+    }
+
+
 }

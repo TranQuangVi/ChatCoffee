@@ -1,7 +1,5 @@
 package com.DoAn.ChatCoffee.service;
 
-import com.DoAn.ChatCoffee.entity.Loaisanpham;
-import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.IRoleRepository;
@@ -16,6 +14,17 @@ import java.util.Optional;
 @Service
 public class TaiKhoanService {
     @Autowired
+    private ITaiKhoanRepository itaiKhoanRepository;
+
+
+    public TaiKhoanService(ITaiKhoanRepository itaiKhoanRepository) {
+        this.itaiKhoanRepository = itaiKhoanRepository;
+    }
+
+    public Taikhoan getTaiKhoanByUserName(String username){
+        return  itaiKhoanRepository.findByUsername(username);
+    }
+
     private ITaiKhoanRepository taiKhoanRepository;
 
     @Autowired

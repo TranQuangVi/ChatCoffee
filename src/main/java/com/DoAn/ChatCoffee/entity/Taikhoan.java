@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "Taikhoan")
+@Table(name = "taikhoan")
 public class Taikhoan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,8 +65,8 @@ public class Taikhoan {
     @OneToMany(mappedBy = "taikhoan", cascade = CascadeType.ALL)
     private List<Hoadon> hoadons;
 
-    @OneToOne(mappedBy = "taikhoan", cascade = CascadeType.ALL)
-    private Giohang giohangs;
+    @OneToOne(mappedBy = "taikhoan")
+    private Giohang giohang;
     @ManyToMany
     @JoinTable(name ="user_role",
             joinColumns = @JoinColumn(name ="user_id"),

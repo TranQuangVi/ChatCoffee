@@ -14,9 +14,20 @@ public class SanPhamController {
     @Autowired
     private SanPhamService sanPhamService;
 
+    @Autowired
+    private LoaiSanPhamService loaiSanPhamService;
+    @Autowired
+    private  ThuongHieuService thuongHieuService;
+
+
+
+
     @GetMapping
     public String product(Model model) {
         model.addAttribute("listProducts", sanPhamService.getAllProduct());
+//        model.addAttribute("danhsachXuatxu",sanPhamService.getAllProduct());
+        model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
+        model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
         return "sanpham/index";
     }
 
@@ -26,6 +37,51 @@ public class SanPhamController {
         return "redirect:/sanpham";
     }
 
+//    @GetMapping("/tim-kiem")
+//    //todo: đưa vô 1 string --> list ()
+//    public String timkiem(String bien){
+//        // gọi service tìm kiếm ()viết trong service
+//        //sanPhamService.getlistbySearchTring
+//       // model.addAttribute("listProducts", sanPhamService.getAllProduct());
+//        return "sanpham/index";
+//    }
+
+
+
+    //
+    @GetMapping("/loai/{id}")
+    public  String Locloai(@PathVariable Long id, Model model ){
+        model.addAttribute("listProducts", sanPhamService.getSanPhamByIdloai(id));
+        model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
+        model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
+        return  "sanpham/index";
+    }
+
+
+// lọc theo thương hiệu
+    @GetMapping("/thuonghieu/{id}")
+    public String  Locthuonghieu(@PathVariable Long id  , Model model) {
+        model.addAttribute("listProducts", sanPhamService.getSanPhamByIdThuonghieu(id));
+        model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
+        model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
+        return "sanpham/index";
+    }
+
+    // Lọc sản phẩm theo  giá
+    @GetMapping("/gia/{gia}")
+    public  String loctheogia( @PathVariable Long gia,  Model model){
+        model.addAttribute("listProducts", sanPhamService.getSanphamtheoGia(gia));
+        model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
+        model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
+        model.addAttribute("danhsachgia", sanPhamService.getAllProduct());
+        return "sanpham/index";
+    }
+    @GetMapping("/tensp/{tensp}")
+    public  String loctheotensanpham(@PathVariable String tensp,  Model model){
+        model.addAttribute("listProducts", sanPhamService.getSanphamtheotensp(tensp));
+        model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
+        model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
+        model.addAttribute("danhsachloctensanpham", sanPhamService.getAllProduct());
     @GetMapping("/chi-tiet/{id}")
     public String chiTietSP(@PathVariable Long id, Model model){
         model.addAttribute("sanpham", sanPhamService.getProductByID(id));

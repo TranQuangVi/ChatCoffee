@@ -19,8 +19,8 @@ public class SanPhamController {
     private SanPhamService sanPhamService;
 
     @GetMapping
-    public String product(Model model) {
-        model.addAttribute("listProducts", sanPhamService.getAllProduct());
+    public String product(Model model, @Param("search") String search) {
+        model.addAttribute("listProducts", sanPhamService.getSearchListProduct(search));
         return "sanpham/index";
     }
 
@@ -30,14 +30,11 @@ public class SanPhamController {
         return "redirect:/sanpham";
     }
 
-    @GetMapping("/tim-kiem")
-    //todo: đưa vô 1 string --> list ()
+    /*@GetMapping("/tim-kiem/{search}")
     public String timkiem(@PathVariable String search, Model model){
-        // gọi service tìm kiếm ()viết trong service
-        //sanPhamService.getlistbySearchTring
         List<Sanpham> listProducts = sanPhamService.getListSearchProduct(search);
         model.addAttribute("listProducts", listProducts);
         model.addAttribute("search", search);
         return "sanpham/index";
-    }
+    }*/
 }

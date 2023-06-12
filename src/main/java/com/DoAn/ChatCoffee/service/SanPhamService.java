@@ -30,10 +30,10 @@ public class SanPhamService {
         this.sanPhamRepository.deleteById(product_id);
     }
 
-    public List<Sanpham> getListSearchProduct(String search){
-        if (search != null)
+    public List<Sanpham> getSearchListProduct(String search){
+        if(search != null){
             return sanPhamRepository.search(search);
-        else
-            return null;
+        }
+        return sanPhamRepository.findAll();
     }
 }

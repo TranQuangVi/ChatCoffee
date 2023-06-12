@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ISanPhamRepository extends JpaRepository<Sanpham,Long> {
-    @Query("SELECT p FROM sanpham p WHERE p.tensp LIKE %?1%")
+    @Query("SELECT p FROM Sanpham p WHERE p.TenSP LIKE %?1%")
     List<Sanpham> search(String keyword);
 }

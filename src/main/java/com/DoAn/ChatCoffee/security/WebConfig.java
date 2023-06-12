@@ -1,8 +1,10 @@
 package com.DoAn.ChatCoffee.security;
 
+import com.DoAn.ChatCoffee.service.CustomUserDetailService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class WebConfig {
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -19,7 +22,7 @@ public class WebConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new TaiKhoanDetailsServiceImpl();
+        return new CustomUserDetailService();
     }
 
     @Bean
@@ -32,25 +35,35 @@ public class WebConfig {
 
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("filter");
-        http.authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/**").permitAll()
-                        .requestMatchers("/user/register").permitAll()
-
-                        .requestMatchers("/product/")
+        return http.csrf().disable()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/assets/**", "/css/**","/images/**","/js/**","/libs/**", "/", "/error")
+                        .permitAll()
+                        .requestMatchers("/")
+                        .hasAnyAuthority("ADMIN")
+                        .requestMatchers("/")
                         .hasAnyAuthority("USER")
 
+                        .anyRequest().authenticated()
+                )
+                .formLogin(formLogin -> formLogin.loginPage("/user/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout.logoutUrl("/logout")
+                        .logoutSuccessUrl("/user/login")
+                        .deleteCookies("JSESSIONID")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .permitAll()
+                )
 
-
-
-                        .anyRequest()
-                        .authenticated())
-                .formLogin(login -> login.loginPage("/user/login").permitAll())
-                .logout(logout -> logout.permitAll())
-                .exceptionHandling(handling ->handling.accessDeniedPage("/403"));
-
-        return http.build();
+                .rememberMe(rememberMe -> rememberMe.key("uniqueAndSecret")
+                        .tokenValiditySeconds(86400)
+                        .userDetailsService(userDetailsService())
+                )
+                .build();
     }
 
 }

@@ -18,9 +18,9 @@ public class TaiKhoanService {
     @Autowired
     private ITaiKhoanRepository taiKhoanRepository;
 
-  /*  public Taikhoan Update(Taikhoan taikhoan){
+    @Autowired
+    private IRoleRepository itaiRoleRepository;
 
-    }*/
   public List<Taikhoan> getAllTaikhoan(){
       return  taiKhoanRepository.findAll();
 
@@ -30,13 +30,9 @@ public class TaiKhoanService {
         return  optional.orElse(null);
 
     }
-
-    @Autowired
-    private IRoleRepository itaiRoleRepository;
-
     @Autowired
     public TaiKhoanService(ITaiKhoanRepository itaiKhoanRepository) {
-        this.itaiKhoanRepository = itaiKhoanRepository;
+        this.taiKhoanRepository = itaiKhoanRepository;
     }
 
     public void saveTaikhoan(Taikhoan taikhoan){
@@ -53,12 +49,12 @@ public class TaiKhoanService {
 
 
     public void save (Taikhoan tk) {
-        itaiKhoanRepository.save(tk);
-        Long taiKhoanId = itaiKhoanRepository.getUserIdByUsername(tk.getUsername());
+        taiKhoanRepository.save(tk);
+        Long taiKhoanId = taiKhoanRepository.getUserIdByUsername(tk.getUsername());
         Long roleId = itaiRoleRepository.getRoleIdByName("USER");
         if(taiKhoanId != 0 && roleId !=0)
         {
-            itaiKhoanRepository.addRoleToUser(taiKhoanId, roleId);
+            taiKhoanRepository.addRoleToUser(taiKhoanId, roleId);
         }
     }
 

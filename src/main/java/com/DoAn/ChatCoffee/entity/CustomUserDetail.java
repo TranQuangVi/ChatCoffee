@@ -1,29 +1,32 @@
-package com.DoAn.ChatCoffee.security;
+package com.DoAn.ChatCoffee.entity;
 
-import com.DoAn.ChatCoffee.entity.Role;
-import com.DoAn.ChatCoffee.entity.Taikhoan;
+import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
-public class TaiKhoanDetailsImpl implements UserDetails {
-    private Taikhoan taikhoan;
+public class CustomUserDetail implements UserDetails {
+    private final Taikhoan taikhoan;
+    private final ITaiKhoanRepository taiKhoanRepository;
+    public CustomUserDetail(Taikhoan taikhoan, ITaiKhoanRepository userRepository){
 
-    public TaiKhoanDetailsImpl(Taikhoan tk) {
-        this.taikhoan = tk;
+        this.taikhoan = taikhoan;
+        this.taiKhoanRepository = userRepository;
     }
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Role> roles = taikhoan.getRoles();
-        ArrayList<SimpleGrantedAuthority> authorities = new ArrayList<>();
-
-        for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        Set<SimpleGrantedAuthority> authorities = new HashSet<>();
+        String[] roles = taiKhoanRepository.getRoleOfUser(taikhoan.getId());
+        for(String role : roles)
+        {
+            authorities.add(new SimpleGrantedAuthority(role));
         }
         return authorities;
     }
@@ -32,18 +35,22 @@ public class TaiKhoanDetailsImpl implements UserDetails {
     public String getPassword() {
         return taikhoan.getPassword();
     }
+
     @Override
     public String getUsername() {
         return taikhoan.getUsername();
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
+
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
+
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
@@ -51,7 +58,6 @@ public class TaiKhoanDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
-

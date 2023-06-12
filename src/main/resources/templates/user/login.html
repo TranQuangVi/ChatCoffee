@@ -20,8 +20,8 @@
                             <div class="row">
                                 <div class="col-7">
                                     <div class="text-primary p-4">
-                                        <h5 class="text-primary">Welcome Back !</h5>
-                                        <p>Sign in</p>
+                                        <h5 class="text-primary">Chat Coffee xin chào !</h5>
+                                        <p>Đăng nhập</p>
                                     </div>
                                 </div>
                                 <div class="col-5 align-self-end">
@@ -50,18 +50,23 @@
                                 </a>
                             </div>
                             <div class="p-2">
-                                <form class="form-horizontal" th:action="@{/user/login}" method="post">
-
+                                <form class="form-horizontal" th:action="@{/login}" method="post">
+                                    <div th:if="${param.error}" class="alert alert-danger">
+                                        Invalid username and password
+                                    </div>
+                                    <div th:if="${param.logout}" class="alert alert-success">
+                                        You have been logged out
+                                    </div>
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
+                                        <label for="username" class="form-label">Tên đăng nhập</label>
                                         <input type="text"  class="form-control" id="username" name="username"
-                                               placeholder="Enter username">
+                                               placeholder="Nhập tên đăng nhập">
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">Mật khẩu</label>
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input type="password"  class="form-control" placeholder="Enter password" name="password"
+                                            <input type="password"  class="form-control" placeholder="Nhập mật khẩu" name="password"
                                                    aria-label="Password" aria-describedby="password-addon">
                                             <button class="btn btn-light " type="button" id="password-addon"><i
                                                     class="mdi mdi-eye-outline"></i></button>
@@ -71,17 +76,17 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="remember-check">
                                         <label class="form-check-label" for="remember-check">
-                                            Remember me
+                                            Lưu mật khẩu
                                         </label>
                                     </div>
 
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Log In
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit">Đăng nhập
                                         </button>
                                     </div>
 
                                     <div class="mt-4 text-center">
-                                        <h5 class="font-size-14 mb-3">Sign in with</h5>
+                                        <h5 class="font-size-14 mb-3">Đăng nhập với</h5>
 
                                         <ul class="list-inline">
                                             <li class="list-inline-item">
@@ -107,24 +112,17 @@
 
                                     <div class="mt-4 text-center">
                                         <a href="auth-recoverpw.html" class="text-muted"><i
-                                                class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+                                                class="mdi mdi-lock me-1"></i> Quên mật khẩu?</a>
+                                    </div>
+                                    <div class="mt-5 text-center">
+                                        <p>Bạn chưa có tài khoản? <a href="/user/register" class="fw-medium text-primary"> Đăng ký ngay</a></p>
                                     </div>
                                 </form>
                             </div>
 
                         </div>
                     </div>
-                    <div class="mt-5 text-center">
 
-                        <div>
-                            <p>Don't have an account ? <a href="/user/register" class="fw-medium text-primary"> Sign up
-                                now </a></p>
-                            <p>©
-                                <script>document.write(new Date().getFullYear())</script>
-                                2023 Skote. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
-                            </p>
-                        </div>
-                    </div>
 
                 </div>
             </div>

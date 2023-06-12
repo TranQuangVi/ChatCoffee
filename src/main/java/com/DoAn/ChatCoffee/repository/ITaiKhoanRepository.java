@@ -14,8 +14,7 @@ public interface ITaiKhoanRepository extends JpaRepository<Taikhoan, Long> {
 
     @Query("SELECT tk FROM Taikhoan tk WHERE tk.username = :username")
     public Taikhoan findByUsername(@Param("username") String username);
-    @Modifying
-    @Transactional
+
     @Query("SELECT tk.id FROM Taikhoan tk WHERE tk.username = ?1")
     Long getUserIdByUsername(String username);
 

@@ -11,4 +11,6 @@ public class HomeAdmin {
     public String index(){
         return "admin/homeAdmin/index";
     }
+
+
 }

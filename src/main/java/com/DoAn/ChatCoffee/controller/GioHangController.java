@@ -3,17 +3,15 @@ package com.DoAn.ChatCoffee.controller;
 import com.DoAn.ChatCoffee.entity.Giohang;
 import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
-import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.CTGioHangService;
 import com.DoAn.ChatCoffee.service.GioHangService;
+import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import static java.lang.Long.parseLong;
 
 @Controller
 @RequestMapping("/gio-hang")

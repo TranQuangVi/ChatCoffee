@@ -35,6 +35,8 @@ public interface ISanPhamRepository extends JpaRepository<Sanpham,Long> {
     List<Sanpham> getSanphamtuZA();
 
 
+    @Query("SELECT p FROM Sanpham p WHERE p.TenSP LIKE %?1%")
+    List<Sanpham> search(String keyword);
 
 
 

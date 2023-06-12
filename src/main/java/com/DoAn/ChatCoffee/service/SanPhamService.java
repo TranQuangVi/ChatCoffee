@@ -44,7 +44,7 @@ public class SanPhamService {
         return  sanPhamRepository.getSanPhamByIdloai(Id_loai);
     }
     // lấy sản phẩm theo Id thương hiệu
-    public  List<Sanpham> getSanPhamByIdThuonghieu(Long Id_TH){
+    public List<Sanpham> getSanPhamByIdThuonghieu(Long Id_TH){
         return  sanPhamRepository.getSanPhamByIdThuonghieu(Id_TH);
     }
     //lấy sản phẩm theo giá

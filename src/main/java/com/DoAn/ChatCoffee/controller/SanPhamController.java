@@ -1,6 +1,8 @@
 package com.DoAn.ChatCoffee.controller;
 
+import com.DoAn.ChatCoffee.service.LoaiSanPhamService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
+import com.DoAn.ChatCoffee.service.ThuongHieuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/san-pham")
 public class SanPhamController {
     @Autowired
-    private SanPhamService sanPhamService;
+  private SanPhamService sanPhamService;
+
+
 
     @Autowired
     private LoaiSanPhamService loaiSanPhamService;
     @Autowired
-    private  ThuongHieuService thuongHieuService;
+    private ThuongHieuService thuongHieuService;
 
 
 
@@ -77,11 +81,13 @@ public class SanPhamController {
         return "sanpham/index";
     }
     @GetMapping("/tensp/{tensp}")
-    public  String loctheotensanpham(@PathVariable String tensp,  Model model){
+    public  String loctheotensanpham(@PathVariable String tensp,  Model model) {
         model.addAttribute("listProducts", sanPhamService.getSanphamtheotensp(tensp));
-        model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
+        model.addAttribute("danhsachloai", loaiSanPhamService.getAllCategories());
         model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
         model.addAttribute("danhsachloctensanpham", sanPhamService.getAllProduct());
+        return "sanpham/index";
+    }
     @GetMapping("/chi-tiet/{id}")
     public String chiTietSP(@PathVariable Long id, Model model){
         model.addAttribute("sanpham", sanPhamService.getProductByID(id));

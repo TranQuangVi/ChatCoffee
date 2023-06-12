@@ -1,13 +1,10 @@
 package com.DoAn.ChatCoffee.adminController;
 
 import com.DoAn.ChatCoffee.entity.Sanpham;
-import com.DoAn.ChatCoffee.entity.Vanchuyen;
 import com.DoAn.ChatCoffee.service.LoaiSanPhamService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.ThuongHieuService;
-import org.aspectj.lang.annotation.SuppressAjWarnings;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;

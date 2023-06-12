@@ -14,18 +14,19 @@ import java.util.Optional;
 @Service
 public class TaiKhoanService {
     @Autowired
-    private ITaiKhoanRepository itaiKhoanRepository;
+    private ITaiKhoanRepository taiKhoanRepository;
 
 
-    public TaiKhoanService(ITaiKhoanRepository itaiKhoanRepository) {
-        this.itaiKhoanRepository = itaiKhoanRepository;
+    @Autowired
+    public TaiKhoanService(ITaiKhoanRepository taiKhoanRepository) {
+        this.taiKhoanRepository = taiKhoanRepository;
     }
 
     public Taikhoan getTaiKhoanByUserName(String username){
-        return  itaiKhoanRepository.findByUsername(username);
+        return  taiKhoanRepository.findByUsername(username);
     }
 
-    private ITaiKhoanRepository taiKhoanRepository;
+
 
     @Autowired
     private IRoleRepository itaiRoleRepository;
@@ -39,10 +40,7 @@ public class TaiKhoanService {
         return  optional.orElse(null);
 
     }
-    @Autowired
-    public TaiKhoanService(ITaiKhoanRepository itaiKhoanRepository) {
-        this.taiKhoanRepository = itaiKhoanRepository;
-    }
+
 
     public void saveTaikhoan(Taikhoan taikhoan){
         taiKhoanRepository.save(taikhoan);

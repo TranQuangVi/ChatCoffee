@@ -138,11 +138,11 @@ public class Taikhoan {
     }
 
     public Giohang getGiohangs() {
-        return giohangs;
+        return giohang;
     }
 
     public void setGiohangs(Giohang giohangs) {
-        this.giohangs = giohangs;
+        this.giohang = giohangs;
     }
 
     public Set<Role> getRoles() {

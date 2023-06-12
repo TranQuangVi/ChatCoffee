@@ -37,11 +37,11 @@ public class WebConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/assets/**", "/css/**","/images/**","/js/**","/libs/**", "/", "/error")
+                        .requestMatchers("/assets/**", "/css/**","/images/**","/js/**","/libs/**", "/","/user/register", "/error")
                         .permitAll()
-                        .requestMatchers("/")
+                        .requestMatchers("/admin/**")
                         .hasAnyAuthority("ADMIN")
-                        .requestMatchers("/")
+                        .requestMatchers("/san-pham")
                         .hasAnyAuthority("USER")
 
                         .anyRequest().authenticated()

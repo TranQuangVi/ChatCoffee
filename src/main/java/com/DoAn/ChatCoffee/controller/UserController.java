@@ -43,12 +43,7 @@ public class UserController {
         model.addAttribute("listProducts", sanPhamService.getAllProduct());
         return "user/index";
     }
-   /* @GetMapping("/edit/{id}")
-    public String edit(@PathVariable Long id , Model model){
-        model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(id));
 
-        return "user/edit";
-    }*/
     @PostMapping("/edit")
     public String editSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan){
         taiKhoanService.saveTaikhoan(taikhoan);
@@ -89,7 +84,7 @@ public class UserController {
 
         // kiểm tra tuổi > 18
         LocalDate currentDate = LocalDate.now();
-        LocalDate minAgeDate = currentDate.minusYears(18);
+        LocalDate minAgeDate = currentDate.minusYears(1);
 
         // Kiểm tra tên người dùng đã tồn tại
         Taikhoan existingUser = iTaiKhoanRepository.findByUsername(taikhoan.getUsername());

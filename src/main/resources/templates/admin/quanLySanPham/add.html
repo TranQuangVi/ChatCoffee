@@ -50,10 +50,10 @@
                   </select>
                 </div><br>
                   <div class ="form-group">
-                    <label class="form-label" for="thuonghieu"> Loại sản phẩm: </label>
+                    <label class="form-label" for="thuonghieu"> Thương hiệu: </label>
                     <br>
                     <select class="form-control" id="thuonghieu" name="thuonghieu">
-                      <option value=""> --Chọn loại-- </option>
+                      <option value=""> --Chọn thương hiệu-- </option>
                       <option th:each="thuonghieu:${dsthuonghieu}"
                               th:value="${thuonghieu.MaTH}"
                               th:text="${thuonghieu.TenTH}"></option>
@@ -116,20 +116,7 @@
     <!-- End Page-content -->
 
 
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6">
-            <script>document.write(new Date().getFullYear())</script> © Skote.
-          </div>
-          <div class="col-sm-6">
-            <div class="text-sm-end d-none d-sm-block">
-              Design & Develop by Themesbrand
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+
   </div>
   <!-- hết nội dung-->
 </div>

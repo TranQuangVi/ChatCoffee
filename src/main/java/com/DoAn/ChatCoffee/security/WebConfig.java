@@ -43,16 +43,10 @@ public class WebConfig {
                         .hasAnyAuthority("ADMIN")
                         .requestMatchers("/**")
                         .permitAll()
-                        .requestMatchers("/user")
-                        .hasAnyAuthority("USER")
 
                         .anyRequest().authenticated()
                 )
-                .formLogin(formLogin -> formLogin.loginPage("/user/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/", true)
-                        .permitAll()
-                )
+
                 .logout(logout -> logout.logoutUrl("/logout")
                         .logoutSuccessUrl("/user/login")
                         .deleteCookies("JSESSIONID")
@@ -60,11 +54,18 @@ public class WebConfig {
                         .clearAuthentication(true)
                         .permitAll()
                 )
+                .formLogin(formLogin -> formLogin.loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/",true)
+                        .permitAll()
+                )
 
                 .rememberMe(rememberMe -> rememberMe.key("uniqueAndSecret")
                         .tokenValiditySeconds(86400)
                         .userDetailsService(userDetailsService())
                 )
+                .exceptionHandling(exceptionHandling ->
+                        exceptionHandling.accessDeniedPage("/403"))
                 .build();
     }
 

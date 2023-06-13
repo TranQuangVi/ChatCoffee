@@ -5,6 +5,9 @@ import com.DoAn.ChatCoffee.entity.Vanchuyen;
 import com.DoAn.ChatCoffee.repository.IGioHangRepository;
 import com.DoAn.ChatCoffee.repository.IQuanLyVanChuyenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +30,12 @@ public class QuanLyVanChuyenService {
     //Lấy dah nh sách
     public List<Vanchuyen> getAllVanChuyen(){
         return quanLyVanChuyenRepository.findAll();
+    }
+
+    //Page ListProduct
+    public Page<Vanchuyen> findPaginated(int pageNo, int pageSize){
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        return this.quanLyVanChuyenRepository.findAll(pageable);
     }
 
     //Lấy 1 vận chuyển

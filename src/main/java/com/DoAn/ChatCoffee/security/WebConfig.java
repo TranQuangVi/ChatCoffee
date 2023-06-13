@@ -36,33 +36,43 @@ public class WebConfig {
         return authProvider;
     }
 
-    /*@Bean
-    protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("filter");
-        http.authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/**").permitAll()
-                        .requestMatchers("/user/register").permitAll()
-                        .requestMatchers("/product/")
-                        .hasAnyAuthority("USER")
-                        .anyRequest()
-                        .authenticated())
-                .formLogin(login -> login.loginPage("/user/login").permitAll())
-                .logout(logout -> logout.permitAll())
-                .exceptionHandling(handling ->handling.accessDeniedPage("/403"));
-
-        return http.build();
-    }*/
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests(requests -> requests
-                        .requestMatchers("/").permitAll()
-                        .anyRequest().authenticated())
-                .oauth2Login()
-                .loginPage("/user/login") // Chỉ định đường dẫn đến trang đăng nhập
-                .defaultSuccessUrl("/"); // Chỉ định đường dẫn sau khi đăng nhập thành công
+    protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/assets/**", "/css/**","/images/**","/js/**","/libs/**", "/","/user/register", "/error")
+                        .permitAll()
+                        .requestMatchers("/admin/**")
+                        .hasAnyAuthority("ADMIN")
+                        .requestMatchers("/**")
+                        .permitAll()
+                        .requestMatchers("/user")
+                        .hasAnyAuthority("USER")
+                        .anyRequest().authenticated()
+                )
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/user/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/user/login")
+                        .deleteCookies("JSESSIONID")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .permitAll()
+                )
+                .rememberMe(rememberMe -> rememberMe
+                        .key("uniqueAndSecret")
+                        .tokenValiditySeconds(86400)
+                        .userDetailsService(userDetailsService())
+                )
+                .oauth2Login();
 
         return http.build();
     }
+
+
 }

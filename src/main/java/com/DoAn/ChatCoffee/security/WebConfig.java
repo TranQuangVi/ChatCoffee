@@ -7,11 +7,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.web.SecurityFilterChain;
+
 
 @Configuration
 @EnableWebSecurity
 public class WebConfig {
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -30,20 +33,16 @@ public class WebConfig {
         return authProvider;
     }
 
-    @Bean
+    /*@Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("filter");
         http.authorizeHttpRequests(requests -> requests
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/login").permitAll()
                         .requestMatchers("/**").permitAll()
                         .requestMatchers("/user/register").permitAll()
-
                         .requestMatchers("/product/")
                         .hasAnyAuthority("USER")
-
-
-
-
                         .anyRequest()
                         .authenticated())
                 .formLogin(login -> login.loginPage("/user/login").permitAll())
@@ -51,6 +50,16 @@ public class WebConfig {
                 .exceptionHandling(handling ->handling.accessDeniedPage("/403"));
 
         return http.build();
-    }
+    }*/
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests(requests -> requests
+                        .requestMatchers("/").permitAll()
+                        .anyRequest().authenticated())
+                .oauth2Login()
+                .loginPage("/user/login") // Chỉ định đường dẫn đến trang đăng nhập
+                .defaultSuccessUrl("/"); // Chỉ định đường dẫn sau khi đăng nhập thành công
 
+        return http.build();
+    }
 }

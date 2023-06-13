@@ -1,8 +1,10 @@
 package com.DoAn.ChatCoffee.service;
 
 import com.DoAn.ChatCoffee.entity.Giohang;
+import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.IGioHangRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,6 +22,12 @@ public class GioHangService {
 
     public Giohang getGioHangByUserName(String username){
         return gioHangRepository.getGioHangByUserName(username);
+    }
+
+    public void themGioHang(Taikhoan taikhoan){
+        Giohang giohang = new Giohang();
+        giohang.setTaikhoan(taikhoan);
+        gioHangRepository.save(giohang);
     }
 
 

@@ -1,7 +1,9 @@
 package com.DoAn.ChatCoffee.controller;
 
+import com.DoAn.ChatCoffee.entity.Giohang;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
+import com.DoAn.ChatCoffee.service.GioHangService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import jakarta.validation.Valid;
@@ -30,9 +32,15 @@ public class UserController {
     private TaiKhoanService taiKhoanService;
     @Autowired
     private SanPhamService sanPhamService;
+    @Autowired
+    private GioHangService gioHangService;
     @GetMapping
     public String index(Model model, Authentication authentication){
-        model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(taiKhoanService.getTaiKhoanByUserName(authentication.getName()).getId()));
+
+        // lấy TÊN tài khoản bằng authentication
+        //lấy tài khoản theo theo TÊN
+
+        model.addAttribute("taikhoan", taiKhoanService.getTaiKhoanByUserName(authentication.getName()));
         model.addAttribute("listProducts", sanPhamService.getAllProduct());
         return "user/index";
     }
@@ -113,6 +121,9 @@ public class UserController {
         else
             taikhoan.setPassword(new
                     BCryptPasswordEncoder().encode(taikhoan.getPassword()));
+
+        //todo: tạo giỏ hàng cho user mới
+        gioHangService.themGioHang(taikhoan);
         taiKhoanService.save(taikhoan);
         return "redirect:/user/login";
     }

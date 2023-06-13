@@ -67,4 +67,7 @@ public class Sanpham {
 
     @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
     private List<CTGiohang> ctGiohangs;
+
+    @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
+    private List<CTHoaDon> ctHoaDons;
 }

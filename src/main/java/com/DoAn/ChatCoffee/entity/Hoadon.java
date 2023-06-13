@@ -6,80 +6,85 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
+@Getter
+@Setter
 @Table(name = "hoadon")
 public class Hoadon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long MAHD;
+    private  Long id;
 
     // ngaydat
-    @Column(name = "ngaydat",length = 100)
-    @NotEmpty(message = "ngày đăt bắt buộc có ")
-    @Size(max = 9,message = "ngày dặt khônga vượt quá  ký tự ")
+    @Column(name = "ngaydat")
     @JsonFormat(pattern="yyyy-MM-dd ")
-    private LocalDate  NGAYDAT;
+    private LocalDate  ngaydat;
 
     // ngay giao
-    @Column(name = "ngaygiao",length = 100)
-    @NotEmpty(message = "ngày giao bắt buộc có ")
-    @Size(max = 9,message = "ngày giao khônga vượt quá  ký tự ")
+    @Column(name = "ngaygiao")
     @JsonFormat(pattern="yyyy-MM-dd ")
-    private LocalDate  NGAYGIAO;
+    private LocalDate  ngaygiao;
 
     // trạng thái
-    @Column(name = "trangthai",length = 100)
-    @NotNull(message = "trạng thái  không được để trống")
-    @Size(max = 50)
-    private String  TRANGTHAI;
+    @Column(name = "trangthai")
+    private String  trangthai;
 
     // sdt dat
-    @Column(name = "sdt",length = 100)
-    @NotNull(message = "SDT không được để trống")
-    @Size(max = 12)
-    private String  SDTDAT;
+    @Column(name = "sdt")
+    @Size(max = 10)
+    private String  sdt;
 
     //diachidat
-    @Column(name = "diachi",length = 100)
+    @Column(name = "diachinhan")
     @NotNull(message = "dia chi  không được để trống")
-    @Size(max = 100)
-    private String  DIACHI;
+    private String  diachinhan;
 
     // tong don gia
-    @Column(name = "tongdongia",length = 100)
-    @NotNull(message = "tong don gia  không được để trống")
-    @Size(max = 12)
-    private String  TONGDONGIA;
+    @Column(name = "tonggia")
+    private Long  tonggia;
 
     // soluong
-    @Column(name = "soluong",length = 100)
-    @Size(max = 12)
-    private String  SOLUONG;
-
-    // giá
-    @Column(name = "gia",length = 100)
-    @Size(max = 12)
-    private String  GIA;
+    @Column(name = "tongsoluong")
+    private Long tongsoluong;
 
     // -- mã thanh toan/
     @ManyToOne
-    @JoinColumn(name = "phuongthuc",referencedColumnName = "id")
-    private Thanhtoan Thanhtoan;
+    @JoinColumn(name = "id_thanhtoan",referencedColumnName = "id")
+    private Thanhtoan thanhtoan;
 
     @ManyToOne
-    @JoinColumn(name = "vanchuyen",referencedColumnName = "MaVC")
+    @JoinColumn(name = "id_vanchuyen",referencedColumnName = "MaVC")
     private Vanchuyen vanchuyen;
 
     @ManyToOne
-    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    @JoinColumn(name = "id_taikhoan", referencedColumnName = "id")
     private Taikhoan taikhoan;
 
+    @OneToMany(mappedBy = "hoadon", cascade = CascadeType.ALL)
+    private List<CTHoaDon> ctHoaDons;
 
+    public Hoadon(Long id, LocalDate ngaydat, LocalDate ngaygiao, String trangthai, String sdt, String diachinhan, Long tonggia, Long tongsoluong, Thanhtoan thanhtoan, Vanchuyen vanchuyen, Taikhoan taikhoan, List<CTHoaDon> ctHoaDons) {
+        this.id = id;
+        this.ngaydat = ngaydat;
+        this.ngaygiao = ngaygiao;
+        this.trangthai = trangthai;
+        this.sdt = sdt;
+        this.diachinhan = diachinhan;
+        this.tonggia = tonggia;
+        this.tongsoluong = tongsoluong;
+        this.thanhtoan = thanhtoan;
+        this.vanchuyen = vanchuyen;
+        this.taikhoan = taikhoan;
+        this.ctHoaDons = ctHoaDons;
+    }
 
-
-
+    public Hoadon() {
+    }
 }

@@ -41,7 +41,7 @@ public class GioHangController {
     @GetMapping("/them-san-pham/{id}")
     public  String themGioHang(@PathVariable Long id, Authentication authentication){
 
-        Taikhoan taikhoan = taiKhoanService.getTaiKhoanByUserName("QUANGVI") ;
+        Taikhoan taikhoan = taiKhoanService.getTaiKhoanByUserName("QUANGVI");
 
         Sanpham product = sanPhamService.getProductByID(id);
 

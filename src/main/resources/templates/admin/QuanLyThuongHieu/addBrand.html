@@ -24,7 +24,7 @@
             <h4 class="card-title">Add Brand</h4>
             <p class="card-title-desc">Add a new brand</p>
 
-            <form th:action="@{/admin/managerBrands/addBrand}" th:object="${brand}" method="post">
+            <form th:action="@{/admin/QuanLyThuongHieu/addBrand}" th:object="${brand}" method="post">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="mb-3">
@@ -47,7 +47,7 @@
 
                 <div class="d-flex flex-wrap gap-2">
                     <button type="submit" class="btn btn-primary waves-effect waves-light">Create</button>
-                    <a class="btn btn-secondary waves-effect waves-light" th:href="@{/admin/managerBrands}">Cancel</a>
+                    <a class="btn btn-secondary waves-effect waves-light" th:href="@{/admin/QuanLyThuongHieu}">Cancel</a>
                 </div>
             </form>
 

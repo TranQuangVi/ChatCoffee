@@ -8,42 +8,42 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/admin/managerRoles")
-public class ManagerRoles {
+@RequestMapping("/admin/QuanLyQuyen")
+public class QuanLyQuyen {
 
     @Autowired
     private RoleService roleService;
     @GetMapping
     public String index(Model model){
         model.addAttribute("roles", roleService.getAllRoles());
-        return "admin/managerRoles/index";
+        return "admin/QuanLyQuyen/index";
     }
     @GetMapping("/add")
     public  String addRoleForm(Model model){
         model.addAttribute("role", new Role());
-        return "admin/managerRoles/add";
+        return "admin/QuanLyQuyen/add";
     }
     @PostMapping("/add")
     public String addBook( @ModelAttribute("role") Role role){
         roleService.updateRole(role);
-        return  "redirect:/admin/managerRoles";
+        return  "redirect:/admin/QuanLyQuyen";
 
     }
     @GetMapping("/edit/{id}")
     public String editRoleForm(@PathVariable Long id, Model model){
         model.addAttribute("role",roleService.getRoleById(id));
-        return "admin/managerRoles/edit";
+        return "admin/QuanLyQuyen/edit";
     }
 
     @PostMapping("/edit")
     public String editRole(@ModelAttribute("edit") Role role) {
         roleService.updateRole(role);
-        return "redirect:/admin/managerRoles";
+        return "redirect:/admin/QuanLyQuyen";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteRoleForm(@PathVariable Long id,Model model){
         roleService.deleteRole(id);
-        return "redirect:/admin/managerRoles";
+        return "redirect:/admin/QuanLyQuyen";
     }
 }

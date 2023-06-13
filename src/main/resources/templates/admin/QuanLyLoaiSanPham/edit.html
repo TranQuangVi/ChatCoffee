@@ -40,7 +40,7 @@
                 </h4>
                 <p class="card-title-desc">Sửa thông tin loai sản phẩm</p>
 
-                <form th:action ="@{/admin/managerCategories/edit}" th:object = "${loai}" method = "post">
+                <form th:action ="@{/admin/QuanLyLoaiSanPham/edit}" th:object = "${loai}" method = "post">
                   <input type="hidden" th:field ="*{id}">
                   <div class="col-6 mb-3">
                     <label class="form-label" for="TenLoai">Tên Loại: </label>

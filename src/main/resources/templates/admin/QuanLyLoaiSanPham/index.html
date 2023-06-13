@@ -34,7 +34,7 @@
 
                 <h1 class="card-title">
                   Danh sách loại sản phẩm
-                  <a href="/admin/managerCategories/addCategory" style="margin-left:1000px;" class="btn btn-outline-secondary btn-sm create">
+                  <a href="/admin/QuanLyLoaiSanPham/addCategory" style="margin-left:1000px;" class="btn btn-outline-secondary btn-sm create">
                     <i class="fa fa-plus"></i>
                     Create
                   </a>
@@ -62,10 +62,10 @@
                       <td>
                             <div class="dropdown">
 
-                                <a th:href ="@{/admin/managerCategories/edit/{id}(id=${loai.id})}" class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                <a th:href ="@{/admin/QuanLyLoaiSanPham/edit/{id}(id=${loai.id})}" class="btn btn-outline-secondary btn-sm edit" title="Edit">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-                                <a th:href ="@{/admin/managerCategories/deleteCategory/{id}(id=${loai.id})}"
+                                <a th:href ="@{/admin/QuanLyLoaiSanPham/deleteCategory/{id}(id=${loai.id})}"
                                    onclick="return confirm('Bạn có chắc muốn xóa không?')"  class="btn btn-outline-secondary btn-sm delete" title="Delete">
                                     <i class="fa fa-trash"></i>
                                 </a>

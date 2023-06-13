@@ -22,7 +22,7 @@ public class LoaiSanPhamService {
             return  optionalLoaiSP.get();
         }
         else {
-            throw  new RuntimeException("Loai san pham not found");
+            throw  new RuntimeException("Không tìm thấy loại sản phẩm");
         }
 
 

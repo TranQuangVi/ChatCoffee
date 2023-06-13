@@ -72,7 +72,7 @@
               <div class="card-body">
                 <h4 class="card-title mb-4">Thông tin</h4>
                 <div class="table-responsive" >
-                  <form th:action ="@{/admin/managerAccounts/profile}" th:object = "${taikhoan}" method = "post" class="outer-repeater">
+                  <form th:action ="@{/admin/QuanLyTaiKhoan/profile}" th:object = "${taikhoan}" method = "post" class="outer-repeater">
                     <input type="hidden" class="form-control" th:field="*{id}" value="taikhoan.id" >
                     <input type="hidden" class="form-control" th:field="*{password}" value="taikhoan.password" >
                     <input type="hidden" class="form-control" th:field="*{username}" value="taikhoan.username" >

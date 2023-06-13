@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/managerCategories")
-public class ManagerCategories {
+@RequestMapping("/admin/QuanLyLoaiSanPham")
+public class QuanLyLoaiSanPham {
     @Autowired
     private SanPhamService sanPhamService;
     @Autowired
@@ -22,42 +22,35 @@ public class ManagerCategories {
     public String index(Model model){
         List<Loaisanpham> Loais = loaiSanPhamService.getAllCategories();
         model.addAttribute("Loais",Loais);
-
-
-        return "admin/managerCategory/index";
+        return "admin/QuanLyLoaiSanPham/index";
     }
 
     @GetMapping("/addCategory")
     public String addCategory(Model model){
-
         model.addAttribute("loai",new Loaisanpham());
-//        model.addAttribute("categories", loaiSanPhamService.getAllCategories() );
-        return "admin/managerCategory/addCategory";
+        return "admin/QuanLyLoaiSanPham/addCategory";
     }
     @PostMapping("/addCategory")
     public String addLoai(@ModelAttribute("loai") Loaisanpham loaisanpham){
         loaiSanPhamService.addLoaiSP(loaisanpham);
-        return "redirect:/admin/managerCategories";
+        return "redirect:/admin/QuanLyLoaiSanPham";
     }
     @GetMapping("/edit/{id}")
     public  String editBookForm(@PathVariable Long id, Model model){
         model.addAttribute("loai",loaiSanPhamService.getloaiSanphamByid(id));
-//        model.addAttribute("categories", loaiSanPhamService.getAllCategories() );
-        return "admin/managerCategory/edit";
+        return "admin/QuanLyLoaiSanPham/edit";
 
     }
     @PostMapping("/edit{id}")
     public String editBook(@ModelAttribute("loai") Loaisanpham loai){
         loaiSanPhamService.saveLoaiSP(loai);
-        return "redirect:/admin/managerCategories";
-
+        return "redirect:/admin/QuanLyLoaiSanPham";
     }
     @GetMapping("/deleteCategory/{id}")
     public String deleteLoaiSP(@PathVariable("id") Long id){
         Loaisanpham book = loaiSanPhamService.getloaiSanphamByid(id);
         loaiSanPhamService.deleteLoaiSP(id);
-
-        return "redirect:/admin/managerCategories";
+        return "redirect:/admin/QuanLyLoaiSanPham";
 
     }
 

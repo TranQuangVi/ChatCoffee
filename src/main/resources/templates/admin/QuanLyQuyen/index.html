@@ -26,7 +26,7 @@
 
               <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                  <a href="/admin/managerRoles/add" style=" width: 90px; height: 40px; align-items: center; display:flex; justify-content: center;" class="btn btn-outline-secondary btn-sm create">
+                  <a href="/admin/QuanLyQuyen/add" style=" width: 90px; height: 40px; align-items: center; display:flex; justify-content: center;" class="btn btn-outline-secondary btn-sm create">
                     <i class="fa fa-plus" style="margin-right: 5px"></i>
                      Thêm mới
                   </a>
@@ -58,10 +58,10 @@
                     <td th:text ="${role.name}"></td>
                     <td>
                       <div class="dropdown">
-                        <a th:href ="@{/admin/managerRoles/edit/{id}(id=${role.id})}" class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                        <a th:href ="@{/admin/QuanLyQuyen/edit/{id}(id=${role.id})}" class="btn btn-outline-secondary btn-sm edit" title="Edit">
                           <i class="fa fa-pencil"></i>
                         </a>
-                        <a th:href ="@{/admin/managerRoles/delete/{id}(id=${role.id})}" class="btn btn-outline-secondary btn-sm delete" onclick="return confirm('Bạn có chắc muốn xóa không?')" title="Delete">
+                        <a th:href ="@{/admin/QuanLyQuyen/delete/{id}(id=${role.id})}" class="btn btn-outline-secondary btn-sm delete" onclick="return confirm('Bạn có chắc muốn xóa không?')" title="Delete">
                           <i class="fa fa-trash"></i>
                         </a>
                       </div>

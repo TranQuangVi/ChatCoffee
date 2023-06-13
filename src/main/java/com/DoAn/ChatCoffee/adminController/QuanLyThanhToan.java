@@ -1,7 +1,6 @@
 package com.DoAn.ChatCoffee.adminController;
 
 import com.DoAn.ChatCoffee.entity.Thanhtoan;
-import com.DoAn.ChatCoffee.entity.Vanchuyen;
 import com.DoAn.ChatCoffee.service.QuanLyThanhToanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +15,13 @@ public class QuanLyThanhToan {
     @GetMapping()
     public String getAllThanhtoan(Model model) {
         model.addAttribute("listThanhToan", quanLyThanhToanService.getAllThanhToan());
-        return "admin/quanlythanhtoan/index";
+        return "admin/QuanLyThanhToan/index";
     }
 
     @GetMapping("/add")
     public String addNewForm(Model model) {
         model.addAttribute("thanhtoan", new Thanhtoan());
-        return "admin/quanlythanhtoan/add";
+        return "admin/QuanLyThanhToan/add";
     }
 
     @PostMapping("/add")
@@ -40,7 +39,7 @@ public class QuanLyThanhToan {
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable Long id, Model model){
         model.addAttribute("thanhtoan", quanLyThanhToanService.getThanhToanById(id));
-        return "admin/quanlythanhtoan/edit";
+        return "admin/QuanLyThanhToan/edit";
     }
     @PostMapping("/edit")
     public String editSubmit(@ModelAttribute("thanhtoan") Thanhtoan thanhtoan){

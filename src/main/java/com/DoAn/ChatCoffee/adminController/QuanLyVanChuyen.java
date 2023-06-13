@@ -1,11 +1,9 @@
 package com.DoAn.ChatCoffee.adminController;
 
-import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Vanchuyen;
 import com.DoAn.ChatCoffee.service.QuanLyVanChuyenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +16,13 @@ public class QuanLyVanChuyen {
     @GetMapping()
     public String getAllVanChuyen(Model model) {
         model.addAttribute("listvc", quanLyVanChuyenService.getAllVanChuyen());
-        return "admin/quanlyvanchuyen/index";
+        return "admin/QuanLyVanChuyen/index";
     }
 
     @GetMapping("/add")
     public String addNewForm(Model model) {
         model.addAttribute("vanchuyen", new Vanchuyen());
-        return "admin/quanlyvanchuyen/add";
+        return "admin/QuanLyVanChuyen/add";
     }
 
     @PostMapping("/add")
@@ -43,7 +41,7 @@ public class QuanLyVanChuyen {
     @GetMapping("/edit/{id}")
     public String editForm(@PathVariable Long id, Model model){
         model.addAttribute("vanchuyen", quanLyVanChuyenService.getVanChuyenById(id));
-        return "admin/quanlyvanchuyen/edit";
+        return "admin/QuanLyVanChuyen/edit";
     }
     @PostMapping("/edit")
     public String editSubmit(@ModelAttribute("vanchuyen") Vanchuyen vanchuyen){

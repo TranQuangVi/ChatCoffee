@@ -8,43 +8,43 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/admin/managerBrands")
-public class ManagerBrands {
+@RequestMapping("/admin/QuanLyThuongHieu")
+public class QuanLyThuongHieu {
     @Autowired
     private ThuongHieuService thuongHieuService;
 
     @GetMapping
     public String index(Model model){
         model.addAttribute("ListBrands",thuongHieuService.getAllThuongHieu());
-        return "admin/managerBrands/index";
+        return "admin/QuanLyThuongHieu/index";
     }
 
     @GetMapping("/deleteBrand/{id}")
     public String deleteBrand(@PathVariable("id") Long id){
         Thuonghieu thuonghieu= thuongHieuService.getThuongHieuById(id);
         thuongHieuService.deleteThuongHieu(thuonghieu.getMaTH());
-        return "redirect:/admin/managerBrands";
+        return "redirect:/admin/QuanLyThuongHieu";
     }
 
     @GetMapping("/editBrand/{id}")
     public String editBrandForm(@PathVariable("id") Long id, Model model){
         model.addAttribute("brand",thuongHieuService.getThuongHieuById(id));
-        return "admin/managerBrands/editBrand";
+        return "admin/QuanLyThuongHieu/editBrand";
     }
     @PostMapping("/editBrand")
     public String editBrand(@ModelAttribute("brand") Thuonghieu updatebrand){
         thuongHieuService.saveThuongHieu(updatebrand);
-        return "redirect:/admin/managerBrands";
+        return "redirect:/admin/QuanLyThuongHieu";
     }
 
     @GetMapping("/addBrand")
     public String addBrandFrom(Model model){
         model.addAttribute("brand", new Thuonghieu());
-        return "admin/managerBrands/addBrand";
+        return "admin/QuanLyThuongHieu/addBrand";
     }
     @PostMapping("/addBrand")
     public String addBrand(@ModelAttribute("brand") Thuonghieu thuonghieu){
         thuongHieuService.saveThuongHieu(thuonghieu);
-        return "redirect:/admin/managerBrands";
+        return "redirect:/admin/QuanLyThuongHieu";
     }
 }

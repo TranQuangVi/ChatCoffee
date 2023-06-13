@@ -17,7 +17,7 @@ public class CustomUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Taikhoan tk = iTaiKhoanRepository.findByUsername(username);
         if (tk == null)
-            throw new UsernameNotFoundException("User not found");
+            throw new UsernameNotFoundException("Không tìm thấy người dùng");
         return new CustomUserDetail(tk, iTaiKhoanRepository) ;
     }
 }

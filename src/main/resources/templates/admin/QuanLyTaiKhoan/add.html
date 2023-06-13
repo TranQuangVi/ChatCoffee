@@ -10,7 +10,6 @@
 
     <!-- ========== Left Sidebar Start ========== -->
     <div class="vertical-menu"  th:replace="admin/layout_admin :: menu"></div>
-    <!-- Left Sidebar End -->
     <div class="main-content">
         <div class="row">
             <div class="col-12">
@@ -20,37 +19,37 @@
                         <h4 class="card-title">Table Edit</h4>
                         <p class="card-title-desc">Table Edits is a lightweight jQuery plugin for making table rows editable.</p>
 
-                        <form th:action ="@{/admin/managerAccount/edit}" th:object = "${taikhoan}" method = "post" class="outer-repeater">
-                            <input type="hidden" th:field ="*{id}">
+                        <form th:action ="@{/admin/QuanLyTaiKhoan/add}" th:object = "${taikhoan}" method = "post" class="outer-repeater">
                             <div data-repeater-list="outer-group" class="outer">
                                 <div data-repeater-item="" class="outer">
                                     <div class="mb-3">
                                         <label for="fullname">Họ tên:</label>
-                                        <input type="text" th:field = "*{fullname}" class="form-control" id="fullname">
+                                        <input type="text" th:field = "*{fullname}" class="form-control" id="fullname" placeholder="Nhập họ tên...">
+                                        <span class="text-danger" th:if="${#fields.hasErrors('fullname')}" th:errors="*{name}"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email">Email:</label>
-                                        <input type="email" th:field = "*{email}" class="form-control" id="email">
+                                        <input type="email" th:field = "*{email}" class="form-control" id="email" placeholder="Nhập email...">
                                         <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label for="dateofbirth">Ngày sinh:</label>
-                                        <input type="date" th:field = "*{dateofbirth}" class="form-control" id="dateofbirth">
+                                        <input type="date" th:field = "*{dateofbirth}" class="form-control" id="dateofbirth" placeholder="Nhập ngày sinh...">
                                         <span class="text-danger" th:if="${#fields.hasErrors('dateofbirth')}" th:errors="*{dateofbirth}"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label for="phonenumber">Email:</label>
-                                        <input type="text" th:field = "*{phonenumber}" class="form-control" id="phonenumber">
+                                        <input type="text" th:field = "*{phonenumber}" class="form-control" id="phonenumber" placeholder="Nhập số điện thoại...">
                                         <span class="text-danger" th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label for="username">Tên đăng nhập:</label>
-                                        <input type="text" th:field = "*{username}" class="form-control" id="username">
+                                        <input type="text" th:field = "*{username}" class="form-control" id="username" placeholder="Nhập username...">
                                         <span class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label for="password">Mật khẩu:</label>
-                                        <input type="password" th:field = "*{password}" class="form-control" id="password">
+                                        <input type="password" th:field = "*{password}" class="form-control" id="password" placeholder="Nhập password...">
                                         <span class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                                     </div>
                                     <div class ="form-group">
@@ -63,6 +62,7 @@
                                                     th:text="${role.name}"></option>
                                         </select>
                                     </div>
+
                                     <button type="submit" class="btn btn-primary" value="Save">Lưu</button>
                                 </div>
                             </div>
@@ -73,9 +73,6 @@
             </div>
         </div>
     </div>
-
-
-    <!-- hết nội dung-->
 </div>
 <!-- END layout-wrapper -->
 

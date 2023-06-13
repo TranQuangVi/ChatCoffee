@@ -30,7 +30,7 @@ public class QuanLySanPham {
     @GetMapping
     public String index(Model model){
         model.addAttribute("dssanpham", sanPhamService.getAllProduct());
-        return "admin/quanlysanpham/index";
+        return "admin/QuanLySanPham/index";
     }
 
     @GetMapping("/add")
@@ -38,7 +38,7 @@ public class QuanLySanPham {
         model.addAttribute("sanpham", new Sanpham());
         model.addAttribute("dsloaisp", loaiSanPhamService.getAllCategories());
         model.addAttribute("dsthuonghieu", thuongHieuService.getAllThuongHieu());
-        return "admin/quanlysanpham/add";
+        return "admin/QuanLySanPham/add";
     }
     @PostMapping("/add")
     public String addSubmit( @ModelAttribute("sanpham") Sanpham sanpham, @RequestParam("image") MultipartFile file) throws IOException{
@@ -62,7 +62,7 @@ public class QuanLySanPham {
         model.addAttribute("sanpham", sanPhamService.getProductByID(id));
         model.addAttribute("dsloaisp", loaiSanPhamService.getAllCategories());
         model.addAttribute("dsthuonghieu", thuongHieuService.getAllThuongHieu());
-        return "admin/quanlysanpham/edit";
+        return "admin/QuanLySanPham/edit";
     }
     @PostMapping("/edit")
     public String editSubmit(@ModelAttribute("sanpham") Sanpham sanpham){
@@ -78,7 +78,7 @@ public class QuanLySanPham {
     }
 
     @GetMapping("/uploadimage") public String displayUploadForm() {
-        return "admin/quanlysanpham/up";
+        return "admin/QuanLySanPham/up";
     }
 
     @PostMapping("/upload")
@@ -86,7 +86,7 @@ public class QuanLySanPham {
         Sanpham sanpham= sanPhamService.getProductByID(5L);
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if(fileName== ""){
-            return "redirect:/admin/quanlysanpham";
+            return "redirect:/admin/quan-ly-san-pham";
         }
     //    String fileName = "cafe"+sanpham.getId().toString()+".png";
         String uploadDir = "src/main/resources/static/images/products/";
@@ -95,7 +95,7 @@ public class QuanLySanPham {
 
         sanpham.setAnh(uploadDir+fileName);
         sanPhamService.saveProduct(sanpham);
-        return "redirect:/admin/quanlysanpham/up";
+        return "redirect:/admin/quan-ly-san-pham/up";
     }
     public static void saveFile(String uploadDir, String fileName,
                                 MultipartFile multipartFile) throws IOException {

@@ -16,7 +16,7 @@ public class Thuonghieu {
     private Long MaTH;
 
     @Column(name = "TenTH")
-    @NotEmpty(message = "Tên thương hiệu không được để trống!")
+    @NotEmpty(message = "Không được để trống")
     @Size(max = 50)
     private String TenTH;
 

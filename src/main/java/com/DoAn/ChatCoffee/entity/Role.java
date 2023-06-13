@@ -17,12 +17,12 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @Size(max = 50,message = "Name must be less than 50 character")
-    @NotBlank(message = "Name is required")
+    @Size(max = 50,message = "Tên phải ít hơn 50 ký tự")
+    @NotBlank(message = "Tên là bắt buộc")
     @Column(name = "name",length = 50,nullable = false)
     private  String name;
 
-    @Size(max = 250,message = "Description must be less  than 250 characters")
+    @Size(max = 250,message = "Mô tả phải ít hơn 250 ký tự")
     @Column(name = "description",length = 250)
     private  String description;
 

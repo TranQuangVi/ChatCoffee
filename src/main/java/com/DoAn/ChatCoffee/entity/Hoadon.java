@@ -19,39 +19,39 @@ public class Hoadon {
 
     // ngaydat
     @Column(name = "ngaydat",length = 100)
-    @NotEmpty(message = "ngày đăt bắt buộc có ")
-    @Size(max = 9,message = "ngày dặt khônga vượt quá  ký tự ")
+    @NotEmpty(message = "Không được để trống")
+    @Size(max = 9,message = "Ngày đặt không vượt quá 9 ký tự ")
     @JsonFormat(pattern="yyyy-MM-dd ")
     private LocalDate  NGAYDAT;
 
     // ngay giao
     @Column(name = "ngaygiao",length = 100)
-    @NotEmpty(message = "ngày giao bắt buộc có ")
-    @Size(max = 9,message = "ngày giao khônga vượt quá  ký tự ")
+    @NotEmpty(message = "Không được để trống")
+    @Size(max = 9,message = "Ngày giao không vượt quá 9 ký tự ")
     @JsonFormat(pattern="yyyy-MM-dd ")
     private LocalDate  NGAYGIAO;
 
     // trạng thái
     @Column(name = "trangthai",length = 100)
-    @NotNull(message = "trạng thái  không được để trống")
+    @NotNull(message = "Không được để trống")
     @Size(max = 50)
     private String  TRANGTHAI;
 
     // sdt dat
     @Column(name = "sdt",length = 100)
-    @NotNull(message = "SDT không được để trống")
+    @NotNull(message = "Không được để trống")
     @Size(max = 12)
     private String  SDTDAT;
 
     //diachidat
     @Column(name = "diachi",length = 100)
-    @NotNull(message = "dia chi  không được để trống")
+    @NotNull(message = "Không được để trống")
     @Size(max = 100)
     private String  DIACHI;
 
     // tong don gia
     @Column(name = "tongdongia",length = 100)
-    @NotNull(message = "tong don gia  không được để trống")
+    @NotNull(message = "Không được để trống")
     @Size(max = 12)
     private String  TONGDONGIA;
 

@@ -106,9 +106,9 @@ public class UserController {
             return "user/register";
         }
         else
-            taikhoan.setPassword(new
-                    BCryptPasswordEncoder().encode(taikhoan.getPassword()));
+            taikhoan.setPassword(new BCryptPasswordEncoder().encode(taikhoan.getPassword()));
         taiKhoanService.save(taikhoan);
+
         return "redirect:/user/login";
     }
 }

@@ -46,22 +46,20 @@ public class WebConfig {
                         .hasAnyAuthority("ADMIN")
                         .requestMatchers("/**")
                         .permitAll()
-                        .requestMatchers("/user")
-                        .hasAnyAuthority("USER")
+
                         .anyRequest().authenticated()
                 )
-                .formLogin(formLogin -> formLogin
-                        .loginPage("/user/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/", true)
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
+
+                .logout(logout -> logout.logoutUrl("/logout")
                         .logoutSuccessUrl("/user/login")
                         .deleteCookies("JSESSIONID")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
+                        .permitAll()
+                )
+                .formLogin(formLogin -> formLogin.loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/",true)
                         .permitAll()
                 )
                 .rememberMe(rememberMe -> rememberMe

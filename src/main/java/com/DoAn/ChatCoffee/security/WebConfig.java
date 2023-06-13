@@ -41,7 +41,9 @@ public class WebConfig {
                         .permitAll()
                         .requestMatchers("/admin/**")
                         .hasAnyAuthority("ADMIN")
-                        .requestMatchers("/")
+                        .requestMatchers("/**")
+                        .permitAll()
+                        .requestMatchers("/user")
                         .hasAnyAuthority("USER")
 
                         .anyRequest().authenticated()

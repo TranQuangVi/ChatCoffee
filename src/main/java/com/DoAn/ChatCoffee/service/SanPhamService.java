@@ -3,6 +3,9 @@ package com.DoAn.ChatCoffee.service;
 import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.repository.ISanPhamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +39,13 @@ public class SanPhamService {
         }
         return sanPhamRepository.findAll();
     }
+
+    //Page ListProduct
+    public Page<Sanpham> findPaginated(int pageNo, int pageSize){
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        return this.sanPhamRepository.findAll(pageable);
+    }
+
     // lấy sản phẩm theo ID loại
 
     public  List<Sanpham> getSanPhamByIdloai( Long Id_loai)
@@ -81,4 +91,6 @@ public class SanPhamService {
         }
         return sanphams;
     }
+
+
 }

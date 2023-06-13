@@ -1,8 +1,12 @@
 package com.DoAn.ChatCoffee.service;
 
 import com.DoAn.ChatCoffee.entity.Loaisanpham;
+import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.repository.ILoaiSanPhamRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +20,12 @@ public class LoaiSanPhamService {
         return  loaiSanPhamRespository.findAll();
 
     }
+    //Page ListProduct
+    public Page<Loaisanpham> findPaginated(int pageNo, int pageSize){
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        return this.loaiSanPhamRespository.findAll(pageable);
+    }
+
     public  Loaisanpham getloaiSanphamByid(Long id){
         Optional<Loaisanpham> optionalLoaiSP = loaiSanPhamRespository.findById(id);
         if(optionalLoaiSP.isPresent()){

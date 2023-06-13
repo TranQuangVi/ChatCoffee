@@ -1,9 +1,13 @@
 package com.DoAn.ChatCoffee.service;
 
+import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.IRoleRepository;
 import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -63,6 +67,12 @@ public class TaiKhoanService {
         {
             taiKhoanRepository.addRoleToUser(taiKhoanId, roleId);
         }
+    }
+
+    //Page ListProduct
+    public Page<Taikhoan> findPaginated(int pageNo, int pageSize){
+        Pageable pageable = PageRequest.of(pageNo-1, pageSize);
+        return this.taiKhoanRepository.findAll(pageable);
     }
 
 }

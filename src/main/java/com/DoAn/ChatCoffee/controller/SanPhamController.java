@@ -22,14 +22,16 @@ import java.util.stream.IntStream;
 public class SanPhamController {
     @Autowired
   private SanPhamService sanPhamService;
-
-
-
     @Autowired
     private LoaiSanPhamService loaiSanPhamService;
     @Autowired
     private ThuongHieuService thuongHieuService;
-
+    @GetMapping
+    public String product(Model model, @Param("search") String search) {
+        /*model.addAttribute("listProducts", sanPhamService.getSearchListProduct(search));
+        model.addAttribute("search",search);*/
+        return pageproduct(model,search,1);
+    }
     @GetMapping("/page/{pageNo}")
     public String pageproduct(Model model, @Param("search") String search, @PathVariable(value = "pageNo") int pageNo ) {
         int pageSize= 6;
@@ -46,10 +48,7 @@ public class SanPhamController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
         List<Sanpham> listProducts= page.getContent();
-
         model.addAttribute("listProducts", listProducts);
-//        model.addAttribute("listProducts", sanPhamService.getAllProduct());
-
         model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
         model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
         model.addAttribute("search",search);
@@ -57,28 +56,6 @@ public class SanPhamController {
     }
 
 
-    @GetMapping
-    public String product(Model model, @Param("search") String search) {
-        /*model.addAttribute("listProducts", sanPhamService.getSearchListProduct(search));
-//        model.addAttribute("listProducts", sanPhamService.getAllProduct());
-
-        model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
-        model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
-        model.addAttribute("search",search);*/
-        return pageproduct(model,search,2);
-    }
-
-    /*giống như cái trên thôi - trả về trang /product*/
-    @GetMapping("/danh-sach")
-    public String index() {
-        return "redirect:/sanpham";
-    }
-
-
-
-
-
-    //
     @GetMapping("/loai/{id}")
     public  String Locloai(@PathVariable Long id, Model model ){
         model.addAttribute("listProducts", sanPhamService.getSanPhamByIdloai(id));
@@ -86,7 +63,6 @@ public class SanPhamController {
         model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
         return  "sanpham/index";
     }
-
 
 // lọc theo thương hiệu
     @GetMapping("/thuonghieu/{id}")
@@ -119,12 +95,5 @@ public class SanPhamController {
         model.addAttribute("sanpham", sanPhamService.getProductByID(id));
         return "sanpham/chitietsp";
     }
-    @GetMapping("/tim-kiem")
-    //todo: đưa vô 1 string --> list ()
-    public String timkiem(String bien){
-        // gọi service tìm kiếm ()viết trong service
-        //sanPhamService.getlistbySearchTring
-       // model.addAttribute("listProducts", sanPhamService.getAllProduct());
-        return "sanpham/index";
-    }
+
 }

@@ -45,7 +45,7 @@ public class QuanLySanPham {
         sanPhamService.saveProduct(sanpham);
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         if(fileName== "")
-            fileName = "coffee-default.png";
+            fileName = "coffee12.png";
         else
             fileName = "coffee"+sanpham.getId().toString()+".png";
         String uploadDir = "src/main/resources/static/images/products/";
@@ -67,7 +67,7 @@ public class QuanLySanPham {
     @PostMapping("/edit")
     public String editSubmit(@ModelAttribute("sanpham") Sanpham sanpham){
         if(sanpham.getAnh()== null)
-            sanpham.setAnh("coffee-default.png");
+            sanpham.setAnh("/images/products/coffee12.png");
         sanPhamService.saveProduct(sanpham);
         return "redirect:/admin/quan-ly-san-pham";
     }
@@ -81,22 +81,6 @@ public class QuanLySanPham {
         return "admin/quanlysanpham/up";
     }
 
-    @PostMapping("/upload")
-    public String uploadImage(Model model, @RequestParam("image") MultipartFile file) throws IOException {
-        Sanpham sanpham= sanPhamService.getProductByID(5L);
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName== ""){
-            return "redirect:/admin/quanlysanpham";
-        }
-    //    String fileName = "cafe"+sanpham.getId().toString()+".png";
-        String uploadDir = "src/main/resources/static/images/products/";
-        saveFile(uploadDir, fileName, file);
-
-
-        sanpham.setAnh(uploadDir+fileName);
-        sanPhamService.saveProduct(sanpham);
-        return "redirect:/admin/quanlysanpham/up";
-    }
     public static void saveFile(String uploadDir, String fileName,
                                 MultipartFile multipartFile) throws IOException {
         Path uploadPath = Paths.get(uploadDir);

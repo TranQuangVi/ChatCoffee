@@ -65,5 +65,13 @@ public class TaiKhoanService {
         }
     }
 
+    public void saveAdmin (Taikhoan tk) {
+        taiKhoanRepository.save(tk);
+        Long taikhoanId = tk.getId();
+        Long roleId = itaiRoleRepository.getRoleIdByName("ADMIN");
+        if (taikhoanId != 0 && roleId != 0) {
+            taiKhoanRepository.addRoleToUser(taikhoanId, roleId);
+        }
+    }
 
 }

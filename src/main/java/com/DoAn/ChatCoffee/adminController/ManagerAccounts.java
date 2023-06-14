@@ -4,6 +4,7 @@ import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.service.RoleService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class ManagerAccounts {
     @GetMapping
     public String index(Model model){
         model.addAttribute("Listtaikhoan",taiKhoanService.getAllTaikhoan());
+
         return "admin/managerAccounts/index";
     }
 
@@ -32,7 +34,10 @@ public class ManagerAccounts {
     }
     @PostMapping("/add")
     public String addSubmit( @ModelAttribute("taikhoan") Taikhoan taikhoan) {
-        taiKhoanService.saveTaikhoan(taikhoan);
+        taikhoan.setPassword(new
+                BCryptPasswordEncoder().encode(taikhoan.getPassword()));
+        taiKhoanService.save(taikhoan);
+        taiKhoanService.saveAdmin(taikhoan);
 
         return  "redirect:/admin/managerAccounts";
 
@@ -77,4 +82,8 @@ public class ManagerAccounts {
         return "redirect:/admin/managerAccounts";
     }
 
+    @GetMapping("/loginadmin")
+    public String formLogin() {
+        return "admin/managerAccounts/loginadmin";
+    }
 }

@@ -52,12 +52,12 @@
                             </a>
                         </div>
                     </div>
-                    <div class="container" style=" max-width: 1185px; background-color: #bcb0a6; margin-top: 100px">
+                    <div class="container" style=" max-width: 1255px; background-color: #bcb0a6; margin-top: 100px">
                         <div class="row" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
                             <div class="col-lg-6 mx-auto">
                                 <div class="site-heading text-center">
                                     <span class="site-title-tagline" style="font-size: 1.5rem;">Menu</span>
-                                    <h2 class="site-title text-black" style="font-weight: 600;  font-size: 2.5rem; margin-bottom: 15px;">Tất cả loại cà phê </h2>
+                                    <h2 class="site-title text-black" style="font-weight: 600;  font-size: 2.5rem; margin-bottom: 15px;"> Loại cà phê </h2>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="counter-area pt-50 pb-50" style="padding-bottom: 20px; padding-top: 20px; margin-top: 45px; margin-bottom: 15px">
+                    <div class="counter-area pt-50 pb-50" style="padding-bottom: 20px;  padding-top: 20px;  margin-top: 45px; width: 1257px; margin-left: 13px; margin-bottom: 15px;">
                         <div class="container">
                             <div class="row" style="text-align: center; ">
                                 <div class="col-lg-3 col-sm-6">
@@ -145,11 +145,11 @@
                                 </div>
                             </div>
                             <div class="row align-items-center">
-                                <div class="col-md-6 col-lg-3" th:each = "product: ${listProducts}">
+                                <div class="col-md-6 col-lg-3" th:each = "sanpham: ${listProducts}">
                                     <div class="shop-item">
                                         <div class="shop-item-img">
-<!--                                            <span class="shop-item-sale">Sale</span>-->
-                                            <img src="https://live.themewild.com/coffero/assets/img/shop/01.png" style="width: 222px;" alt="">
+                                           <!-- <img src="https://live.themewild.com/coffero/assets/img/shop/01.png" style="width: 222px;" alt="">-->
+                                            <img th:src="@{${sanpham.anh}}" style="width: 222px;" alt="">
                                             <div class="shop-item-meta">
                                                 <a href="#"><i class="far fa-heart"></i></a>
                                                 <a href="#"><i class="far fa-shopping-cart"></i></a>
@@ -164,181 +164,13 @@
                                                 <i class="fas fa-star"></i>
                                             </div>-->
                                             <a href="#">
-                                                <h4 class="shop-item-title"  th:text = "${product.TenSP}"></h4>
+                                                <h4 class="shop-item-title"  th:text = "${sanpham.TenSP}"></h4>
                                             </a>
-                                            <div class="shop-item-price"  th:text = "${product.Gia}"> </div>
+                                            <div class="shop-item-price"  th:text = "${sanpham.Gia}"> </div>
                                         </div>
                                     </div>
                                 </div>
-<!--                                <div class="col-md-6 col-lg-3">
-                                    <div class="shop-item">
-                                        <div class="shop-item-img">
-                                            <img src="https://live.themewild.com/coffero/assets/img/shop/01.png" style="width: 222px;" alt="">
-                                            <div class="shop-item-meta">
-                                                <a href="#"><i class="far fa-heart"></i></a>
-                                                <a href="#"><i class="far fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="shop-item-info">
-                                            <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <a href="#">
-                                                <h4 class="shop-item-title">Arabica Roasted</h4>
-                                            </a>
-                                            <div class="shop-item-price">$130</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="shop-item">
-                                        <div class="shop-item-img">
-                                            <img src="assets/img/shop/03.png" alt="">
-                                            <div class="shop-item-meta">
-                                                <a href="#"><i class="far fa-heart"></i></a>
-                                                <a href="#"><i class="far fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="shop-item-info">
-                                            <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <a href="#">
-                                                <h4 class="shop-item-title">Arabica Green</h4>
-                                            </a>
-                                            <div class="shop-item-price">$170</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="shop-item">
-                                        <div class="shop-item-img">
-                                            <img src="assets/img/shop/04.png" alt="">
-                                            <div class="shop-item-meta">
-                                                <a href="#"><i class="far fa-heart"></i></a>
-                                                <a href="#"><i class="far fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="shop-item-info">
-                                            <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <a href="#">
-                                                <h4 class="shop-item-title">Cold Brewed</h4>
-                                            </a>
-                                            <div class="shop-item-price">$50</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="shop-item">
-                                        <div class="shop-item-img">
-                                            <img src="assets/img/shop/05.png" alt="">
-                                            <div class="shop-item-meta">
-                                                <a href="#"><i class="far fa-heart"></i></a>
-                                                <a href="#"><i class="far fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="shop-item-info">
-                                            <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <a href="#">
-                                                <h4 class="shop-item-title">Robusta Roasted</h4>
-                                            </a>
-                                            <div class="shop-item-price">$80</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="shop-item">
-                                        <div class="shop-item-img">
-                                            <img src="assets/img/shop/06.png" alt="">
-                                            <div class="shop-item-meta">
-                                                <a href="#"><i class="far fa-heart"></i></a>
-                                                <a href="#"><i class="far fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="shop-item-info">
-                                            <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <a href="#">
-                                                <h4 class="shop-item-title">Americano Coffee</h4>
-                                            </a>
-                                            <div class="shop-item-price">$130</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="shop-item">
-                                        <div class="shop-item-img">
-                                            <span class="shop-item-sale">Sale</span>
-                                            <img src="assets/img/shop/07.png" alt="">
-                                            <div class="shop-item-meta">
-                                                <a href="#"><i class="far fa-heart"></i></a>
-                                                <a href="#"><i class="far fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="shop-item-info">
-                                            <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <a href="#">
-                                                <h4 class="shop-item-title">Fresh Black Coffee</h4>
-                                            </a>
-                                            <div class="shop-item-price"><del>$120</del>$90</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="shop-item">
-                                        <div class="shop-item-img">
-                                            <img src="assets/img/shop/08.png" alt="">
-                                            <div class="shop-item-meta">
-                                                <a href="#"><i class="far fa-heart"></i></a>
-                                                <a href="#"><i class="far fa-shopping-cart"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="shop-item-info">
-                                            <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <a href="#">
-                                                <h4 class="shop-item-title">Espresso Coffee</h4>
-                                            </a>
-                                            <div class="shop-item-price">$150</div>
-                                        </div>
-                                    </div>
-                                </div>-->
+
                             </div>
                         </div>
                     </div>

@@ -9,12 +9,15 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.web.SecurityFilterChain;
+
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class WebConfig {
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -35,7 +38,7 @@ public class WebConfig {
 
     @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.csrf().disable()
+        http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/assets/**", "/css/**","/images/**","/js/**","/libs/**", "/","/user/register", "/error")
                         .permitAll()
@@ -43,16 +46,10 @@ public class WebConfig {
                         .hasAnyAuthority("ADMIN")
                         .requestMatchers("/**")
                         .permitAll()
-                        .requestMatchers("/user")
-                        .hasAnyAuthority("USER")
 
                         .anyRequest().authenticated()
                 )
-                .formLogin(formLogin -> formLogin.loginPage("/user/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/", true)
-                        .permitAll()
-                )
+
                 .logout(logout -> logout.logoutUrl("/logout")
                         .logoutSuccessUrl("/user/login")
                         .deleteCookies("JSESSIONID")
@@ -60,12 +57,20 @@ public class WebConfig {
                         .clearAuthentication(true)
                         .permitAll()
                 )
-
-                .rememberMe(rememberMe -> rememberMe.key("uniqueAndSecret")
+                .formLogin(formLogin -> formLogin.loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("/",true)
+                        .permitAll()
+                )
+                .rememberMe(rememberMe -> rememberMe
+                        .key("uniqueAndSecret")
                         .tokenValiditySeconds(86400)
                         .userDetailsService(userDetailsService())
                 )
-                .build();
+                .oauth2Login();
+
+        return http.build();
     }
+
 
 }

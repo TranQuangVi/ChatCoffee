@@ -1,12 +1,10 @@
 package com.DoAn.ChatCoffee.adminController;
 
-import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Vanchuyen;
 import com.DoAn.ChatCoffee.service.QuanLyVanChuyenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +35,7 @@ public class QuanLyVanChuyen {
         }
         List<Vanchuyen> listvc= page.getContent();
         model.addAttribute("listvc", listvc);
-        return "admin/quanlyvanchuyen/index";
+        return "admin/QuanLyVanChuyen/index";
     }
 
     @GetMapping()

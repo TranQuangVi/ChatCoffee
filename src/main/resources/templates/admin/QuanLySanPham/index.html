@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-12">
             <div class="page-title-box d-flex align-items-center justify-content-between">
-              <h4 class="mb-0 font-size-18">Product List</h4>
+              <h4 class="mb-0 font-size-18">Danh sạc sản phẩm</h4>
 
               <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -57,7 +57,10 @@
                   </thead>
                   <tbody>
                   <tr data-id="1" style="cursor: pointer;" th:each = "sanpham: ${dssanpham}">
-                    <td class="text-center"><img th:src="${sanpham.anh}" alt="" class="avatar-sm rounded-circle "></td>
+                    <td class="text-center"><img th:src="@{'/images/' + ${sanpham.anh}}" alt="Product Image" class="avatar-sm rounded-circle ">
+<!--                      <img th:src="@{'/images/' + ${product.imagePath}}" alt="Product Image">-->
+
+                    </td>
                     <td>
                       <h5 th:text = "${sanpham.TenSP}" class="text-truncate font-size-14"></h5>
                     </td>
@@ -87,7 +90,7 @@
                 </table>
                 <div th:if="${totalPages > 0}">
                   <div class="row col-sm-10">
-                    <div class="col-sm-2">Total Rows: [[${totalItems}]]</div>
+                    <div class="col-sm-2">Số trang: [[${totalItems}]]</div>
                     <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                       <li  th:if="${totalPages > 0}" class="page-link"
                            th:each="pageNumber : ${pageNumbers}">

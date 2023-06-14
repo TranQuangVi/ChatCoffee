@@ -22,13 +22,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0 font-size-18">Brands List</h4>
+                            <h4 class="mb-0 font-size-18">Danh sách thương hiệu </h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <a th:href="@{/admin/QuanLyThuongHieu/addBrand}" style="margin-left:1000px;" class="btn btn-outline-secondary btn-sm create">
                                         <i class="fa fa-plus"></i>
-                                        Create
+                                        Thêm mới
                                     </a>
                                 </ol>
                             </div>
@@ -72,11 +72,11 @@
                                 </table>
                                 <div th:if="${totalPages > 0}">
                                     <div class="row col-sm-10">
-                                        <div class="col-sm-2">Total Rows: [[${totalItems}]]</div>
+                                        <div class="col-sm-2">Số trang: [[${totalItems}]]</div>
                                         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                                             <li  th:if="${totalPages > 0}" class="page-link"
                                                  th:each="pageNumber : ${pageNumbers}">
-                                                <a th:href="@{'/admin/managerBrands/page/' + ${pageNumber}}"
+                                                <a th:href="@{'/admin/QuanLyThuongHieu/page/' + ${pageNumber}}"
                                                    th:text=${pageNumber}
                                                    th:class="${pageNumber==currentPage + 1} ? active"
                                                    class="page-link"

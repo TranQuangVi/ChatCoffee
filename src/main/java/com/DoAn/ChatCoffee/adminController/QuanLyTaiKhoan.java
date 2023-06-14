@@ -1,6 +1,5 @@
 package com.DoAn.ChatCoffee.adminController;
 
-import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.service.RoleService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
@@ -41,7 +40,7 @@ public class QuanLyTaiKhoan {
         }
         List<Taikhoan> Listtaikhoan= page.getContent();
         model.addAttribute("Listtaikhoan", Listtaikhoan);
-        return "admin/managerAccounts/index";
+        return "admin/QuanLyTaiKhoan/index";
     }
 
     @GetMapping

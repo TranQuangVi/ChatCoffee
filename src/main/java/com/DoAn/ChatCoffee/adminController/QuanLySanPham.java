@@ -49,7 +49,7 @@ public class QuanLySanPham {
         }
         List<Sanpham> dssanpham= page.getContent();
         model.addAttribute("dssanpham", dssanpham);
-        return "admin/quanlysanpham/index";
+        return "admin/QuanLySanPham/index";
     }
 
     @GetMapping

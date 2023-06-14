@@ -1,7 +1,6 @@
 package com.DoAn.ChatCoffee.adminController;
 
 import com.DoAn.ChatCoffee.entity.Loaisanpham;
-import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.service.LoaiSanPhamService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,7 @@ public class QuanLyLoaiSanPham {
         }
         List<Loaisanpham> Loais= page.getContent();
         model.addAttribute("Loais", Loais);
-        return "admin/managerCategory/index";
+        return "admin/QuanLyLoaiSanPham/index";
     }
 
     @GetMapping()

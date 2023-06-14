@@ -81,7 +81,7 @@
                                 </table>
                                 <div th:if="${totalPages > 0}">
                                     <div class="row col-sm-10">
-                                        <div class="col-sm-2">Total Rows: [[${totalItems}]]</div>
+                                        <div class="col-sm-2">Số Trang: [[${totalItems}]]</div>
                                         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                                             <li  th:if="${totalPages > 0}" class="page-link"
                                                  th:each="pageNumber : ${pageNumbers}">

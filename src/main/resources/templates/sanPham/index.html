@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="card">
-              <div class="card-body">
+              <div class="card-body" style="font-style: italic">
                 <h4 class="card-title mb-4">Bộ lọc</h4>
 
 
@@ -33,42 +33,42 @@
                     <input type="text" id="pricerange">
                   </div>
 <!--                  Lọc loại sản phẩm -->
-                  <div class="mt-4 pt-3">
+                  <div class="mt-4 pt-3"   >
 
-                    <h5 class="bx font-size-17  bx-filter-alt" style="font-size: 20px; font-weight: bold; color: #6c6c6c;"> LỌC LOẠI</h5>
+                    <h5 class="bx font-size-17  bx-filter-alt" style="font-size: 17px;   color: #6c6c6c;"> LỌC LOẠI</h5>
                     <div class="form-check mt-2" th:each="loai : ${danhsachloai}">
                       <i >
-                        <a style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/loai/{id}(id=${loai.id})}" th:text="${loai.TenLoai}" >
+                        <a class="text-dark" th:href="@{/san-pham/loai/{id}(id=${loai.id})}" th:text="${loai.TenLoai}" >
                         </a>
                       </i>
                     </div>
                   </div>
 
 <!--                   Lọc sản phẩm theo giá -->
-                  <div class="mt-4 pt-3">
-                    <h5 class="bx font-size-17  bx-filter-alt" style="font-size: 20px; font-weight: bold; color: #6c6c6c;">LỌC GIÁ</h5>
+                  <div class="mt-4 pt-3" >
+                    <h5 class="bx font-size-17  bx-filter-alt" style="font-size: 17px;  color: #6c6c6c;"> LỌC GIÁ</h5>
                       <div class="form-check mt-2"   >
-                        <a style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/gia/{gia}(gia = 1)}"> Thấp </a><br>
-                       <a style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/gia/{gia}(gia = 2)}"> Trung Bình </a><br>
-                       <a style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/gia/{gia}(gia = 3)}"> Cao</a><br>
-                       <a style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/gia/{gia}(gia = 4)}"> Tất cả</a>
+                        <a  class="text-dark" th:href="@{/san-pham/gia/{gia}(gia = 1)}"> Thấp </a><br>
+                       <a class="text-dark" th:href="@{/san-pham/gia/{gia}(gia = 2)}"> Trung Bình </a><br>
+                       <a class="text-dark" th:href="@{/san-pham/gia/{gia}(gia = 3)}"> Cao</a><br>
+                       <a class="text-dark" th:href="@{/san-pham/gia/{gia}(gia = 4)}"> Tất cả</a>
                       </div>
                   </div>
 <!--                  Lọc sản phẩm theo ký tự-->
-                  <div class="mt-4 pt-3">
-                    <i class="bx font-size-17  bx-filter-alt" style="font-size: 20px; font-weight: bold; color: #6c6c6c;"> LỌC KÍ TỰ </i>
+                  <div class="mt-4 pt-3"   >
+                    <i class="bx font-size-17  bx-filter-alt" style="font-size: 17px;   color: #6c6c6c;"> LỌC KÍ TỰ </i>
                       <div class="form-check mt-2" >
-                        <a  style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/tensp/{tensp}(tensp = 1)}"> A-Z</a> <br>
-                       <a style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/tensp/{tensp}(tensp = 2)}"> Z-A</a>
+                        <a  class="text-dark"  style="font-weight: Italic" th:href="@{/san-pham/tensp/{tensp}(tensp = 1)}"> A-Z</a> <br>
+                       <a class="text-dark" th:href="@{/san-pham/tensp/{tensp}(tensp = 2)}"> Z-A</a>
 
                       </div>
                    </div>
 <!--                 lọc sản phẩm theo thương hiệu -->
-                  <div class="mt-4 pt-3">
-                  <h5 class="bx font-size-17  bx-filter-alt" style="font-size: 20px; font-weight: bold; color: #6c6c6c;"> LỌC THƯƠNG HIỆU</h5>
+                  <div class="mt-4 pt-3"   >
+                  <h5 class="bx font-size-17  bx-filter-alt" style="font-size: 17px;   color: #6c6c6c;"> LỌC THƯƠNG HIỆU</h5>
                     <div class="form-check mt-2" th:each="th : ${danhsachthuonghieu}">
                     <i >
-                      <a style="font-size: 13px;  font-style: italic; color: #0099ff;" th:href="@{/san-pham/thuonghieu/{id}(id=${th.MaTH})}" th:text="${th.TenTH}" >  </a></i>
+                      <a class="text-dark"  th:href="@{/san-pham/thuonghieu/{id}(id=${th.MaTH})}" th:text="${th.TenTH}" >  </a></i>
 <!--                      <li><a th:href="@{/san-pham/thuonghieu/{id}(id=${th.MaTH})}" th:text="${th.TenTH}"></a></li>-->
 
                     </div>
@@ -164,7 +164,7 @@
                 <!--<ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">-->
                   <div th:if="${totalPages > 0}">
                     <div class="row col-sm-10">
-                      <div class="col-sm-2">Total Rows: [[${totalItems}]]</div>
+                      <div class="col-sm-2">Số trang: [[${totalItems}]]</div>
                       <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                         <li  th:if="${totalPages > 0}" class="page-link"
                              th:each="pageNumber : ${pageNumbers}">

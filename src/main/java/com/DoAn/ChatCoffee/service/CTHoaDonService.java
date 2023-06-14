@@ -16,9 +16,7 @@ public class CTHoaDonService {
     ICTHoaDonRepository ctHoaDonRepository;
 
     public void save (List<CTGiohang> ctGiohangs, Hoadon hoadon){
-
-        List<CTHoaDon> ctHoaDons;
-        for (var item: ctGiohangs) {
+        for (CTGiohang item: ctGiohangs) {
             CTHoaDon ctHoaDon = new CTHoaDon();
             ctHoaDon.setSanpham(item.getSanpham());
             ctHoaDon.setSoluong(item.getSoluong());

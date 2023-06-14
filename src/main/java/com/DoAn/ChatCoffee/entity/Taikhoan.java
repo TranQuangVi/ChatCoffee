@@ -177,8 +177,5 @@ public class Taikhoan {
         this.dateofbirth = dateofbirth;
     }
 
-    /*public boolean isEnabled()
-    {
-        return true;
-    }*/
+
 }

@@ -14,8 +14,6 @@ import java.util.List;
 
 @Data
 @Entity
-@Getter
-@Setter
 @Table(name = "hoadon")
 public class Hoadon {
     @Id
@@ -86,5 +84,93 @@ public class Hoadon {
     }
 
     public Hoadon() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getNgaydat() {
+        return ngaydat;
+    }
+
+    public void setNgaydat(LocalDate ngaydat) {
+        this.ngaydat = ngaydat;
+    }
+
+    public LocalDate getNgaygiao() {
+        return ngaygiao;
+    }
+
+    public void setNgaygiao(LocalDate ngaygiao) {
+        this.ngaygiao = ngaygiao;
+    }
+
+    public String getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public String getDiachinhan() {
+        return diachinhan;
+    }
+
+    public void setDiachinhan(String diachinhan) {
+        this.diachinhan = diachinhan;
+    }
+
+    public Long getTonggia() {
+        return tonggia;
+    }
+
+    public void setTonggia(Long tonggia) {
+        this.tonggia = tonggia;
+    }
+
+    public Long getTongsoluong() {
+        return tongsoluong;
+    }
+
+    public void setTongsoluong(Long tongsoluong) {
+        this.tongsoluong = tongsoluong;
+    }
+
+    public Thanhtoan getThanhtoan() {
+        return thanhtoan;
+    }
+
+    public void setThanhtoan(Thanhtoan thanhtoan) {
+        this.thanhtoan = thanhtoan;
+    }
+
+    public Vanchuyen getVanchuyen() {
+        return vanchuyen;
+    }
+
+    public void setVanchuyen(Vanchuyen vanchuyen) {
+        this.vanchuyen = vanchuyen;
+    }
+
+    public Taikhoan getTaikhoan() {
+        return taikhoan;
+    }
+
+    public void setTaikhoan(Taikhoan taikhoan) {
+        this.taikhoan = taikhoan;
     }
 }

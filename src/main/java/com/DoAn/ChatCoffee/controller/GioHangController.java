@@ -76,11 +76,11 @@ public class GioHangController {
     // tài khoản lasy authen,
     // thoonng khác lấy từ modelAtt trên view post
     @PostMapping("/luu-don-hang")
-    public String muaSubmit(@ModelAttribute("ctGiohangs") List<CTGiohang> ctGiohangs,
-                            @ModelAttribute("taikhoan") Taikhoan taikhoan,
-                            @ModelAttribute("hoadon") Hoadon hoadon ){
+    public String muaSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan,
+                            @ModelAttribute("hoadon") Hoadon hoadon, Authentication authentication){
+        List<CTGiohang> ctGiohangs= CTGioHangService.getGioHangByUserName(authentication.getName());
         //hoadon.setSdt(taikhoan.getPhonenumber());
-        hoadon.setTaikhoan(taikhoan);
+        hoadon.setTaikhoan(taiKhoanService.getTaiKhoanByUserName(authentication.getName()));
         hoadon.setNgaydat(LocalDate.now());
         hoadon.setNgaygiao(LocalDate.now());
         //hoadon.setThanhtoan(thanhtoan);
@@ -91,6 +91,10 @@ public class GioHangController {
         hoadon.setTrangthai("Chờ duyệt");
         hoaDonService.save(hoadon);
         ctHoaDonService.save(ctGiohangs,hoadon);
+ /*       for (CTGiohang item:ctGiohangs
+             ) {
+
+        }*/
         return "redirect:/user/hoa-don";
     }
 }

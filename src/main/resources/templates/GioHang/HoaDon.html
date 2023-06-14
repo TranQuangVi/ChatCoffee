@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-xl-2 col-sm-3">
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                 aria-orientation="vertical">``
+                                 aria-orientation="vertical">
                                 <a class="nav-link active" id="v-pills-shipping-tab" data-bs-toggle="pill"
                                    href="#v-pills-shipping" role="tab" aria-controls="v-pills-shipping"
                                    aria-selected="true">
@@ -102,27 +102,8 @@
                                             <div class="tab-pane fade" id="v-pills-payment" role="tabpanel"
                                                  aria-labelledby="v-pills-payment-tab">
                                                 <div>
-                                                    <h4 class="card-title">Phương thức thanh toán</h4>
-
-                                                    <div>
-                                                        <div class="form-check form-check-inline font-size-16"
-                                                             th:each="thanhtoan: ${thanhtoans}">
-                                                            <input class="form-check-input" type="radio"
-                                                                   name="thanhtoan" id="thanhtoan">
-                                                            <label class="form-check-label font-size-13"
-                                                                   for="thanhtoan"><i
-                                                                    class="fab fa-cc-paypal me-1 font-size-20 align-top"></i>
-                                                                Ví Paypal</label>
-                                                        </div>
-                                                    </div>
 
                                                     <h5 class="mt-5 mb-3 font-size-15">Hình thức vận chuyển</h5>
-                                                    <!--  <select class="form-control" id="vanchuyen" name="vanchuyen">
-                                                          <option value=""> &#45;&#45;Select Category&#45;&#45; </option>
-                                                          <option th:each="vanchuyen:${vanchuyens}"
-                                                                  th:value="${vanchuyen.MaVC}"
-                                                                  th:text="${vanchuyen.TenVC}"></option>
-                                                      </select>-->
                                                     <div>
                                                         <div class="form-check form-check-inline font-size-16"
                                                              th:each="vanchuyen: ${vanchuyens}">
@@ -132,6 +113,21 @@
                                                             <label class="form-check-label font-size-13"
                                                                    th:for="${vanchuyen.MaVC}"
                                                                    th:text="${vanchuyen.TenVC}"><i
+                                                                    class="fab fa-cc-paypal me-1 font-size-20 align-top"></i>
+                                                                Ví Paypal</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <h4 class="card-title">Phương thức thanh toán</h4>
+                                                    <div>
+                                                        <div class="form-check form-check-inline font-size-16"
+                                                             th:each="thanhtoan: ${thanhtoans}">
+                                                            <input class="form-check-input" type="radio"
+                                                                   th:value="${thanhtoan.id}"
+                                                                   name="thanhtoan" th:id="${thanhtoan.id}">
+                                                            <label class="form-check-label font-size-13"
+                                                                   th:for="${thanhtoan.id}"
+                                                                   th:text="${thanhtoan.hinhthuc}"><i
                                                                     class="fab fa-cc-paypal me-1 font-size-20 align-top"></i>
                                                                 Ví Paypal</label>
                                                         </div>

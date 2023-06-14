@@ -15,7 +15,7 @@ public class Sanpham {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "TenSP")
-    @NotEmpty(message = "Tên sản phẩm không được để trống!")
+    @NotEmpty(message = "Không được để trống")
     @Size(max = 100)
     private String TenSP;
 

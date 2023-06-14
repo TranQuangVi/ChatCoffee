@@ -5,6 +5,7 @@ import com.DoAn.ChatCoffee.service.LoaiSanPhamService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.ThuongHieuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -17,6 +18,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("/admin/quan-ly-san-pham")
@@ -27,10 +31,31 @@ public class QuanLySanPham {
     private LoaiSanPhamService loaiSanPhamService;
     @Autowired
     private ThuongHieuService thuongHieuService;
+
+    @GetMapping("/page/{pageNo}")
+    public String page(Model model, @PathVariable(value = "pageNo") int pageNo){
+        int pageSize= 6;
+        Page<Sanpham> page=sanPhamService.findPaginated(pageNo, pageSize);
+        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        int totalPages = page.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+        List<Sanpham> dssanpham= page.getContent();
+        model.addAttribute("dssanpham", dssanpham);
+        return "admin/QuanLySanPham/index";
+    }
+
     @GetMapping
     public String index(Model model){
-        model.addAttribute("dssanpham", sanPhamService.getAllProduct());
-        return "admin/quanlysanpham/index";
+        //model.addAttribute("dssanpham", sanPhamService.getAllProduct());
+        return page(model,1);
     }
 
     @GetMapping("/add")
@@ -38,7 +63,7 @@ public class QuanLySanPham {
         model.addAttribute("sanpham", new Sanpham());
         model.addAttribute("dsloaisp", loaiSanPhamService.getAllCategories());
         model.addAttribute("dsthuonghieu", thuongHieuService.getAllThuongHieu());
-        return "admin/quanlysanpham/add";
+        return "admin/QuanLySanPham/add";
     }
     @PostMapping("/add")
     public String addSubmit( @ModelAttribute("sanpham") Sanpham sanpham, @RequestParam("image") MultipartFile file) throws IOException{
@@ -62,7 +87,7 @@ public class QuanLySanPham {
         model.addAttribute("sanpham", sanPhamService.getProductByID(id));
         model.addAttribute("dsloaisp", loaiSanPhamService.getAllCategories());
         model.addAttribute("dsthuonghieu", thuongHieuService.getAllThuongHieu());
-        return "admin/quanlysanpham/edit";
+        return "admin/QuanLySanPham/edit";
     }
     @PostMapping("/edit")
     public String editSubmit(@ModelAttribute("sanpham") Sanpham sanpham){
@@ -78,7 +103,7 @@ public class QuanLySanPham {
     }
 
     @GetMapping("/uploadimage") public String displayUploadForm() {
-        return "admin/quanlysanpham/up";
+        return "admin/QuanLySanPham/up";
     }
 
     public static void saveFile(String uploadDir, String fileName,

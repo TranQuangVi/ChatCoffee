@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout_admin :: head-link"></head>
+
+<body data-sidebar="dark" data-layout-mode="light">
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+  <header  th:replace="admin/layout_admin :: header-page"></header>
+
+  <!-- ========== Left Sidebar Start ========== -->
+  <div class="vertical-menu"  th:replace="admin/layout_admin :: menu"></div>
+  <!-- Left Sidebar End -->
+
+  <!-- Nội dung -->
+  <div class="main-content">
+
+    <div class="page-content">
+      <div class="container-fluid">
+        <!-- start page title -->
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+
+            </div>
+          </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+
+                <h1 class="card-title">
+                  Danh sách loại sản phẩm
+                  <a href="/admin/QuanLyLoaiSanPham/addCategory" style="margin-left:1000px;" class="btn btn-outline-secondary btn-sm create">
+                    <i class="fa fa-plus"></i>
+                    Create
+                  </a>
+
+                </h1>
+
+
+                <div class="container">
+                  <h1 th:text =${title}></h1>
+                  <table class="table">
+                    <tr>
+                      <th>STT</th>
+<!--                      <th>Ảnh</th>-->
+<!--                   <th>ID</th>-->
+                      <th>Tên Loại </th>
+                      <th>Action</th>
+
+                    </tr>
+                    <tr th:each = "loai,index : ${Loais} " >
+                      <td th:text ="${index.count}"></td>
+<!--                      <td th:src ="${loai.Anh}"></td>-->
+<!--                      <td th:text ="${loai.id}"></td>-->
+                      <td th:text ="${loai.TenLoai}"></td>
+
+                      <td>
+                            <div class="dropdown">
+
+                                <a th:href ="@{/admin/QuanLyLoaiSanPham/edit/{id}(id=${loai.id})}" class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a th:href ="@{/admin/QuanLyLoaiSanPham/deleteCategory/{id}(id=${loai.id})}"
+                                   onclick="return confirm('Bạn có chắc muốn xóa không?')"  class="btn btn-outline-secondary btn-sm delete" title="Delete">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+
+                            </div>
+                      </td>
+                    </tr>
+                    <!--    <tbody id="bodyapi"></tbody>-->
+                  </table>
+                  <div th:if="${totalPages > 0}">
+                    <div class="row col-sm-10">
+                      <div class="col-sm-2">Số Trang: [[${totalItems}]]</div>
+                      <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                        <li  th:if="${totalPages > 0}" class="page-link"
+                             th:each="pageNumber : ${pageNumbers}">
+                          <a th:href="@{'/admin/QuanLyLoaiSanPham/page/' + ${pageNumber}}"
+                             th:text=${pageNumber}
+                             th:class="${pageNumber==currentPage + 1} ? active"
+                             class="page-link"
+                          ></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+
+
+      </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+<!--    <footer class="footer">-->
+<!--      <div class="container-fluid">-->
+<!--        <div class="row">-->
+<!--          <div class="col-sm-6">-->
+<!--            <script>document.write(new Date().getFullYear())</script> © Skote.-->
+<!--          </div>-->
+<!--          <div class="col-sm-6">-->
+<!--            <div class="text-sm-end d-none d-sm-block">-->
+<!--              Design & Develop by Themesbrand-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </footer>-->
+  </div>
+  <!-- end main content-->
+</div>
+<!-- END layout-wrapper -->
+
+<footer th:replace="admin/layout_admin :: footer"></footer>
+<!-- JAVASCRIPT -->
+<div th:replace="admin/layout_admin :: link-js"></div>
+
+</body>
+</html>

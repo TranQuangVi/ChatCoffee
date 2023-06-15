@@ -12,16 +12,6 @@ public class Giohang {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long MaGH;
-
-/*    @Column(name = "TongTien")
-    private int TongTien;
-
-    @Column(name = "TongSL")
-    private int TongSL;
-
-    @Column(name = "TongSP")
-    private int TongSP;*/
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     private Taikhoan taikhoan;

@@ -66,13 +66,14 @@
                                 <div class="col-lg-4" th:each = "loaisp: ${listLoais}">
                                     <div class="menu-item">
                                         <div class="menu-item-content">
-                                            <div class="menu-item-img">
+<!--                                            <div class="menu-item-img">-->
 
-                                                <img src="images/brands/coffee.jpg" />
+<!--                                                <img src="images/brands/coffee.jpg" />-->
                                            <!--     <img src="assets/img/menu/01.jpg" alt="">-->
-                                            </div>
+<!--                                            </div>-->
                                             <div class="menu-item-info">
-                                                <h5  th:text = "${loaisp.TenLoai}"></h5>
+                                                <h5 >    <a th:href="@{/loai/{id}(id=${loaisp.id})}" th:text="${loaisp.TenLoai}" > </a></h5>
+
                                                 <p ></p>
                                             </div>
                                         </div>
@@ -83,51 +84,33 @@
                             </div>
                         </div>
                     </div>
-                    <div class="counter-area pt-50 pb-50" style="padding-bottom: 20px;  padding-top: 20px;  margin-top: 45px; width: 1257px; margin-left: 13px; margin-bottom: 15px;">
+                    <div class="counter-area pt-50 pb-50" style="padding-bottom: 20px; padding-top: 20px; margin-top: 45px; width: 1257px; margin-left: 13px; margin-bottom: 15px;">
                         <div class="container">
+                            <div class="row" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
+                                <div class="col-lg-6 mx-auto">
+                                    <div class="site-heading text-center">
+<!--                                        <span class="site-title-tagline" style="font-size: 1.5rem;">Menu</span>-->
+                                        <h2 class="site-title text-black" style="font-weight: 600;  font-size: 2.5rem; margin-bottom: 15px;">Thương Hiệu </h2>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row" style="text-align: center; ">
-                                <div class="col-lg-3 col-sm-6">
+                                <div class="col-lg-3 col-sm-6" th:each = "thuonghieu: ${danhsachthuonghieu}">
                                     <div class="counter-box">
-                                        <div class="icon" style="width: 260px; height: 130px;">
-                                            <img src="/images/brands/trungnguyen2.png" alt="" style="width: 300px; margin-left: -20px;">
+                                        <div class="icon" style="width: 260px; height: 130px; font-family: Arial, sans-serif;">
+                                            <img src="/images/brands/phuclong.png" alt="" style="width: 140px; margin-right: -20px;margin-bottom: 10px;"><br>
                                         </div>
-                                        <div>
+                                        <div class="menu-item-content">
+                                            <div class="menu-item-info" style="font-family: Arial, sans-serif;">
 <!--                                            <h6 class="title"> Trung Nguyên </h6>-->
-                                        </div>
+<!--                                            <h5  th:text = "${thuonghieu.TenTH}"></h5>-->
+                                               <h5> <a style="font-size: 20px; margin-left: 95px;  color: #000000; " th:href="@{/thuonghieu/{id}(id=${thuonghieu.MaTH})}" th:text="${thuonghieu.TenTH}" >  </a></h5>
+                                            <p ></p>
+                                        </div>  </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="counter-box">
-                                        <div class="icon" style="width: 260px; height: 130px;">
-                                            <img src="/images/brands/starbucks.png"/></div>
-                                        <div>
 
-<!--                                            <h6 class="title">Starbucks</h6>-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="counter-box">
-                                        <div class="icon" style="width: 260px; height: 130px;">
-                                            <img src="/images/brands/phuclong.png" alt="">
-                                        </div>
-                                        <div>
-
-<!--                                            <h6 class="title">Phúc Long</h6>-->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6">
-                                    <div class="counter-box">
-                                        <div class="icon" style="height: 130px;">
-                                            <img src="/images/brands/highland.png" alt="">
-                                        </div>
-                                        <div>
-                                           <!-- <span class="counter" data-count="+" data-to="50" data-speed="3000">50</span>-->
-<!--                                            <h6 class="title">Highland</h6>-->
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -141,6 +124,7 @@
                                     <div class="site-heading text-center">
                                         <span class="site-title-tagline" style="font-size: 1.5rem;">Chat Shop</span>
                                         <h2 class="site-title" style="font-weight: 600; font-size: 2.5rem; margin-bottom: 15px;">Sản phẩm nổi bật </h2>
+
                                     </div>
                                 </div>
                             </div>
@@ -163,10 +147,15 @@
                                                 <i class="fas fa-star"></i>
                                                 <i class="fas fa-star"></i>
                                             </div>-->
-                                            <a href="#">
-                                                <h4 class="shop-item-title"  th:text = "${sanpham.TenSP}"></h4>
+<!--                                            <a th:href="@{/san-pham/thuonghieu/{id}(id=${th.MaTH})}" th:text="${th.TenTH}" >  </a></i>-->
+                                            <a th:href="@{/chi-tiet/{id}(id=${sanpham.id})}">
+                                                <div  class="shop-item-title"  th:text = "${sanpham.TenSP} " ></div>
                                             </a>
                                             <div class="shop-item-price"  th:text = "${sanpham.Gia}"> </div>
+                                            <div class="mt-3 text-center">
+                                                <a th:href="@{/gio-hang/them-san-pham/{id}(id=${sanpham.id})}" class="btn btn-primary"> Thêm vào giỏ hàng</a>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -16,7 +16,7 @@ public class Loaisanpham {
     private Long id;
 
     @Column(name = "TenLoai")
-    @NotEmpty(message = "Tên loại không được để trống!")
+    @NotEmpty(message = "Không được để trống")
     @Size(max = 30)
     private String TenLoai;
 

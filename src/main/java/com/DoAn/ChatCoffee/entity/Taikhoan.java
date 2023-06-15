@@ -23,40 +23,40 @@ public class Taikhoan {
     private Long id;
 
     @Column(name = "username", length = 50, nullable = false, unique = true)
-    @NotBlank(message = "Username is required")
-    @Size(max = 50, message = "Username must be less than 50 characters")
+    @NotBlank(message = "Tên người dùng là bắt buộc")
+    @Size(max = 50, message = "Tên người dùng phải ít hơn 50 kí tự")
     private String username;
 
     @Column(name = "password", length = 250, nullable = false)
-    @NotBlank(message = "Password is required")
+    @NotBlank(message = "Mật khẩu là bắt buộc")
     private String password;
 
     @Column(name = "email", length = 50)
-    @NotBlank(message = "Password is required")
-    @Size(max = 50, message = "Email must be less than 50 characters")
+    @NotBlank(message = "Email là bắt buộc")
+    @Size(max = 50, message = "Email phải ít hơn 50 kí tự")
     private String email;
 
     @Column(name = "fullname", length = 50, nullable = false)
-    @Size(max = 50, message = "Your Full Name must be less than 50 characters")
-    @NotBlank(message = "Your fullname is required")
+    @Size(max = 50, message = "Tên đầy đủ của bạn phải ít hơn 50 ký tự")
+    @NotBlank(message = "Tên đầy đủ của bạn là bắt buộc")
     private String fullname;
     @Column(name = "image", length = 50, nullable = true)
     private String imgage;
 
 
     @Column(name = "dateofbirth", nullable = false)
-    @Past(message = "Your date of birth should be in the past")
-    @NotNull(message = "Your Date Of Birth is required")
+    @Past(message = "Ngày sinh của bạn nên ở trong quá khứ")
+    @NotNull(message = "Ngày sinh của bạn là bắt buộc")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateofbirth;
 
 
     @Column(name = "phonenumber", length = 10, nullable = false)
-    @NotBlank(message = "Your phone Number is required")
+    @NotBlank(message = "Số điện thoại của bạn là bắt buộc")
     private String phonenumber;
 
     @Column(name = "status", nullable = false)
-    @NotNull(message = "Your status is required")
+    @NotNull(message = "Trạng thái của bạn là bắt buộc")
     private Boolean status = true;
 
     @OneToMany(mappedBy = "taikhoan", cascade = CascadeType.ALL)
@@ -177,8 +177,5 @@ public class Taikhoan {
         this.dateofbirth = dateofbirth;
     }
 
-    /*public boolean isEnabled()
-    {
-        return true;
-    }*/
+
 }

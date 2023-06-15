@@ -19,8 +19,9 @@ public class CTGioHangService {
     public List<CTGiohang> getAll() {
         return ctGioHangRepository.findAll();
     }
-
-
+    public List<CTGiohang> getGioHangByUserName(String username){
+        return ctGioHangRepository.getGioHangByUserName(username);
+    }
     public CTGiohang getItemByID(CartDetailsKey cartDetailsKey) {
         Optional<CTGiohang> optional = ctGioHangRepository.findById(cartDetailsKey);
         return optional.orElse(null);

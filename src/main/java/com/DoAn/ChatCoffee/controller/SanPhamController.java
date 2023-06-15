@@ -1,9 +1,11 @@
 package com.DoAn.ChatCoffee.controller;
 
+import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.service.LoaiSanPhamService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.ThuongHieuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,44 +13,49 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Controller
 @RequestMapping("/san-pham")
 public class SanPhamController {
     @Autowired
   private SanPhamService sanPhamService;
-
-
-
     @Autowired
     private LoaiSanPhamService loaiSanPhamService;
     @Autowired
     private ThuongHieuService thuongHieuService;
-
-
-
-
     @GetMapping
     public String product(Model model, @Param("search") String search) {
-        model.addAttribute("listProducts", sanPhamService.getSearchListProduct(search));
-//        model.addAttribute("listProducts", sanPhamService.getAllProduct());
-
+        /*model.addAttribute("listProducts", sanPhamService.getSearchListProduct(search));
+        model.addAttribute("search",search);*/
+        return pageproduct(model,search,1);
+    }
+    @GetMapping("/page/{pageNo}")
+    public String pageproduct(Model model, @Param("search") String search, @PathVariable(value = "pageNo") int pageNo ) {
+        int pageSize= 6;
+        Page<Sanpham> page=sanPhamService.findPaginated(pageNo, pageSize);/////////////////////
+        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        int totalPages = page.getTotalPages();
+        if (totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+        List<Sanpham> listProducts= page.getContent();
+        model.addAttribute("listProducts", listProducts);
         model.addAttribute("danhsachloai",loaiSanPhamService.getAllCategories());
         model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
         model.addAttribute("search",search);
         return "sanpham/index";
     }
 
-    /*giống như cái trên thôi - trả về trang /product*/
-    @GetMapping("/danh-sach")
-    public String index() {
-        return "redirect:/sanpham";
-    }
 
-
-
-
-
-    //
     @GetMapping("/loai/{id}")
     public  String Locloai(@PathVariable Long id, Model model ){
         model.addAttribute("listProducts", sanPhamService.getSanPhamByIdloai(id));
@@ -56,7 +63,6 @@ public class SanPhamController {
         model.addAttribute("danhsachthuonghieu", thuongHieuService.getAllThuongHieu());
         return  "sanpham/index";
     }
-
 
 // lọc theo thương hiệu
     @GetMapping("/thuonghieu/{id}")
@@ -89,12 +95,5 @@ public class SanPhamController {
         model.addAttribute("sanpham", sanPhamService.getProductByID(id));
         return "sanpham/chitietsp";
     }
-    @GetMapping("/tim-kiem")
-    //todo: đưa vô 1 string --> list ()
-    public String timkiem(String bien){
-        // gọi service tìm kiếm ()viết trong service
-        //sanPhamService.getlistbySearchTring
-       // model.addAttribute("listProducts", sanPhamService.getAllProduct());
-        return "sanpham/index";
-    }
+
 }

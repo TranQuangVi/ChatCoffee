@@ -15,7 +15,7 @@ public class Sanpham {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "TenSP")
-    @NotEmpty(message = "Tên sản phẩm không được để trống!")
+    @NotEmpty(message = "Không được để trống")
     @Size(max = 100)
     private String TenSP;
 
@@ -74,4 +74,6 @@ public class Sanpham {
 
         return "src/main/resources/static/images/products/" + id + "/" + anh;
     }
+    @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
+    private List<CTHoaDon> ctHoaDons;
 }

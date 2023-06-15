@@ -18,12 +18,12 @@ public class Vanchuyen {
     private Long MaVC;
 
     @Column(name = "TenVC")
-    @NotEmpty(message = "Tên vận chuyển không được để trống!")
+    @NotEmpty(message = "không được để trống")
     @Size(max = 50)
     private String TenVC;
 
     @Column(name = "Gia")
-    @NotNull(message = "Giá không được để trống!")
+    @NotNull(message = "Không được để trống")
     private Long Gia;
 
     @OneToMany(mappedBy = "vanchuyen", cascade = CascadeType.ALL)

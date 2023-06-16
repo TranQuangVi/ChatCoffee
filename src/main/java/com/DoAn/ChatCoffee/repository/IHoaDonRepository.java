@@ -18,13 +18,18 @@ public interface IHoaDonRepository extends JpaRepository<Hoadon, Long> {
     @Query("SELECT hoadon FROM Hoadon hoadon WHERE hoadon.taikhoan.username = :username AND hoadon.trangthai = :trangthai ")
     List<Hoadon> getListByUserNameVaTrangThai(@Param("username")String username, @Param("trangthai")String trangthai);
 
+    @Query("SELECT hoadon FROM Hoadon hoadon WHERE  hoadon.trangthai = :trangthai ")
+    List<Hoadon> getListByTrangThai( @Param("trangthai")String trangthai);
+
     //Quốc
-    @Query("SELECT b FROM Hoadon b WHERE b.trangthai = 'Chờ duyệt'")
-    List<Hoadon> gethoadonchoduyet();
-    @Query("SELECT c FROM Hoadon c WHERE c.trangthai = 'Đang giao'")
-    List<Hoadon> gethoadondanggiao();
-    @Query("SELECT d FROM Hoadon d WHERE d.trangthai = 'Đã hoàn thành'")
-    List<Hoadon> gethoadondahoanthanh();
+//    @Query("SELECT b FROM Hoadon b WHERE b.trangthai = ' Chờ lấy hàng'")
+////    List<Hoadon> gethoadonlayhang();
+//    @Query("SELECT b FROM Hoadon b WHERE b.trangthai = 'Chờ duyệt'")
+//    List<Hoadon> gethoadonchoduyet();
+//    @Query("SELECT c FROM Hoadon c WHERE c.trangthai = 'Đang giao'")
+//    List<Hoadon> gethoadondanggiao();
+//    @Query("SELECT d FROM Hoadon d WHERE d.trangthai = 'Đã hoàn thành'")
+//    List<Hoadon> gethoadondahoanthanh();
 
 
 

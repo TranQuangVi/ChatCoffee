@@ -23,34 +23,40 @@
           <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
               <h4 class="mb-sm-0 font-size-18">Danh sách hóa đơn</h4>
+                <div class="dropdown">
+
+                    <ul class="dropdown-menu dropdown-menu-end" style="">
+                        <li><a href="" class="dropdown-item"><i ></i>
+
+                        </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <form action="/admin/QuanLyHoaDon">
+<!--                    <input name="trangthai" id="trangthai" value="Hoàn thành" >-->
+                    <select name="trangthai" id="trangthai"  style="width: 200px; height: 40px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        <option  th:value="${trangthai}" th:text="${trangthai}"></option>
+                        <option  value="Tất cả">Tất cả</option>
+                        <option  value="Chờ duyệt">Chờ duyệt</option>
+                        <option  value="Chờ lấy hàng">Chờ lấy hàng</option>
+                        <option  value="Đang giao">Đang giao</option>
+                        <option  value="Hoàn thành">Hoàn thành</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-success waves-effect waves-light" > chọn </button>
+                </form>
             </div>
+
           </div>
+
         </div>
         <!-- end page title -->
-
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="row mb-2">
-                  <div class="col-sm-4">
-                    <div class="search-box me-2 mb-2 d-inline-block">
-                      <div class="position-relative">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm...">
-                        <i class="bx bx-search-alt search-icon"></i>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="table-responsive">
-                  <table class="table align-middle table-nowrap table-check">
-                    <thead class="table-light">
-                    <tr>
-                      <th style="width: 20px;" class="align-middle">
-
-                      </th>
+          <div class="table-responsive">
+              <table class="table align-middle table-nowrap table-check">
+                  <thead class="table-light">
+                  <tr>
                       <th class="align-middle">ID</th>
                       <th class="align-middle">Họ tên </th>
                       <th class="align-middle">Ngày đặt</th>
@@ -58,126 +64,115 @@
                       <th class="align-middle">Trạng thái</th>
                       <th class="align-middle">Xem chi tiết</th>
                       <th class="align-middle">Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-<!--                      <td th:text ="hoadon.id"></td>-->
-<!--                      <td th:text ="hoadon.taikhoan.username"></td>-->
-<!--                      <td th:text ="hoadon.ngaydat"></td>-->
-<!--                      <td th:text ="hoadon.tonggia"></td>-->
-<!--                      <td th:text ="hoadon.trangthai"></td>-->
-<!--                      <td th:text ="hoadon.thanhtoan.id"></td>-->
-<!--                      <td th:text ="hoadon.diachi"></td>-->
-
-
-                    <tr th:each="hoadon : ${quanlyhoadon}">
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr  th:each=" xemhoadon : ${ListHoaDon} ">
+                      <td th:text="${xemhoadon.id}"  ></td>
+                      <td th:text="${xemhoadon.taikhoan.fullname}"></td>
+                      <td th:text="${xemhoadon.ngaydat}"></td>
+                      <td th:text="${xemhoadon.tonggia}"></td>
+                      <td> <span class="badge rounded-1 badge-soft-success font-size-13  " th:text="${xemhoadon.trangthai}"></span></td>
                       <td>
-                        <div class="form-check font-size-16">
-                          <input class="form-check-input" type="checkbox" id="orderidcheck02">
-                          <label class="form-check-label" for="orderidcheck02"></label>
-                        </div>
-                      </td>
-                      <td ><a href="javascript: void(0);" class="text-body fw-bold" th:text ="${hoadon.id}"></a> </td>
-                      <td th:text ="${hoadon.taikhoan.username}" ></td>
-                      <td  th:text ="${hoadon.ngaydat}">
-
-                      </td>
-                      <td th:text ="${hoadon.tonggia}">
-
-                      </td>
-                      <td th:text ="${hoadon.trangthai}">
-<!--                        <span class="badge badge-pill badge-soft-danger font-size-12" >Chargeback</span>-->
-                      </td>
-
-                      <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target=".orderdetailsModal ">
-                         View Detail
-                        </button>
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" th:data-bs-target="'.orderdetailsModals' +  ${xemhoadon.id} ">
+                              Xem chi tiết
+                          </button>
                       </td>
                       <td>
-                        <div class="d-flex gap-3">
-                          <a href="javascript:void(0);" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
-                          <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
-                        </div>
+                          <div class="d-flex gap-3">
+                              <a href="javascript:void(0);" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
+                              <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
+                          </div>
                       </td>
-                    </tr>
-
-
-                    </tbody>
-                  </table>
-                </div>
-
-
-              </div>
-            </div>
+                  </tr>
+                  </tbody>
+              </table>
           </div>
+          </div>
+            <div th:each=" xemhoadon: ${ListHoaDon}">
+            <!-- Button trigger modal -->
+            <div th:class="'modal fade orderdetailsModals' + ${xemhoadon.id}" tabindex="-1" aria-labelledby="orderdetailsModalLabel&quot;" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="orderdetailsModalLabel&quot;">Chi tiết hóa đơn</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="mb-2">Mã hóa đơn: <span class="text-primary" th:text="${xemhoadon.id}"></span></p>
+                                    <p class="mb-4">Tên khách hàng: <span class="text-primary" th:text="${xemhoadon.taikhoan.fullname}"></span></p>
+                                    <p class="mb-4">Số điện thoại đặt: <span class="text-primary" th:text="${xemhoadon.sdt}"></span></p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="mb-2">Ngày đặt: <span class="text-primary" th:text="${xemhoadon.ngaydat}"></span></p>
+                                    <p class="mb-4">Ngày giao: <span class="text-primary" th:text="${xemhoadon.ngaygiao}"></span></p>
+                                    <p class="mb-4">Địa chỉ: <span class="text-primary" th:text="${xemhoadon.diachinhan}"></span></p>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table align-middle table-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>Ảnh</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Tổng giá</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each=" cthoadon: ${dsCTHDDaMua}">
+                                        <div th:if="${cthoadon.hoadon.id}==${xemhoadon.id}">
+                                            <th scope="row">
+                                                <div>
+                                                    <img src="assets/images/product/img-7.png" alt="" class="avatar-sm">
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <div>
+                                                    <h5 class="text-truncate font-size-14" th:text="${cthoadon.sanpham.TenSP}"></h5>
+                                                    <p class="text-muted mb-0" th:text="${cthoadon.sanpham.Gia} +' x '+${cthoadon.soluong}"></p>
+                                                </div>
+                                            </td>
+                                            <td th:text="${cthoadon.sanpham.Gia * cthoadon.soluong}"></td></div>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h6 class="m-0 text-right">Sub Total:</h6>
+                                        </td>
+                                        <td>
+                                            $ 400
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2">
+                                            <h6 class="m-0 text-right">Total:</h6>
+                                        </td>
+                                        <td>
+                                            $ 400
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- end row -->
+        </div>
+
+
+
       </div>
     </div>
 
-    <div class="modal fade orderdetailsModal" tabindex="-1" aria-labelledby="orderdetailsModalLabel;" style="display: none;" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="orderdetailsModalLabe">Chi tiết hóa đơn</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" >
-            <p class="mb-2">ID:  <span class="text-primary" th:text="${chitiethoadon[0].hoadon.id}"></span></p>
-            <p class="mb-4">Tên Khách hàng : <span class="text-primary" th:text="${chitiethoadon[0].hoadon.taikhoan.username}" ></span></p>
-
-            <div class="table-responsive" th:each="chitiet : ${chitiethoadon}">
-              <table class="table align-middle table-nowrap">
-                <thead>
-                <tr>
-                  <th scope="col">Ảnh</th>
-                  <th scope="col">Tên sản phẩm</th>
-                  <th scope="col">Số lượng</th>
-                  <th scope="col">Giá</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr  >
-                  <th scope="row">
-<!--                    <div>-->
-<!--                      <img src="assets/images/product/img-7.png" alt="" class="avatar-sm">-->
-<!--                    </div>-->
-                    // thẻ ảnh
-                  </th>
-                  <td th:text="${chitiet.sanpham.TenSP}">
-                  </td>
-                  <td th:text="${chitiet.hoadon.tongsoluong}"> </td>
-                  </td>
-                  <td th:text="${chitiet.sanpham.Gia}"> </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <h6 class="m-0 text-right">Hình thức vận chuyển:</h6>
-                  </td>
-                  <td th:text="${chitiet.hoadon.vanchuyen.TenVC}">
-                    /////
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <h6 class="m-0 text-right">Tổng tiền:</h6>
-                  </td>
-                  <td>
-                   //////
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div></div>
 
 
     <!-- End Page-content -->

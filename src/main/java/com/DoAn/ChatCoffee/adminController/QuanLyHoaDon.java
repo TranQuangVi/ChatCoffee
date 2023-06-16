@@ -1,9 +1,11 @@
 package com.DoAn.ChatCoffee.adminController;
 
-import com.DoAn.ChatCoffee.service.CTHoaDonService;
-import com.DoAn.ChatCoffee.service.HoaDonService;
-import com.DoAn.ChatCoffee.service.TaiKhoanService;
+import com.DoAn.ChatCoffee.repository.ICTHoaDonRepository;
+import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
+import com.DoAn.ChatCoffee.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,31 +15,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin/QuanLyHoaDon")
 public class QuanLyHoaDon {
     @Autowired
-    private HoaDonService hoaDonService;
+    private ITaiKhoanRepository iTaiKhoanRepository;
+    @Autowired
+     private HoaDonService hoaDonService;
+    @Autowired
+    private GioHangService gioHangService;
+
     @Autowired
     private TaiKhoanService taiKhoanService;
     @Autowired
-    private CTHoaDonService ctHoaDonService;
-
-
-
-    @GetMapping("/cho-lay-hang")
-    public String index(Model model ){
-        model.addAttribute("quanlyhoadon", hoaDonService.gethoadonchoduyet());
-        model.addAttribute("chitiethoadon",ctHoaDonService.getAllCTHoaDon());
-        return "admin/QuanLyHoaDon/index";
-    }
-
-    @GetMapping("/dang-giao")
-    public String danggiaohoadon(Model model){
-        model.addAttribute("quanlyhoadon", hoaDonService.gethoadondanggiao());
-        model.addAttribute("chitiethoadon2",ctHoaDonService.getAllCTHoaDon());
-        return "admin/QuanLyHoaDon/index";
-    }
-    @GetMapping("/da-hoan-thanh")
-    public String dahoanthanhhoadon(Model model, String usrname){
-        model.addAttribute("quanlyhoadon",hoaDonService.gethoadondahoanthanh());
-        model.addAttribute("chitiethoadon3",ctHoaDonService.getAllCTHoaDon());
+    private SanPhamService sanPhamService;
+    @Autowired
+     private  ICTHoaDonRepository ctHoaDonRepository;
+    @GetMapping
+    public String TrangThaiduyet(Model model, Authentication authentication, @Param("trangthai") String trangthai){
+        model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(taiKhoanService.getTaiKhoanByUserName(authentication.getName()).getId()));
+        model.addAttribute("listProducts", sanPhamService.getAllProduct());
+        model.addAttribute("slSPDaDat", hoaDonService.getListHoaDonByUserName(authentication.getName(),null).size());
+        model.addAttribute("dsCTHDDaMua", ctHoaDonRepository.getListSPByUserNameVaTrangThai(authentication.getName(), "Hoàn thành"));
+        model.addAttribute("ListHoaDon", hoaDonService.getListByTrangThai(trangthai));
+        if(trangthai==null)
+            trangthai="Tất cả";
+        model.addAttribute("trangthai", trangthai);
         return "admin/QuanLyHoaDon/index";
     }
 

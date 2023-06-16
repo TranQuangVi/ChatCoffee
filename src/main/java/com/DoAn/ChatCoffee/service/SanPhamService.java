@@ -26,6 +26,9 @@ public class SanPhamService {
 
 
     public void saveProduct(Sanpham product){
+        product.setSldaban(0L);
+        if(product.getSoluong()==null)
+            product.setSoluong(0L);
         sanPhamRepository.save(product);
     }
      void privateSaveProduct(Sanpham product){

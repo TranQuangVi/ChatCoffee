@@ -109,13 +109,346 @@
                         <!-- end card -->
                     </div>
                     <div class="col-xl-8">
+                        <div class="row">
+
+                            <div class="row text-center icon-demo-content nav-pills" id="v-pills-tab" role="tablist"
+                                 aria-orientation="vertical">
+                                <div class="col-lg-4">
+                                    <div class="card mini-stats-wid nav-link active" aria-selected="true"
+                                         id="v-pills-shipping-tab" data-bs-toggle="pill" href="#v-pills-shipping"
+                                         role="tab" aria-controls="v-pills-shipping">
+                                        <div class="card-body ">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1 ">
+                                                    <a th:if="${slSPChoXacNhan}"
+                                                       class="badge bg-success float-end font-size-15"
+                                                       th:text="${slSPChoXacNhan}"></a>
+                                                    <a class=" icon_user">
+                                                        <i class="bx bx-paste" style="font-size: 45px"> </i>
+                                                        <p class="text-muted fw-medium mb-2">Chờ xác nhận</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card mini-stats-wid nav-link" id="v-pills-payment-tab"
+                                         data-bs-toggle="pill" href="#v-pills-payment" role="tab"
+                                         aria-controls="v-pills-payment" aria-selected="false" tabindex="-1">
+                                        <div class="card-body ">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1 ">
+                                                    <a th:if="${slSPChoLayHang}"
+                                                       class="badge bg-success float-end font-size-15"
+                                                       th:text="${slSPChoLayHang}"></a>
+                                                    <a class=" icon_user">
+                                                        <i class="bx bx-archive" style="font-size: 45px"></i>
+                                                        <p class="text-muted fw-medium mb-2">Chờ lấy hàng</p>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card mini-stats-wid nav-link" id="v-pills-confir-tab"
+                                         data-bs-toggle="pill" href="#v-pills-confir" role="tab"
+                                         aria-controls="v-pills-confir" aria-selected="false" tabindex="-1">
+                                        <div class="card-body ">
+                                            <div class="d-flex">
+                                                <div class="flex-grow-1 ">
+                                                    <a th:if="${slSPDangGiao}"
+                                                       class="badge bg-success float-end font-size-15"
+                                                       th:text="${slSPDangGiao}"></a>
+                                                    <a class=" icon_user">
+                                                        <i class="bx bxs-truck" style="font-size: 45px"></i>
+                                                        <p class="text-muted fw-medium mb-2">Đang giao</p>
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-10 col-sm-9" style="width: 830px;">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="tab-content" id="v-pills-tabContent">
+                                            <div class="tab-pane fade active show" id="v-pills-shipping" role="tabpanel"
+                                                 aria-labelledby="v-pills-shipping-tab">
+                                                <div class="card shadow-none border mb-0">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title mb-4">Danh sách đơn hàng chờ xác nhận</h4>
+                                                        <div>
+                                                            <div class="chat-conversation p-3">
+                                                                <ul class="list-unstyled mb-0" data-simplebar="init"
+                                                                    style="max-height: 200px;">
+                                                                    <div class="simplebar-wrapper" style="margin: 0px;">
+                                                                        <div class="simplebar-height-auto-observer-wrapper">
+                                                                            <div class="simplebar-height-auto-observer"></div>
+                                                                        </div>
+                                                                        <div class="simplebar-mask">
+                                                                            <div class="simplebar-offset"
+                                                                                 style="right: -16.8px; bottom: 0px;">
+                                                                                <div class="simplebar-content-wrapper"
+                                                                                     style="height: auto; overflow: hidden scroll;">
+                                                                                    <div class="simplebar-content"
+                                                                                         style="padding: 0px;">
+
+                                                                                        <div class="table-responsive">
+                                                                                            <table class="table align-middle table-nowrap">
+                                                                                                <thead class="table-light">
+                                                                                                <tr>
+                                                                                                    <th class="align-middle">
+                                                                                                        Số hóa đơn
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Tên Khách hàng
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Ngày đặt
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Tổng giá
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Xem chi tiết
+                                                                                                    </th>
+
+                                                                                                </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                <tr th:each=" dsduyet,row: ${dsChoDuyet}">
+                                                                                                    <td th:text="${dsduyet.id}"
+                                                                                                        name="idds"
+                                                                                                        id="idds"></td>
+                                                                                                    <td th:text="${dsduyet.taikhoan.fullname}"></td>
+                                                                                                    <td th:text="${dsduyet.ngaydat}"></td>
+                                                                                                    <td th:text="${dsduyet.tonggia}"></td>
+                                                                                                    <td>
+                                                                                                        <!-- Button trigger modal -->
+                                                                                                        <button type="button"
+                                                                                                                class="btn btn-primary btn-sm btn-rounded"
+                                                                                                                data-bs-toggle="modal"
+                                                                                                                th:data-bs-target="'.orderdetailsModals' + ${dsduyet.id}">
+                                                                                                            Chi tiết
+                                                                                                        </button>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="simplebar-placeholder"
+                                                                             style="width: auto; height: 645px;"></div>
+                                                                    </div>
+                                                                    <div class="simplebar-track simplebar-horizontal"
+                                                                         style="visibility: hidden;">
+                                                                        <div class="simplebar-scrollbar"
+                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                                                                    </div>
+                                                                    <div class="simplebar-track simplebar-vertical"
+                                                                         style="visibility: visible;">
+                                                                        <div class="simplebar-scrollbar"
+                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                                                    </div>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-payment" role="tabpanel"
+                                                 aria-labelledby="v-pills-payment-tab">
+                                                <div class="card shadow-none border mb-0">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title mb-4">Danh sách đơn hàng chờ lấy</h4>
+                                                        <div>
+                                                            <div class="chat-conversation p-3">
+                                                                <ul class="list-unstyled mb-0" data-simplebar="init"
+                                                                    style="max-height: 200px;">
+                                                                    <div class="simplebar-wrapper" style="margin: 0px;">
+                                                                        <div class="simplebar-height-auto-observer-wrapper">
+                                                                            <div class="simplebar-height-auto-observer"></div>
+                                                                        </div>
+                                                                        <div class="simplebar-mask">
+                                                                            <div class="simplebar-offset"
+                                                                                 style="right: -16.8px; bottom: 0px;">
+                                                                                <div class="simplebar-content-wrapper"
+                                                                                     style="height: auto; overflow: hidden scroll;">
+                                                                                    <div class="simplebar-content"
+                                                                                         style="padding: 0px;">
+
+                                                                                        <div class="table-responsive">
+                                                                                            <table class="table align-middle table-nowrap">
+                                                                                                <thead class="table-light">
+                                                                                                <tr>
+                                                                                                    <th class="align-middle">
+                                                                                                        Số hóa đơn
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Tên Khách hàng
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Ngày đặt
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Tổng giá
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Xem chi tiết
+                                                                                                    </th>
+                                                                                                </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                <tr th:each=" dschoLay,row: ${dsChoLay}">
+                                                                                                    <td th:text="${dschoLay.id}"
+                                                                                                        name="id"
+                                                                                                        id="idlay"></td>
+                                                                                                    <td th:text="${dschoLay.taikhoan.fullname}"></td>
+                                                                                                    <td th:text="${dschoLay.ngaydat}"></td>
+                                                                                                    <td th:text="${dschoLay.tonggia}"></td>
+                                                                                                    <td>
+                                                                                                        <!-- Button trigger modal -->
+                                                                                                        <button type="button"
+                                                                                                                class="btn btn-primary btn-sm btn-rounded"
+                                                                                                                data-bs-toggle="modal"
+                                                                                                                th:data-bs-target="'.orderdetailsModals' + ${dschoLay.id}">
+                                                                                                            Chi tiết
+                                                                                                        </button>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="simplebar-placeholder"
+                                                                             style="width: auto; height: 645px;"></div>
+                                                                    </div>
+                                                                    <div class="simplebar-track simplebar-horizontal"
+                                                                         style="visibility: hidden;">
+                                                                        <div class="simplebar-scrollbar"
+                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                                                                    </div>
+                                                                    <div class="simplebar-track simplebar-vertical"
+                                                                         style="visibility: visible;">
+                                                                        <div class="simplebar-scrollbar"
+                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                                                    </div>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-confir" role="tabpanel"
+                                                 aria-labelledby="v-pills-confir-tab">
+                                                <div class="card shadow-none border mb-0">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title mb-4">Danh sách đơn hàng đang giao</h4>
+                                                        <div>
+                                                            <div class="chat-conversation p-3">
+                                                                <ul class="list-unstyled mb-0" data-simplebar="init"
+                                                                    style="max-height: 200px;">
+                                                                    <div class="simplebar-wrapper" style="margin: 0px;">
+                                                                        <div class="simplebar-height-auto-observer-wrapper">
+                                                                            <div class="simplebar-height-auto-observer"></div>
+                                                                        </div>
+                                                                        <div class="simplebar-mask">
+                                                                            <div class="simplebar-offset"
+                                                                                 style="right: -16.8px; bottom: 0px;">
+                                                                                <div class="simplebar-content-wrapper"
+                                                                                     style="height: auto; overflow: hidden scroll;">
+                                                                                    <div class="simplebar-content"
+                                                                                         style="padding: 0px;">
+
+                                                                                        <div class="table-responsive">
+                                                                                            <table class="table align-middle table-nowrap">
+                                                                                                <thead class="table-light">
+                                                                                                <tr>
+                                                                                                    <th class="align-middle">
+                                                                                                        Số hóa đơn
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Tên Khách hàng
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Ngày đặt
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Tổng giá
+                                                                                                    </th>
+                                                                                                    <th class="align-middle">
+                                                                                                        Xem chi tiết
+                                                                                                    </th>
+                                                                                                </tr>
+                                                                                                </thead>
+                                                                                                <tbody>
+                                                                                                <tr th:each=" dsdangGiao,row: ${dsDangGiao}">
+                                                                                                    <td th:text="${dsdangGiao.id}"
+                                                                                                        name="id"
+                                                                                                        id="idgiao"></td>
+                                                                                                    <td th:text="${dsdangGiao.taikhoan.fullname}"></td>
+                                                                                                    <td th:text="${dsdangGiao.ngaydat}"></td>
+                                                                                                    <td th:text="${dsdangGiao.tonggia}"></td>
+                                                                                                    <td>
+                                                                                                        <!-- Button trigger modal -->
+                                                                                                        <button type="button"
+                                                                                                                class="btn btn-primary btn-sm btn-rounded"
+                                                                                                                data-bs-toggle="modal"
+                                                                                                                th:data-bs-target="'.orderdetailsModals' + ${dsdangGiao.id}">
+                                                                                                            Chi tiết
+                                                                                                        </button>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="simplebar-placeholder"
+                                                                             style="width: auto; height: 645px;"></div>
+                                                                    </div>
+                                                                    <div class="simplebar-track simplebar-horizontal"
+                                                                         style="visibility: hidden;">
+                                                                        <div class="simplebar-scrollbar"
+                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                                                                    </div>
+                                                                    <div class="simplebar-track simplebar-vertical"
+                                                                         style="visibility: visible;">
+                                                                        <div class="simplebar-scrollbar"
+                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                                                    </div>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title mb-4">Lịch sử mua hàng</h4>
-                                <div th:if="!${dsHDDaMua}" >
+                                <div th:if="!${dsHDDaMua}">
                                     <tr><p> Chưa có đơn hàng. Nhanh tay thêm sản phẩm vào giỏ hàng !!!</p></tr>
                                 </div>
-                                <div th:if="${dsHDDaMua}" >
+                                <div th:if="${dsHDDaMua}">
                                     <div class="chat-conversation p-3">
                                         <ul class="list-unstyled mb-0" data-simplebar="init"
                                             style="max-height: 200px;">
@@ -144,13 +477,17 @@
                                                                         </thead>
                                                                         <tbody>
                                                                         <tr th:each=" hoadondamua,row: ${dsHDDaMua}">
-                                                                            <td th:text="${hoadondamua.id}" name="id" id="id"></td>
+                                                                            <td th:text="${hoadondamua.id}" name="id"
+                                                                                id="id"></td>
                                                                             <td th:text="${hoadondamua.taikhoan.fullname}"></td>
                                                                             <td th:text="${hoadondamua.ngaydat}"></td>
                                                                             <td th:text="${hoadondamua.tonggia}"></td>
                                                                             <td>
                                                                                 <!-- Button trigger modal -->
-                                                                                <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" th:data-bs-target="'.orderdetailsModals' + ${hoadondamua.id}">
+                                                                                <button type="button"
+                                                                                        class="btn btn-primary btn-sm btn-rounded"
+                                                                                        data-bs-toggle="modal"
+                                                                                        th:data-bs-target="'.orderdetailsModals' + ${hoadondamua.id}">
                                                                                     Chi tiết
                                                                                 </button>
                                                                             </td>
@@ -184,539 +521,237 @@
                                 </div>
                             </div>
                         </div>
-                        <!--từ đây-->
-                        <div class="row">
-
-                                <div class="row text-center nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <div class="col-lg-4">
-                                    <div class="card mini-stats-wid nav-link active" aria-selected="true" id="v-pills-shipping-tab" data-bs-toggle="pill" href="#v-pills-shipping" role="tab" aria-controls="v-pills-shipping">
-                                        <div class="card-body ">
-                                            <div class="d-flex">
-                                                <div class="flex-grow-1 ">
-                                                    <a th:if="${slSPChoXacNhan}" class="badge bg-success float-end font-size-15" th:text="${slSPChoXacNhan}"></a>
-                                                    <a class=" icon_user"  >
-                                                        <i class="bx bx-paste" style="font-size: 45px" > </i>
-                                                        <p class="text-muted fw-medium mb-2">Chờ xác nhận</p>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="card mini-stats-wid nav-link" id="v-pills-payment-tab" data-bs-toggle="pill" href="#v-pills-payment" role="tab" aria-controls="v-pills-payment" aria-selected="false" tabindex="-1">
-                                            <div class="card-body ">
-                                                <div class="d-flex">
-                                                    <div class="flex-grow-1 ">
-                                                        <a th:if="${slSPChoLayHang}" class="badge bg-success float-end font-size-15" th:text="${slSPChoLayHang}"></a>
-                                                        <a class=" icon_user"  >
-                                                            <i class="bx bx-archive" style="font-size: 45px"></i>
-                                                            <p class="text-muted fw-medium mb-2">Chờ lấy hàng</p>
-                                                        </a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="card mini-stats-wid nav-link" id="v-pills-confir-tab" data-bs-toggle="pill" href="#v-pills-confir" role="tab" aria-controls="v-pills-confir" aria-selected="false" tabindex="-1">
-                                            <div class="card-body ">
-                                                <div class="d-flex">
-                                                    <div class="flex-grow-1 ">
-                                                        <a th:if="${slSPDangGiao}" class="badge bg-success float-end font-size-15" th:text="${slSPDangGiao}"></a>
-                                                        <a class=" icon_user"  >
-                                                            <i class="bx bxs-truck" style="font-size: 45px"></i>
-                                                            <p class="text-muted fw-medium mb-2">Đang giao</p>
-                                                        </a>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            <div class="col-xl-10 col-sm-9" style="width: 830px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Đề xuất-->
+                    <div class="card">
+                        <div class="card-body" style="position: relative;">
+                            <div class="w-100 user-chat">
                                 <div class="card">
-                                    <div class="card-body">
-                                        <div class="tab-content" id="v-pills-tabContent">
-                                            <div class="tab-pane fade active show" id="v-pills-shipping" role="tabpanel" aria-labelledby="v-pills-shipping-tab">
-                                                <div class="card shadow-none border mb-0">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title mb-4">Danh sách đơn hàng chờ xác nhận</h4>
-                                                        <div>
-                                                            <div class="chat-conversation p-3">
-                                                                <ul class="list-unstyled mb-0" data-simplebar="init"
-                                                                    style="max-height: 200px;">
-                                                                    <div class="simplebar-wrapper" style="margin: 0px;">
-                                                                        <div class="simplebar-height-auto-observer-wrapper">
-                                                                            <div class="simplebar-height-auto-observer"></div>
-                                                                        </div>
-                                                                        <div class="simplebar-mask">
-                                                                            <div class="simplebar-offset"
-                                                                                 style="right: -16.8px; bottom: 0px;">
-                                                                                <div class="simplebar-content-wrapper"
-                                                                                     style="height: auto; overflow: hidden scroll;">
-                                                                                    <div class="simplebar-content" style="padding: 0px;">
-
-                                                                                        <div class="table-responsive">
-                                                                                            <table class="table align-middle table-nowrap">
-                                                                                                <thead class="table-light">
-                                                                                                <tr>
-                                                                                                    <th class="align-middle">Số hóa đơn</th>
-                                                                                                    <th class="align-middle">Tên Khách hàng</th>
-                                                                                                    <th class="align-middle">Ngày đặt</th>
-                                                                                                    <th class="align-middle">Tổng giá</th>
-                                                                                                    <th class="align-middle">Xem chi tiết</th>
-
-                                                                                                </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                <tr th:each=" dsduyet,row: ${dsChoDuyet}">
-                                                                                                    <td th:text="${dsduyet.id}" name="idds" id="idds"></td>
-                                                                                                    <td th:text="${dsduyet.taikhoan.fullname}"></td>
-                                                                                                    <td th:text="${dsduyet.ngaydat}"></td>
-                                                                                                    <td th:text="${dsduyet.tonggia}"></td>
-                                                                                                    <td>
-                                                                                                        <!-- Button trigger modal -->
-                                                                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" th:data-bs-target="'.orderdetailsModals' + ${dsduyet.id}">
-                                                                                                            Chi tiết
-                                                                                                        </button>
-                                                                                                    </td>
-
-
-                                                                                                </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="simplebar-placeholder"
-                                                                             style="width: auto; height: 645px;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-horizontal"
-                                                                         style="visibility: hidden;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-vertical"
-                                                                         style="visibility: visible;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                                                                    </div>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                                    <div class="p-4 border-bottom ">
+                                        <div class="row">
+                                            <div class="col-md-4 col-9">
+                                                <h5 class="font-size-15 mb-1">Đề xuất</h5>
+                                            </div>
+                                            <div class="col-md-8 col-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="chat-conversation p-3">
+                                            <ul class="list-unstyled mb-0" data-simplebar="init"
+                                                style="max-height: 486px;">
+                                                <div class="simplebar-wrapper" style="margin: 0px;">
+                                                    <div class="simplebar-height-auto-observer-wrapper">
+                                                        <div class="simplebar-height-auto-observer"></div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-payment" role="tabpanel" aria-labelledby="v-pills-payment-tab">
-                                                <div class="card shadow-none border mb-0">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title mb-4">Danh sách đơn hàng chờ lấy</h4>
-                                                        <div>
-                                                            <div class="chat-conversation p-3">
-                                                                <ul class="list-unstyled mb-0" data-simplebar="init"
-                                                                    style="max-height: 200px;">
-                                                                    <div class="simplebar-wrapper" style="margin: 0px;">
-                                                                        <div class="simplebar-height-auto-observer-wrapper">
-                                                                            <div class="simplebar-height-auto-observer"></div>
-                                                                        </div>
-                                                                        <div class="simplebar-mask">
-                                                                            <div class="simplebar-offset"
-                                                                                 style="right: -16.8px; bottom: 0px;">
-                                                                                <div class="simplebar-content-wrapper"
-                                                                                     style="height: auto; overflow: hidden scroll;">
-                                                                                    <div class="simplebar-content" style="padding: 0px;">
-
-                                                                                        <div class="table-responsive">
-                                                                                            <table class="table align-middle table-nowrap">
-                                                                                                <thead class="table-light">
-                                                                                                <tr>
-                                                                                                    <th class="align-middle">Số hóa đơn</th>
-                                                                                                    <th class="align-middle">Tên Khách hàng</th>
-                                                                                                    <th class="align-middle">Ngày đặt</th>
-                                                                                                    <th class="align-middle">Tổng giá</th>
-                                                                                                    <th class="align-middle">Xem chi tiết</th>
-
-                                                                                                </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                <tr th:each=" dschoLay,row: ${dsChoLay}">
-                                                                                                    <td th:text="${dschoLay.id}" name="id" id="idlay"></td>
-                                                                                                    <td th:text="${dschoLay.taikhoan.fullname}"></td>
-                                                                                                    <td th:text="${dschoLay.ngaydat}"></td>
-                                                                                                    <td th:text="${dschoLay.tonggia}"></td>
-                                                                                                    <td>
-                                                                                                        <!-- Button trigger modal -->
-                                                                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" th:data-bs-target="'.orderdetailsModals' + ${dschoLay.id}">
-                                                                                                            Chi tiết
-                                                                                                        </button>
-                                                                                                    </td>
-                                                                                                </tr>
-                                                                                                </tbody>
-                                                                                            </table>
+                                                    <div class="simplebar-mask">
+                                                        <div class="simplebar-offset"
+                                                             style="right: -16.8px; bottom: 0px;">
+                                                            <div class="simplebar-content-wrapper"
+                                                                 style="height: auto; overflow: hidden scroll;">
+                                                                <div class="simplebar-content"
+                                                                     style="padding: 0px;">
+                                                                    <li>
+                                                                        <div class="row">
+                                                                            <div th:each="product: ${listProducts}"
+                                                                                 class="col-xl-3 col-md-6 col-lg-3">
+                                                                                <div class="card "
+                                                                                     style="background-color: aliceblue;">
+                                                                                    <div class="card-body text-center">
+                                                                                        <div class="favorite-icon">
+                                                                                            <a href="javascript:void(0)"><i
+                                                                                                    class="uil uil-heart-alt fs-18"></i></a>
                                                                                         </div>
+                                                                                        <img th:src="${product.anh}"
+                                                                                             alt="" height="100"
+                                                                                             class="mb-3">
+                                                                                        <h5 class="fs-17 mb-2"><a
+                                                                                                th:href="@{/san-pham/chi-tiet/{id}(id=${product.id})}"
+                                                                                                class="text-dark"
+                                                                                                th:text="${product.TenSP}"></a>
+                                                                                            <small class="text-muted fw-normal"></small>
+                                                                                        </h5>
+                                                                                        <ul class="list-inline mb-0">
 
+                                                                                            <li class="list-inline-item text-center">
+                                                                                                <h6 class="text-center fs-14 mb-0"
+                                                                                                    th:text="${product.Gia} + ' VND'"></h6>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                        <div class="mt-4 hstack gap-2">
+                                                                                            <a th:href="@{/gio-hang/them-san-pham/{id}(id=${product.id})}"
 
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="simplebar-placeholder"
-                                                                             style="width: auto; height: 645px;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-horizontal"
-                                                                         style="visibility: hidden;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-vertical"
-                                                                         style="visibility: visible;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                                                                    </div>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-confir" role="tabpanel" aria-labelledby="v-pills-confir-tab">
-                                                <div class="card shadow-none border mb-0">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title mb-4">Danh sách đơn hàng đang giao</h4>
-                                                        <div>
-                                                            <div class="chat-conversation p-3">
-                                                                <ul class="list-unstyled mb-0" data-simplebar="init"
-                                                                    style="max-height: 200px;">
-                                                                    <div class="simplebar-wrapper" style="margin: 0px;">
-                                                                        <div class="simplebar-height-auto-observer-wrapper">
-                                                                            <div class="simplebar-height-auto-observer"></div>
-                                                                        </div>
-                                                                        <div class="simplebar-mask">
-                                                                            <div class="simplebar-offset"
-                                                                                 style="right: -16.8px; bottom: 0px;">
-                                                                                <div class="simplebar-content-wrapper"
-                                                                                     style="height: auto; overflow: hidden scroll;">
-                                                                                    <div class="simplebar-content" style="padding: 0px;">
-
-                                                                                        <div class="table-responsive">
-                                                                                            <table class="table align-middle table-nowrap">
-                                                                                                <thead class="table-light">
-                                                                                                <tr>
-                                                                                                    <th class="align-middle">Số hóa đơn</th>
-                                                                                                    <th class="align-middle">Tên Khách hàng</th>
-                                                                                                    <th class="align-middle">Ngày đặt</th>
-                                                                                                    <th class="align-middle">Tổng giá</th>
-                                                                                                    <th class="align-middle">Xem chi tiết</th>
-
-                                                                                                </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                <tr th:each=" dsdangGiao,row: ${dsDangGiao}">
-                                                                                                    <td th:text="${dsdangGiao.id}" name="id" id="idgiao"></td>
-                                                                                                    <td th:text="${dsdangGiao.taikhoan.fullname}"></td>
-                                                                                                    <td th:text="${dsdangGiao.ngaydat}"></td>
-                                                                                                    <td th:text="${dsdangGiao.tonggia}"></td>
-                                                                                                    <td>
-                                                                                                        <!-- Button trigger modal -->
-                                                                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" th:data-bs-target="'.orderdetailsModals' + ${dsdangGiao.id}">
-                                                                                                            Chi tiết
-                                                                                                        </button>
-                                                                                                    </td>
-
-
-                                                                                                </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="simplebar-placeholder"
-                                                                             style="width: auto; height: 645px;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-horizontal"
-                                                                         style="visibility: hidden;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-vertical"
-                                                                         style="visibility: visible;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                                                                    </div>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!--đến đây-->
-                       <!-- <div class="row icon-demo-content text-center ">
-                            <div class="col-lg-4">
-                                <div class="card mini-stats-wid">
-                                    <div class="card-body ">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1 ">
-                                                <a th:if="${slSPChoXacNhan}" class="badge bg-success float-end font-size-15" th:text="${slSPChoXacNhan}"></a>
-                                                <a class=" d-block" href="#">
-                                                    <i class="bx bx-paste" style="font-size: 45px" > </i>
-                                                    <p class="text-muted fw-medium mb-2">Chờ xác nhận</p>
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card mini-stats-wid">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1">
-                                                <a th:if="${slSPChoLayHang}" class="badge bg-success float-end font-size-15" th:text="${slSPChoLayHang}"></a>
-                                                <i class="bx bx-archive" style="font-size: 45px"></i>
-                                                <p class="text-muted fw-medium mb-2">Chờ lấy hàng</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card mini-stats-wid">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1">
-                                                <a th:if="${slSPDangGiao}" class="badge bg-success float-end font-size-15" th:text="${slSPDangGiao}"></a>
-                                                <i class="bx bxs-truck" style="font-size: 45px"></i>
-                                                <p class="text-muted fw-medium mb-2">Đang giao</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
--->
-
-                        <!--Đề xuất-->
-                        <div class="card">
-                            <div class="card-body" style="position: relative;">
-                                <div class="w-100 user-chat">
-                                    <div class="card">
-                                        <div class="p-4 border-bottom ">
-                                            <div class="row">
-                                                <div class="col-md-4 col-9">
-                                                    <h5 class="font-size-15 mb-1">Đề xuất</h5>
-                                                </div>
-                                                <div class="col-md-8 col-3">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="chat-conversation p-3">
-                                                <ul class="list-unstyled mb-0" data-simplebar="init"
-                                                    style="max-height: 486px;">
-                                                    <div class="simplebar-wrapper" style="margin: 0px;">
-                                                        <div class="simplebar-height-auto-observer-wrapper">
-                                                            <div class="simplebar-height-auto-observer"></div>
-                                                        </div>
-                                                        <div class="simplebar-mask">
-                                                            <div class="simplebar-offset"
-                                                                 style="right: -16.8px; bottom: 0px;">
-                                                                <div class="simplebar-content-wrapper"
-                                                                     style="height: auto; overflow: hidden scroll;">
-                                                                    <div class="simplebar-content"
-                                                                         style="padding: 0px;">
-                                                                        <li>
-                                                                            <div class="row">
-                                                                                <div th:each="product: ${listProducts}"
-                                                                                     class="col-xl-4 col-md-6 col-lg-4">
-                                                                                    <div class="card "
-                                                                                         style="background-color: aliceblue;">
-                                                                                        <div class="card-body text-center">
-                                                                                            <div class="favorite-icon">
-                                                                                                <a href="javascript:void(0)"><i
-                                                                                                        class="uil uil-heart-alt fs-18"></i></a>
-                                                                                            </div>
-                                                                                            <img th:src="${product.anh}"
-                                                                                                 alt="" height="100"
-                                                                                                 class="mb-3">
-                                                                                            <h5 class="fs-17 mb-2"><a
-                                                                                                    th:href="@{/san-pham/chi-tiet/{id}(id=${product.id})}"
-                                                                                                    class="text-dark"
-                                                                                                    th:text="${product.TenSP}"></a>
-                                                                                                <small class="text-muted fw-normal"></small>
-                                                                                            </h5>
-                                                                                            <ul class="list-inline mb-0">
-
-                                                                                                <li class="list-inline-item text-center">
-                                                                                                    <h6 class="text-center fs-14 mb-0"
-                                                                                                       th:text="${product.Gia} + ' VND'"></h6>
-                                                                                                </li>
-                                                                                            </ul>
-                                                                                            <div class="mt-4 hstack gap-2">
-                                                                                                <a th:href="@{/gio-hang/them-san-pham/{id}(id=${product.id})}"
-                                                                                                   data-bs-toggle="modal"
-                                                                                                   class="btn btn-soft-primary w-100">Thêm vào giỏ</a>
-                                                                                            </div>
+                                                                                               class="btn btn-soft-primary w-100">Thêm
+                                                                                                vào giỏ</a>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-
                                                                             </div>
-                                                                        </li>
 
-                                                                    </div>
+                                                                        </div>
+                                                                    </li>
+
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="simplebar-placeholder"
-                                                             style="width: auto; height: 645px;"></div>
                                                     </div>
-                                                    <div class="simplebar-track simplebar-horizontal"
-                                                         style="visibility: hidden;">
-                                                        <div class="simplebar-scrollbar"
-                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                                                    </div>
-                                                    <div class="simplebar-track simplebar-vertical"
-                                                         style="visibility: visible;">
-                                                        <div class="simplebar-scrollbar"
-                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                                                    </div>
-                                                </ul>
-                                            </div>
+                                                    <div class="simplebar-placeholder"
+                                                         style="width: auto; height: 645px;"></div>
+                                                </div>
+                                                <div class="simplebar-track simplebar-horizontal"
+                                                     style="visibility: hidden;">
+                                                    <div class="simplebar-scrollbar"
+                                                         style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                                                </div>
+                                                <div class="simplebar-track simplebar-vertical"
+                                                     style="visibility: visible;">
+                                                    <div class="simplebar-scrollbar"
+                                                         style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                                </div>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- Chi tiết ds đã mua -->
                 <div th:each=" hoadondamua: ${dsHDDaMua}">
-                        <!-- Button trigger modal -->
-                         <div th:class="'modal fade orderdetailsModals' + ${hoadondamua.id}" tabindex="-1" aria-labelledby="orderdetailsModalLabel" style="display: none;" aria-hidden="true">
-                             <div class="modal-dialog modal-dialog-centered" role="document">
-                                 <div class="modal-content">
-                                     <div class="modal-header">
-                                         <h5 class="modal-title" id="orderdetailsModalLabel">Chi tiết hóa đơn</h5>
-                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                     </div>
-                                     <div class="modal-body">
-                                         <div class="row">
-                                             <div class="col-7">
-                                                 <p class="mb-3">Mã hóa đơn: <span class="text-primary" th:text="${hoadondamua.id}"></span></p>
-                                                 <p class="mb-3">Tên khách hàng: <span class="text-primary" th:text="${hoadondamua.taikhoan.fullname}"></span></p>
-                                                 <p class="mb-3">Số điện thoại: <span class="text-primary" th:text="${hoadondamua.sdt}"></span></p>
-                                                 <p class="mb-3">Địa chỉ: <span class="text-primary" th:text="${hoadondamua.diachinhan}"></span></p>
-                                             </div>
-                                             <div class="col-5">
-                                                 <p class="mb-2">Ngày đặt: <span class="text-primary" th:text="${hoadondamua.ngaydat}"></span></p>
-                                                 <p class="mb-4">Ngày giao: <span class="text-primary" th:text="${hoadondamua.ngaygiao}"></span></p>
+                    <!-- Button trigger modal -->
+                    <div th:class="'modal fade orderdetailsModals' + ${hoadondamua.id}" tabindex="-1"
+                         aria-labelledby="orderdetailsModalLabel" style="display: none;" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="orderdetailsModalLabel">Chi tiết hóa đơn</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-7">
+                                            <p class="mb-3">Mã hóa đơn: <span class="text-primary"
+                                                                              th:text="${hoadondamua.id}"></span></p>
+                                            <p class="mb-3">Tên khách hàng: <span class="text-primary"
+                                                                                  th:text="${hoadondamua.taikhoan.fullname}"></span>
+                                            </p>
+                                            <p class="mb-3">Số điện thoại: <span class="text-primary"
+                                                                                 th:text="${hoadondamua.sdt}"></span>
+                                            </p>
+                                            <p class="mb-3">Địa chỉ: <span class="text-primary"
+                                                                           th:text="${hoadondamua.diachinhan}"></span>
+                                            </p>
+                                        </div>
+                                        <div class="col-5">
+                                            <p class="mb-2">Ngày đặt: <span class="text-primary"
+                                                                            th:text="${hoadondamua.ngaydat}"></span></p>
+                                            <p class="mb-4">Ngày giao: <span class="text-primary"
+                                                                             th:text="${hoadondamua.ngaygiao}"></span>
+                                            </p>
 
-                                             </div>
-                                         </div>
+                                        </div>
+                                    </div>
 
-                                         <div class="table-responsive">
-                                             <table class="table align-middle table-nowrap">
-                                                 <thead>
-                                                 <tr>
-                                                     <th>Ảnh</th>
-                                                     <th>Tên sản phẩm</th>
-                                                     <th>Tổng giá</th>
-                                                 </tr>
-                                                 </thead>
-                                                 <tbody>
-                                                 <tr th:each=" cthoadon: ${dsCTHDDaMua}">
-                                                     <div th:if="${cthoadon.hoadon.id}==${hoadondamua.id}">
-                                                     <th scope="row">
-                                                         <div>
-                                                             <img th:src="${cthoadon.sanpham.anh}" alt="" class="avatar-sm">
-                                                         </div>
-                                                     </th>
-                                                     <td>
-                                                         <div>
-                                                             <h5 class="text-truncate font-size-14" th:text="${cthoadon.sanpham.TenSP}"></h5>
-                                                             <p class="text-muted mb-0" th:text="${cthoadon.sanpham.Gia} +' x '+${cthoadon.soluong}"></p>
-                                                         </div>
-                                                     </td>
-                                                     <td th:text="${cthoadon.sanpham.Gia * cthoadon.soluong} + ' VND'"></td></div>
-                                                 </tr>
-                                                 <tr>
-                                                     <td colspan="2">
-                                                         <h6 class="m-0 text-right">Tổng tiền hàng:</h6>
-                                                     </td>
-                                                     <td>
-                                                          400 VND
-                                                     </td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td colspan="2">
-                                                         <h6>Hình thức vận chuyển:</h6>
-                                                     </td>
-                                                     <td th:text="${hoadondamua.vanchuyen.TenVC} + '(' + ${hoadondamua.vanchuyen.Gia} + 'VND)'" >
-                                                     </td>
-                                                 </tr>
-                                                 <tr>
-                                                     <td colspan="2">
-                                                         <h6 class="m-0 text-right">Tổng thanh toán:</h6>
-                                                     </td>
-                                                     <td>
-                                                          400 VND
-                                                     </td>
-                                                 </tr>
-                                                 </tbody>
-                                             </table>
-                                         </div>
-                                     </div>
-                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                     </div>
-                                 </div>
-                             </div>
-                         </div>
+                                    <div class="table-responsive">
+                                        <table class="table align-middle table-nowrap">
+                                            <thead>
+                                            <tr>
+                                                <th>Ảnh</th>
+                                                <th>Tên sản phẩm</th>
+                                                <th>Tổng giá</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each=" cthoadon: ${dsCTHDDaMua}">
+                                                <div th:if="${cthoadon.hoadon.id}==${hoadondamua.id}">
+                                                    <th scope="row">
+                                                        <div>
+                                                            <img th:src="${cthoadon.sanpham.anh}" alt=""
+                                                                 class="avatar-sm">
+                                                        </div>
+                                                    </th>
+                                                    <td>
+                                                        <div>
+                                                            <h5 class="text-truncate font-size-14"
+                                                                th:text="${cthoadon.sanpham.TenSP}"></h5>
+                                                            <p class="text-muted mb-0"
+                                                               th:text="${cthoadon.sanpham.Gia} +' x '+${cthoadon.soluong}"></p>
+                                                        </div>
+                                                    </td>
+                                                    <td th:text="${cthoadon.sanpham.Gia * cthoadon.soluong} + ' VND'"></td>
+                                                </div>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <h6 class="m-0 text-right">Tổng tiền hàng:</h6>
+                                                </td>
+                                                <td>
+                                                    400 VND
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <h6>Hình thức vận chuyển:</h6>
+                                                </td>
+                                                <td th:text="${hoadondamua.vanchuyen.TenVC} + '(' + ${hoadondamua.vanchuyen.Gia} + 'VND)'">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <h6 class="m-0 text-right">Tổng thanh toán:</h6>
+                                                </td>
+                                                <td>
+                                                    400 VND
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Chi tiết ds Chờ xác nhận -->
                 <div th:each=" dschoduyet: ${dsChoDuyet}">
                     <!-- Button trigger modal -->
-                    <div th:class="'modal fade orderdetailsModals' + ${dschoduyet.id}" tabindex="-1" aria-labelledby="orderdetailsModalLabel1" style="display: none;" aria-hidden="true">
+                    <div th:class="'modal fade orderdetailsModals' + ${dschoduyet.id}" tabindex="-1"
+                         aria-labelledby="orderdetailsModalLabel1" style="display: none;" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="orderdetailsModalLabel1">Chi tiết hóa đơn</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-7">
-                                            <p class="mb-3">Mã hóa đơn: <span class="text-primary" th:text="${dschoduyet.id}"></span></p>
-                                            <p class="mb-3">Tên khách hàng: <span class="text-primary" th:text="${dschoduyet.taikhoan.fullname}"></span></p>
-                                            <p class="mb-3">Số điện thoại: <span class="text-primary" th:text="${dschoduyet.sdt}"></span></p>
-                                            <p class="mb-3">Địa chỉ: <span class="text-primary" th:text="${dschoduyet.diachinhan}"></span></p>
+                                            <p class="mb-3">Mã hóa đơn: <span class="text-primary"
+                                                                              th:text="${dschoduyet.id}"></span></p>
+                                            <p class="mb-3">Tên khách hàng: <span class="text-primary"
+                                                                                  th:text="${dschoduyet.taikhoan.fullname}"></span>
+                                            </p>
+                                            <p class="mb-3">Số điện thoại: <span class="text-primary"
+                                                                                 th:text="${dschoduyet.sdt}"></span></p>
+                                            <p class="mb-3">Địa chỉ: <span class="text-primary"
+                                                                           th:text="${dschoduyet.diachinhan}"></span>
+                                            </p>
                                         </div>
                                         <div class="col-5">
-                                            <p class="mb-2">Ngày đặt: <span class="text-primary" th:text="${dschoduyet.ngaydat}"></span></p>
-                                            <p class="mb-4">Ngày giao: <span class="text-primary" th:text="${dschoduyet.ngaygiao}"></span></p>
+                                            <p class="mb-2">Ngày đặt: <span class="text-primary"
+                                                                            th:text="${dschoduyet.ngaydat}"></span></p>
+                                            <p class="mb-4">Ngày giao: <span class="text-primary"
+                                                                             th:text="${dschoduyet.ngaygiao}"></span>
+                                            </p>
 
                                         </div>
                                     </div>
@@ -735,16 +770,20 @@
                                                 <div th:if="${ctChoDuyet.hoadon.id}==${dschoduyet.id}">
                                                     <th scope="row">
                                                         <div>
-                                                            <img th:src="${ctChoDuyet.sanpham.anh}" alt="" class="avatar-sm">
+                                                            <img th:src="${ctChoDuyet.sanpham.anh}" alt=""
+                                                                 class="avatar-sm">
                                                         </div>
                                                     </th>
                                                     <td>
                                                         <div>
-                                                            <h5 class="text-truncate font-size-14" th:text="${ctChoDuyet.sanpham.TenSP}"></h5>
-                                                            <p class="text-muted mb-0" th:text="${ctChoDuyet.sanpham.Gia} +' x '+${ctChoDuyet.soluong}"></p>
+                                                            <h5 class="text-truncate font-size-14"
+                                                                th:text="${ctChoDuyet.sanpham.TenSP}"></h5>
+                                                            <p class="text-muted mb-0"
+                                                               th:text="${ctChoDuyet.sanpham.Gia} +' x '+${ctChoDuyet.soluong}"></p>
                                                         </div>
                                                     </td>
-                                                    <td th:text="${ctChoDuyet.sanpham.Gia * ctChoDuyet.soluong} + ' VND'"></td></div>
+                                                    <td th:text="${ctChoDuyet.sanpham.Gia * ctChoDuyet.soluong} + ' VND'"></td>
+                                                </div>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
@@ -758,7 +797,7 @@
                                                 <td colspan="2">
                                                     <h6>Hình thức vận chuyển:</h6>
                                                 </td>
-                                                <td th:text="${dschoduyet.vanchuyen.TenVC} + '(' + ${dschoduyet.vanchuyen.Gia} + 'VND)'" >
+                                                <td th:text="${dschoduyet.vanchuyen.TenVC} + '(' + ${dschoduyet.vanchuyen.Gia} + 'VND)'">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -774,7 +813,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -784,24 +824,33 @@
                 <!-- Chi tiết ds Chờ lấy hàng -->
                 <div th:each=" dsCholay: ${dsChoLay}">
                     <!-- Button trigger modal -->
-                    <div th:class="'modal fade orderdetailsModals' + ${dsCholay.id}" tabindex="-1" aria-labelledby="orderdetailsModalLabel2" style="display: none;" aria-hidden="true">
+                    <div th:class="'modal fade orderdetailsModals' + ${dsCholay.id}" tabindex="-1"
+                         aria-labelledby="orderdetailsModalLabel2" style="display: none;" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="orderdetailsModalLabel2">Chi tiết hóa đơn</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-7">
-                                            <p class="mb-3">Mã hóa đơn: <span class="text-primary" th:text="${dsCholay.id}"></span></p>
-                                            <p class="mb-3">Tên khách hàng: <span class="text-primary" th:text="${dsCholay.taikhoan.fullname}"></span></p>
-                                            <p class="mb-3">Số điện thoại: <span class="text-primary" th:text="${dsCholay.sdt}"></span></p>
-                                            <p class="mb-3">Địa chỉ: <span class="text-primary" th:text="${dsCholay.diachinhan}"></span></p>
+                                            <p class="mb-3">Mã hóa đơn: <span class="text-primary"
+                                                                              th:text="${dsCholay.id}"></span></p>
+                                            <p class="mb-3">Tên khách hàng: <span class="text-primary"
+                                                                                  th:text="${dsCholay.taikhoan.fullname}"></span>
+                                            </p>
+                                            <p class="mb-3">Số điện thoại: <span class="text-primary"
+                                                                                 th:text="${dsCholay.sdt}"></span></p>
+                                            <p class="mb-3">Địa chỉ: <span class="text-primary"
+                                                                           th:text="${dsCholay.diachinhan}"></span></p>
                                         </div>
                                         <div class="col-5">
-                                            <p class="mb-2">Ngày đặt: <span class="text-primary" th:text="${dsCholay.ngaydat}"></span></p>
-                                            <p class="mb-4">Ngày giao: <span class="text-primary" th:text="${dsCholay.ngaygiao}"></span></p>
+                                            <p class="mb-2">Ngày đặt: <span class="text-primary"
+                                                                            th:text="${dsCholay.ngaydat}"></span></p>
+                                            <p class="mb-4">Ngày giao: <span class="text-primary"
+                                                                             th:text="${dsCholay.ngaygiao}"></span></p>
 
                                         </div>
                                     </div>
@@ -820,16 +869,20 @@
                                                 <div th:if="${ctChoLay.hoadon.id}==${dsCholay.id}">
                                                     <th scope="row">
                                                         <div>
-                                                            <img th:src="${ctChoLay.sanpham.anh}" alt="" class="avatar-sm">
+                                                            <img th:src="${ctChoLay.sanpham.anh}" alt=""
+                                                                 class="avatar-sm">
                                                         </div>
                                                     </th>
                                                     <td>
                                                         <div>
-                                                            <h5 class="text-truncate font-size-14" th:text="${ctChoLay.sanpham.TenSP}"></h5>
-                                                            <p class="text-muted mb-0" th:text="${ctChoLay.sanpham.Gia} +' x '+${ctChoLay.soluong}"></p>
+                                                            <h5 class="text-truncate font-size-14"
+                                                                th:text="${ctChoLay.sanpham.TenSP}"></h5>
+                                                            <p class="text-muted mb-0"
+                                                               th:text="${ctChoLay.sanpham.Gia} +' x '+${ctChoLay.soluong}"></p>
                                                         </div>
                                                     </td>
-                                                    <td th:text="${ctChoLay.sanpham.Gia * ctChoLay.soluong} + ' VND'"></td></div>
+                                                    <td th:text="${ctChoLay.sanpham.Gia * ctChoLay.soluong} + ' VND'"></td>
+                                                </div>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
@@ -843,7 +896,7 @@
                                                 <td colspan="2">
                                                     <h6>Hình thức vận chuyển:</h6>
                                                 </td>
-                                                <td th:text="${dsCholay.vanchuyen.TenVC} + '(' + ${dsCholay.vanchuyen.Gia} + 'VND)'" >
+                                                <td th:text="${dsCholay.vanchuyen.TenVC} + '(' + ${dsCholay.vanchuyen.Gia} + 'VND)'">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -859,7 +912,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -869,24 +923,35 @@
                 <!-- Chi tiết ds Chờ giao hàng -->
                 <div th:each=" dsdangGiao: ${dsDangGiao}">
                     <!-- Button trigger modal -->
-                    <div th:class="'modal fade orderdetailsModals' + ${dsdangGiao.id}" tabindex="-1" aria-labelledby="orderdetailsModalLabel3" style="display: none;" aria-hidden="true">
+                    <div th:class="'modal fade orderdetailsModals' + ${dsdangGiao.id}" tabindex="-1"
+                         aria-labelledby="orderdetailsModalLabel3" style="display: none;" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="orderdetailsModalLabel3">Chi tiết hóa đơn</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-7">
-                                            <p class="mb-3">Mã hóa đơn: <span class="text-primary" th:text="${dsdangGiao.id}"></span></p>
-                                            <p class="mb-3">Tên khách hàng: <span class="text-primary" th:text="${dsdangGiao.taikhoan.fullname}"></span></p>
-                                            <p class="mb-3">Số điện thoại: <span class="text-primary" th:text="${dsdangGiao.sdt}"></span></p>
-                                            <p class="mb-3">Địa chỉ: <span class="text-primary" th:text="${dsdangGiao.diachinhan}"></span></p>
+                                            <p class="mb-3">Mã hóa đơn: <span class="text-primary"
+                                                                              th:text="${dsdangGiao.id}"></span></p>
+                                            <p class="mb-3">Tên khách hàng: <span class="text-primary"
+                                                                                  th:text="${dsdangGiao.taikhoan.fullname}"></span>
+                                            </p>
+                                            <p class="mb-3">Số điện thoại: <span class="text-primary"
+                                                                                 th:text="${dsdangGiao.sdt}"></span></p>
+                                            <p class="mb-3">Địa chỉ: <span class="text-primary"
+                                                                           th:text="${dsdangGiao.diachinhan}"></span>
+                                            </p>
                                         </div>
                                         <div class="col-5">
-                                            <p class="mb-2">Ngày đặt: <span class="text-primary" th:text="${dsdangGiao.ngaydat}"></span></p>
-                                            <p class="mb-4">Ngày giao: <span class="text-primary" th:text="${dsdangGiao.ngaygiao}"></span></p>
+                                            <p class="mb-2">Ngày đặt: <span class="text-primary"
+                                                                            th:text="${dsdangGiao.ngaydat}"></span></p>
+                                            <p class="mb-4">Ngày giao: <span class="text-primary"
+                                                                             th:text="${dsdangGiao.ngaygiao}"></span>
+                                            </p>
 
                                         </div>
                                     </div>
@@ -905,16 +970,20 @@
                                                 <div th:if="${ctChoGiao.hoadon.id}==${dsdangGiao.id}">
                                                     <th scope="row">
                                                         <div>
-                                                            <img th:src="${ctChoGiao.sanpham.anh}" alt="" class="avatar-sm">
+                                                            <img th:src="${ctChoGiao.sanpham.anh}" alt=""
+                                                                 class="avatar-sm">
                                                         </div>
                                                     </th>
                                                     <td>
                                                         <div>
-                                                            <h5 class="text-truncate font-size-14" th:text="${ctChoGiao.sanpham.TenSP}"></h5>
-                                                            <p class="text-muted mb-0" th:text="${ctChoGiao.sanpham.Gia} +' x '+${ctChoGiao.soluong}"></p>
+                                                            <h5 class="text-truncate font-size-14"
+                                                                th:text="${ctChoGiao.sanpham.TenSP}"></h5>
+                                                            <p class="text-muted mb-0"
+                                                               th:text="${ctChoGiao.sanpham.Gia} +' x '+${ctChoGiao.soluong}"></p>
                                                         </div>
                                                     </td>
-                                                    <td th:text="${ctChoGiao.sanpham.Gia * ctChoGiao.soluong} + ' VND'"></td></div>
+                                                    <td th:text="${ctChoGiao.sanpham.Gia * ctChoGiao.soluong} + ' VND'"></td>
+                                                </div>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
@@ -928,7 +997,7 @@
                                                 <td colspan="2">
                                                     <h6>Hình thức vận chuyển:</h6>
                                                 </td>
-                                                <td th:text="${dsdangGiao.vanchuyen.TenVC} + '(' + ${dsdangGiao.vanchuyen.Gia} + 'VND)'" >
+                                                <td th:text="${dsdangGiao.vanchuyen.TenVC} + '(' + ${dsdangGiao.vanchuyen.Gia} + 'VND)'">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -944,7 +1013,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -984,4 +1054,5 @@
     -webkit-transform: scale(1.5);
     transform: scale(1.5);
   }
+
 </style>

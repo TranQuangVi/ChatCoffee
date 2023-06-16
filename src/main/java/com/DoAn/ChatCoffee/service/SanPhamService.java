@@ -105,6 +105,8 @@ public class SanPhamService {
     //Top 8 sản phẩm có lượt bán cáo nhất
     public List<Sanpham> SoLuongBanGiamDan(){
         return sanPhamRepository.SoLuongBanGiamDan();
+    }  public List<Sanpham> GiaBanDeXuat(){
+        return sanPhamRepository.GiaBanDeXuat();
     }
 
 }

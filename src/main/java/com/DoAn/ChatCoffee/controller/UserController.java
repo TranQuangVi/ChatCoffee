@@ -1,5 +1,6 @@
 package com.DoAn.ChatCoffee.controller;
 
+import com.DoAn.ChatCoffee.entity.Sanpham;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.ICTHoaDonRepository;
 import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
@@ -17,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,7 +44,16 @@ public class UserController {
     @GetMapping
     public String index(Model model, Authentication authentication){
         model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(taiKhoanService.getTaiKhoanByUserName(authentication.getName()).getId()));
-        model.addAttribute("listProducts", sanPhamService.getAllProduct());
+        // Hiển thị Menu tất cả sản phẩm nổi bật (Top 8 sp, sort theo SL bán)
+
+        List<Sanpham> sanphams = sanPhamService.SoLuongBanGiamDan();
+        int sanpham = 16;
+        if(sanphams.size() > sanpham){
+            sanphams = sanphams.subList(0,sanpham);
+        }
+        model.addAttribute("listProducts", sanphams);
+
+//        model.addAttribute("listProducts", sanPhamService.getAllProduct());
         model.addAttribute("slSPChoXacNhan", hoaDonService.slHoaDonByUserNameVaTrangThai(authentication.getName(), "Chờ duyệt"));
         model.addAttribute("slSPChoLayHang", hoaDonService.slHoaDonByUserNameVaTrangThai(authentication.getName(), "Chờ lấy hàng"));
         model.addAttribute("slSPDangGiao", hoaDonService.slHoaDonByUserNameVaTrangThai(authentication.getName(), "Đang giao"));

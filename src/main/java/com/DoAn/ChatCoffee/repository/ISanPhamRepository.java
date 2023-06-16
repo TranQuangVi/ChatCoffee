@@ -44,7 +44,8 @@ public interface ISanPhamRepository extends JpaRepository<Sanpham,Long> {
 
     @Query("SELECT  sp FROM  Sanpham sp  ORDER BY sp.Sldaban desc")
     List<Sanpham> SoLuongBanGiamDan();
-
+    @Query("SELECT  sp FROM  Sanpham sp  ORDER BY sp.Gia desc")
+    List<Sanpham> GiaBanDeXuat();
 
 
 }

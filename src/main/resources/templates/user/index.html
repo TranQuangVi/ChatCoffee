@@ -688,7 +688,7 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng tiền hàng:</h6>
                                                 </td>
-                                                <td>
+                                                <td th:text="${hoadondamua.tonggia - hoadondamua.vanchuyen.Gia }">
                                                     400 VND
                                                 </td>
                                             </tr>
@@ -703,8 +703,8 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng thanh toán:</h6>
                                                 </td>
-                                                <td>
-                                                    400 VND
+                                                <td th:text="${hoadondamua.tonggia}">
+
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -789,8 +789,8 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng tiền hàng:</h6>
                                                 </td>
-                                                <td>
-                                                    400 VND
+                                                <td th:text="${dschoduyet.tonggia - dschoduyet.vanchuyen.Gia}">
+
                                                 </td>
                                             </tr>
                                             <tr>
@@ -804,8 +804,8 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng thanh toán:</h6>
                                                 </td>
-                                                <td>
-                                                    400 VND
+                                                <td th:text="${dschoduyet.tonggia}">
+
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -888,9 +888,7 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng tiền hàng:</h6>
                                                 </td>
-                                                <td>
-                                                    400 VND
-                                                </td>
+                                                <td th:text="${dsCholay.tonggia-dsCholay.vanchuyen.Gia}"></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2">
@@ -903,8 +901,8 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng thanh toán:</h6>
                                                 </td>
-                                                <td>
-                                                    400 VND
+                                                <td th:text="${dsCholay.tonggia}">
+
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -989,8 +987,7 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng tiền hàng:</h6>
                                                 </td>
-                                                <td>
-                                                    400 VND
+                                                <td th:text=" ${dsdangGiao.tonggia-dsdangGiao.vanchuyen.Gia}">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -1004,9 +1001,7 @@
                                                 <td colspan="2">
                                                     <h6 class="m-0 text-right">Tổng thanh toán:</h6>
                                                 </td>
-                                                <td>
-                                                    400 VND
-                                                </td>
+                                                <td th:text=" ${dsdangGiao.tonggia}"></td>
                                             </tr>
                                             </tbody>
                                         </table>

@@ -78,8 +78,14 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String editSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan){
-        taiKhoanService.saveTaikhoan(taikhoan);
+    public String editSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan, Authentication authentication){
+        Taikhoan luuTK = taiKhoanService.getTaiKhoanByUserName(authentication.getName());
+        luuTK.setFullname(taikhoan.getFullname());
+        luuTK.setDateofbirth(taikhoan.getDateofbirth());
+        luuTK.setPhonenumber(taikhoan.getPhonenumber());
+        luuTK.setEmail(taikhoan.getEmail());
+
+        taiKhoanService.saveTaikhoan(luuTK);
         return "redirect:/user";
     }
     @GetMapping("/login")

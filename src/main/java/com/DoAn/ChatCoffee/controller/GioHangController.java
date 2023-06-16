@@ -88,15 +88,11 @@ public class GioHangController {
         hoadon.setTaikhoan(taiKhoanService.getTaiKhoanByUserName(authentication.getName()));
         hoadon.setNgaydat(LocalDate.now());
         hoadon.setNgaygiao(LocalDate.now());
-        hoadon.setTonggia(hoaDonService.tongTienTrongGioHang(ctGiohangs));
+        hoadon.setTonggia(hoaDonService.tongTienTrongGioHang(ctGiohangs)+hoadon.getVanchuyen().getGia());
         hoadon.setTongsoluong(hoaDonService.tongSoluongTrongGioHang(ctGiohangs));
         hoadon.setTrangthai("Chờ duyệt");
         hoaDonService.save(hoadon);
         ctHoaDonService.save(ctGiohangs,hoadon);
-        // xóa giỏ hàng
-
-        // trừ số lượng còn
-
-        return "redirect:/user/hoa-don";
+        return "redirect:/user";
     }
 }

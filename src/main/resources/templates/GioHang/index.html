@@ -41,8 +41,7 @@
                                                               th:text="'Khối lượng: '+${ctGiohang.sanpham.Khoiluong}"></span>
                                         </p>
                                     </td>
-                                    <td th:text="${ctGiohang.sanpham.Gia} + ' $'">
-                                    </td>
+                                    <td ><b class="currency" th:text="${ctGiohang.sanpham.Gia}"></b></td>
                                     <form th:action="@{/gio-hang/cap-nhat-gio-hang}" method="post">
                                         <td>
                                             <div class="me-3" style="width: 120px;">
@@ -52,8 +51,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a class="text-dark"
-                                               th:text="${ctGiohang.sanpham.Gia*ctGiohang.soluong}"></a>
+                                            <a class="text-dark"><b class="currency" th:text="${ctGiohang.sanpham.Gia*ctGiohang.soluong}"></b></a>
                                         </td>
                                         <td style="width: 100px">
                                             <button type="submit" class="btn btn-outline-secondary btn-sm edit"><i
@@ -70,7 +68,7 @@
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th colspan="2" th:text="'Tổng tiền: '+${TongTien}"></th>
+                                    <th colspan="2">Tổng tiền: <b class="currency" th:text="${TongTien}"></b></th>
                                 </tr>
                                 </tbody>
                             </table>
@@ -101,3 +99,16 @@
 </body>
 
 </html>
+<style> .currency:after{ content: ' VND'; } </style>
+<script>
+$('* b').each(function () {
+    var item = $(this).text();
+    var num = Number(item).toLocaleString('vi');
+
+    if (Number(item) < 0) {
+        num = num.replace('-', '');
+    }
+
+    $(this).text(num);
+});
+</script>

@@ -35,8 +35,8 @@ public class UserController {
     private TaiKhoanService taiKhoanService;
     @Autowired
     private SanPhamService sanPhamService;
-    @Autowired
-    GioHangService gioHangService;
+   /* @Autowired
+    GioHangService gioHangService;*/
     @Autowired
     ICTHoaDonRepository ctHoaDonRepository;
     @GetMapping

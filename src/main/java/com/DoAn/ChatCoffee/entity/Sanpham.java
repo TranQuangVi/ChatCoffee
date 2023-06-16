@@ -68,6 +68,12 @@ public class Sanpham {
     @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
     private List<CTGiohang> ctGiohangs;
 
+    @Transient
+    public String getPhotosImagePath() {
+        if (anh == null || id == null) return null;
+
+        return "src/main/resources/static/images/products/" + id + "/" + anh;
+    }
     @OneToMany(mappedBy = "sanpham", cascade = CascadeType.ALL)
     private List<CTHoaDon> ctHoaDons;
 }

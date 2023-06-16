@@ -47,7 +47,7 @@ public class UserController {
         // Hiển thị Menu tất cả sản phẩm nổi bật (Top 8 sp, sort theo SL bán)
 
         List<Sanpham> sanphams = sanPhamService.SoLuongBanGiamDan();
-        int sanpham = 16;
+        int sanpham = 9;
         if(sanphams.size() > sanpham){
             sanphams = sanphams.subList(0,sanpham);
         }
@@ -78,8 +78,14 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String editSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan){
-        taiKhoanService.saveTaikhoan(taikhoan);
+    public String editSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan, Authentication authentication){
+        Taikhoan luuTK = taiKhoanService.getTaiKhoanByUserName(authentication.getName());
+        luuTK.setFullname(taikhoan.getFullname());
+        luuTK.setDateofbirth(taikhoan.getDateofbirth());
+        luuTK.setPhonenumber(taikhoan.getPhonenumber());
+        luuTK.setEmail(taikhoan.getEmail());
+
+        taiKhoanService.saveTaikhoan(luuTK);
         return "redirect:/user";
     }
     @GetMapping("/login")

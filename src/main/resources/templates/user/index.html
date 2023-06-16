@@ -23,7 +23,7 @@
 
                                                 <h5 class=" text-primary " th:text="${taikhoan.fullname}"></h5>
                                             </div>
-                                            <p>Chúc bạn có một trải nghiệm mua hàng ...</p>
+                                            <p>Chúc bạn có một trải nghiệm mua hàng tốt nhất</p>
                                         </div>
                                     </div>
                                     <div class="col-4 align-self-end">
@@ -45,14 +45,11 @@
                                     <div class="col-sm-8">
                                         <div class="pt-4">
                                             <div class="row">
-                                                <div class="col-7" style="text-align: center">
-                                                    <p class="text-muted mb-0">Tổng sản phẩm đăng đặt</p>
+                                                <div class="col-9" style="text-align: center">
+                                                    <p class="text-muted mb-0">Tổng sản phẩm đã mua</p>
                                                     <h5 class="font-size-15" th:text="${slSPDaDat}"></h5>
                                                 </div>
-                                                <div class="col-5">
-                                                    <h5 class="font-size-15 " style="text-align: center">47</h5>
-                                                    <p class="text-muted mb-0">Sản phẩm ưu thích</p>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -93,10 +90,7 @@
                                                 <td><input type="date" class="form-control" th:field="*{dateofbirth}"
                                                            id="dateofbirth" value="taikhoan.dateofbirth"></td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">Địa chỉ :</th>
-                                                <td>adwfqfdqw</td>
-                                            </tr>
+
                                             </tbody>
                                         </table>
                                         <button type="submit" class="btn btn-primary" value="Save"
@@ -355,7 +349,7 @@
                                                  aria-labelledby="v-pills-confir-tab">
                                                 <div class="card shadow-none border mb-0">
                                                     <div class="card-body">
-                                                        <h4 class="card-title mb-4">Danh sách đơn hàng đang giao</h4>
+                                                        <h4 class="card-title mb-4">Danh sách đơn hàng đang giao1</h4>
                                                         <div>
                                                             <div class="chat-conversation p-3">
                                                                 <ul class="list-unstyled mb-0" data-simplebar="init"
@@ -442,7 +436,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        <div class="card" style="width: 808px;">
                             <div class="card-body">
                                 <h4 class="card-title mb-4">Lịch sử mua hàng</h4>
                                 <div th:if="!${dsHDDaMua}">
@@ -525,220 +519,7 @@
                 </div>
                 <div class="row">
                     <!--Đề xuất-->
-                    <div class="card">
-                        <div class="card-body" style="position: relative;">
-                            <div class="w-100 user-chat">
-                                <div class="card">
-                                    <div class="p-4 border-bottom ">
-                                        <div class="row">
-                                            <div class="col-md-4 col-9">
-                                                <h5 class="font-size-15 mb-1">Đề xuất</h5>
-                                            </div>
-                                            <div class="col-md-8 col-3">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="chat-conversation p-3">
-                                            <ul class="list-unstyled mb-0" data-simplebar="init"
-                                                style="max-height: 486px;">
-                                                <div class="simplebar-wrapper" style="margin: 0px;">
-                                                    <div class="simplebar-height-auto-observer-wrapper">
-                                                        <div class="simplebar-height-auto-observer"></div>
-                                                    </div>
-                                                    <div class="simplebar-mask">
-                                                        <div class="simplebar-offset"
-                                                             style="right: -16.8px; bottom: 0px;">
-                                                            <div class="simplebar-content-wrapper"
-                                                                 style="height: auto; overflow: hidden scroll;">
-                                                                <div class="simplebar-content"
-                                                                     style="padding: 0px;">
-                                                                    <ul>
-                                                                    <li>
-                                                                        <div class="row">
-                                                                            <div th:each="product: ${listProducts}"
-                                                                                 class="col-xl-3 col-md-6 col-lg-3">
-                                                                                <div class="card "
-                                                                                     style="background-color: aliceblue;">
-                                                                                    <div class="card-body text-center">
-                                                                                        <div class="favorite-icon">
-                                                                                            <a href="javascript:void(0)"><i
-                                                                                                    class="uil uil-heart-alt fs-18"></i></a>
-                                                                                        </div>
-                                                                                        <img th:src="${product.anh}"
-                                                                                             alt="" height="100"
-                                                                                             class="mb-3">
-                                                                                        <h5 class="fs-17 mb-2"><a
-                                                                                                th:href="@{/san-pham/chi-tiet/{id}(id=${product.id})}"
-                                                                                                class="text-dark"
-                                                                                                th:text="${product.TenSP}"></a>
-                                                                                            <small class="text-muted fw-normal"></small>
-                                                                                        </h5>
-                                                                                        <ul class="list-inline mb-0">
-
-                                                                                            <li class="list-inline-item text-center">
-                                                                                                <h6 class="text-center fs-14 mb-0"
-                                                                                                    th:text="${product.Gia} + ' VND'"></h6>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                        <div class="mt-4 hstack gap-2">
-                                                                                            <a th:href="@{/gio-hang/them-san-pham/{id}(id=${product.id})}"
-
-                                                                                               class="btn btn-soft-primary w-100">Thêm
-                                                                                                vào giỏ</a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="simplebar-placeholder"
-                                                                             style="width: auto; height: 645px;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-horizontal"
-                                                                         style="visibility: hidden;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-vertical"
-                                                                         style="visibility: visible;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                                                                    </div>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-confir" role="tabpanel" aria-labelledby="v-pills-confir-tab">
-                                                <div class="card shadow-none border mb-0">
-                                                    <div class="card-body">
-                                                        <h4 class="card-title mb-4">Danh sách đơn hàng đang giao</h4>
-                                                        <div>
-                                                            <div class="chat-conversation p-3">
-                                                                <ul class="list-unstyled mb-0" data-simplebar="init"
-                                                                    style="max-height: 200px;">
-                                                                    <div class="simplebar-wrapper" style="margin: 0px;">
-                                                                        <div class="simplebar-height-auto-observer-wrapper">
-                                                                            <div class="simplebar-height-auto-observer"></div>
-                                                                        </div>
-                                                                        <div class="simplebar-mask">
-                                                                            <div class="simplebar-offset"
-                                                                                 style="right: -16.8px; bottom: 0px;">
-                                                                                <div class="simplebar-content-wrapper"
-                                                                                     style="height: auto; overflow: hidden scroll;">
-                                                                                    <div class="simplebar-content" style="padding: 0px;">
-
-                                                                                        <div class="table-responsive">
-                                                                                            <table class="table align-middle table-nowrap">
-                                                                                                <thead class="table-light">
-                                                                                                <tr>
-                                                                                                    <th class="align-middle">Số hóa đơn</th>
-                                                                                                    <th class="align-middle">Tên Khách hàng</th>
-                                                                                                    <th class="align-middle">Ngày đặt</th>
-                                                                                                    <th class="align-middle">Tổng giá</th>
-                                                                                                    <th class="align-middle">Xem chi tiết</th>
-
-                                                                                                </tr>
-                                                                                                </thead>
-                                                                                                <tbody>
-                                                                                                <tr th:each=" dsdangGiao,row: ${dsDangGiao}">
-                                                                                                    <td th:text="${dsdangGiao.id}" name="id" id="idgiao"></td>
-                                                                                                    <td th:text="${dsdangGiao.taikhoan.fullname}"></td>
-                                                                                                    <td th:text="${dsdangGiao.ngaydat}"></td>
-                                                                                                    <td th:text="${dsdangGiao.tonggia}"></td>
-                                                                                                    <td>
-                                                                                                        <!-- Button trigger modal -->
-                                                                                                        <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" th:data-bs-target="'.orderdetailsModals' + ${dsdangGiao.id}">
-                                                                                                            Chi tiết
-                                                                                                        </button>
-                                                                                                    </td>
-
-
-                                                                                                </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </div>
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="simplebar-placeholder"
-                                                                             style="width: auto; height: 645px;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-horizontal"
-                                                                         style="visibility: hidden;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
-                                                                    </div>
-                                                                    <div class="simplebar-track simplebar-vertical"
-                                                                         style="visibility: visible;">
-                                                                        <div class="simplebar-scrollbar"
-                                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
-                                                                    </div>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!--đến đây-->
-                       <!-- <div class="row icon-demo-content text-center ">
-                            <div class="col-lg-4">
-                                <div class="card mini-stats-wid">
-                                    <div class="card-body ">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1 ">
-                                                <a th:if="${slSPChoXacNhan}" class="badge bg-success float-end font-size-15" th:text="${slSPChoXacNhan}"></a>
-                                                <a class=" d-block" href="#">
-                                                    <i class="bx bx-paste" style="font-size: 45px" > </i>
-                                                    <p class="text-muted fw-medium mb-2">Chờ xác nhận</p>
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card mini-stats-wid">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1">
-                                                <a th:if="${slSPChoLayHang}" class="badge bg-success float-end font-size-15" th:text="${slSPChoLayHang}"></a>
-                                                <i class="bx bx-archive" style="font-size: 45px"></i>
-                                                <p class="text-muted fw-medium mb-2">Chờ lấy hàng</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card mini-stats-wid">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1">
-                                                <a th:if="${slSPDangGiao}" class="badge bg-success float-end font-size-15" th:text="${slSPDangGiao}"></a>
-                                                <i class="bx bxs-truck" style="font-size: 45px"></i>
-                                                <p class="text-muted fw-medium mb-2">Đang giao</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
--->
-
-                        <!--Đề xuất-->
+                    <div class="card" style="width: 1240px; margin-left: 11px;">
                         <div class="card">
                             <div class="card-body" style="position: relative;">
                                 <div class="w-100 user-chat">
@@ -746,7 +527,7 @@
                                         <div class="p-4 border-bottom ">
                                             <div class="row">
                                                 <div class="col-md-4 col-9">
-                                                    <h5 class="font-size-15 mb-1">Đề xuất</h5>
+                                                    <h2 class="font-size-15 mb-1"><b>Đề xuất</b> </h2>
                                                 </div>
                                                  <div class="col-md-8 col-3">
                                                 </div>
@@ -813,6 +594,7 @@
                                                     </div>
                                                     <div class="simplebar-placeholder"
                                                          style="width: auto; height: 645px;"></div>
+                                                    </ul>
                                                 </div>
                                                 <div class="simplebar-track simplebar-horizontal"
                                                      style="visibility: hidden;">

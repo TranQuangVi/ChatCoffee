@@ -57,7 +57,7 @@ public class WebConfig {
                         .clearAuthentication(true)
                         .permitAll()
                 )
-                .formLogin(formLogin -> formLogin.loginPage("/login")
+                .formLogin(formLogin -> formLogin.loginPage("/user/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/",true)
                         .permitAll()

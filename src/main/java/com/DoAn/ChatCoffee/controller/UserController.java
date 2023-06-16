@@ -48,7 +48,13 @@ public class UserController {
         model.addAttribute("slSPDangGiao", hoaDonService.slHoaDonByUserNameVaTrangThai(authentication.getName(), "Đang giao"));
         model.addAttribute("slSPDaDat", hoaDonService.getListHoaDonByUserName(authentication.getName(),null).size());
         model.addAttribute("dsCTHDDaMua", ctHoaDonRepository.getListSPByUserNameVaTrangThai(authentication.getName(), "Hoàn thành"));
+        model.addAttribute("dsCTDSChoDuyet", ctHoaDonRepository.getListSPByUserNameVaTrangThai(authentication.getName(), "Chờ duyệt"));
+        model.addAttribute("dsCTDSChoLay", ctHoaDonRepository.getListSPByUserNameVaTrangThai(authentication.getName(), "Chờ lấy hàng"));
+        model.addAttribute("dsCTDSDangGiao", ctHoaDonRepository.getListSPByUserNameVaTrangThai(authentication.getName(), "Đang giao"));
         model.addAttribute("dsHDDaMua", hoaDonService.getListHoaDonByUserName(authentication.getName(), "Hoàn thành"));
+        model.addAttribute("dsChoDuyet", hoaDonService.getListHoaDonByUserName(authentication.getName(), "Chờ duyệt"));
+        model.addAttribute("dsChoLay", hoaDonService.getListHoaDonByUserName(authentication.getName(), "Chờ lấy hàng"));
+        model.addAttribute("dsDangGiao", hoaDonService.getListHoaDonByUserName(authentication.getName(), "Đang giao"));
         return "user/index";
     }
 

@@ -12,7 +12,8 @@ import java.util.List;
 @Service
 public class HoaDonService {
     @Autowired
-    IHoaDonRepository hoaDonRepository;
+      private IHoaDonRepository hoaDonRepository;
+
 
     @Autowired
     ICTHoaDonRepository ctHoaDonRepository;
@@ -25,6 +26,22 @@ public class HoaDonService {
             return hoaDonRepository.getListHoaDonByUserName(username);
         return hoaDonRepository.getListByUserNameVaTrangThai(username,trangthai);
     }
+    public List<Hoadon> getAllHoaDon(){
+        return  hoaDonRepository.findAll();
+
+    }
+
+    public  List<Hoadon> gethoadonchoduyet(){
+        return  hoaDonRepository.gethoadonchoduyet();
+    }
+    public  List<Hoadon> gethoadondanggiao(){
+        return  hoaDonRepository.gethoadondanggiao();
+    }
+  public  List<Hoadon> gethoadondahoanthanh(){
+    return  hoaDonRepository.gethoadondahoanthanh();
+}
+
+
 
     public void save(Hoadon hoadon){
         hoaDonRepository.save(hoadon);

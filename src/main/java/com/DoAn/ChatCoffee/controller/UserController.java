@@ -16,8 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-
-
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,6 +28,9 @@ public class UserController {
     private ITaiKhoanRepository iTaiKhoanRepository;
     @Autowired
     HoaDonService hoaDonService;
+    @Autowired
+    private GioHangService gioHangService;
+
     @Autowired
     private TaiKhoanService taiKhoanService;
     @Autowired

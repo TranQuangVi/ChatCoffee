@@ -157,16 +157,19 @@
                                                                                 class="text-dark"
                                                                                 th:text="${ctGiohang.sanpham.TenSP}"> </a>
                                                                         </h5>
-                                                                        <p class="text-muted mb-0"
-                                                                           th:text="${ctGiohang.sanpham.gia} +' x '+ ${ctGiohang.soluong}"></p>
+                                                                        <p class="text-muted mb-0">
+                                                                            <b class="currency" th:text="${ctGiohang.sanpham.gia}"></b>
+                                                                            x [[${ctGiohang.soluong}]]
+                                                                        </p>
                                                                     </td>
-                                                                    <td th:text="${ctGiohang.sanpham.gia*ctGiohang.soluong}"></td>
+                                                                    <td ><b class="currency" th:text="${ctGiohang.sanpham.gia*ctGiohang.soluong}"></b></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="2">
                                                                         <h6 class="m-0 text-end">Tổng đơn giá:</h6>
                                                                     </td>
-                                                                    <td <th colspan="2" th:text="'Tổng tiền: '+${TongTien}"></th>>
+                                                                    <td >
+                                                                        <b class="currency" th:text="${TongTien}"></b>
 
                                                                     </td>
                                                                 </tr>
@@ -257,3 +260,16 @@
 </body>
 
 </html>
+<style> .currency:after{ content: ' VND'; } </style>
+<script>
+$('* b').each(function () {
+    var item = $(this).text();
+    var num = Number(item).toLocaleString('vi');
+
+    if (Number(item) < 0) {
+        num = num.replace('-', '');
+    }
+
+    $(this).text(num);
+});
+</script>

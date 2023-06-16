@@ -63,7 +63,7 @@
                                                     href="javascript: void(0);" class="text-dark"
                                                     th:text="${vanchuyen.TenVC}"></a></h5>
                                         </td>
-                                        <td th:text = "${vanchuyen.Gia}"></td>
+                                        <td ><b class="currency" th:text = "${vanchuyen.Gia}"></b></td>
                                         <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-outline-secondary btn-sm edit" title="Edit"
@@ -115,3 +115,16 @@
 <div th:replace="admin/layout_admin :: link-js"></div>
 </body>
 </html>
+<style> .currency:after{ content: ' VND'; } </style>
+<script>
+$('* b').each(function () {
+    var item = $(this).text();
+    var num = Number(item).toLocaleString('vi');
+
+    if (Number(item) < 0) {
+        num = num.replace('-', '');
+    }
+
+    $(this).text(num);
+});
+</script>

@@ -71,7 +71,7 @@
                       <td th:text="${xemhoadon.id}"  ></td>
                       <td th:text="${xemhoadon.taikhoan.fullname}"></td>
                       <td th:text="${xemhoadon.ngaydat}"></td>
-                      <td th:text="${xemhoadon.tonggia}"></td>
+                      <td ><b class="currency" th:text="${xemhoadon.tonggia}"></b></td>
                       <td> <span class="badge rounded-1 badge-soft-success font-size-13  " th:text="${xemhoadon.trangthai}"></span></td>
                       <td>
                           <!-- Button trigger modal -->
@@ -188,3 +188,16 @@
 
 </body>
 </html>
+<style> .currency:after{ content: ' VND'; } </style>
+<script>
+$('* b').each(function () {
+    var item = $(this).text();
+    var num = Number(item).toLocaleString('vi');
+
+    if (Number(item) < 0) {
+        num = num.replace('-', '');
+    }
+
+    $(this).text(num);
+});
+</script>

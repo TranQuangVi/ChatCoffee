@@ -63,7 +63,7 @@
                     </td>
                     <td th:text = "${sanpham.loaisanpham.TenLoai}"></td>
                     <td th:text = "${sanpham.thuonghieu.MaTH}"></td>
-                    <td th:text = "${sanpham.Gia}"></td>
+                    <td ><b class="currency" th:text = "${sanpham.Gia}"></b></td>
                     <td th:text = "${sanpham.Soluong}"></td>
                     <td th:text = "${sanpham.trangthai}"></td>
                     <td>
@@ -115,3 +115,16 @@
 <div th:replace="admin/layout_admin :: link-js"></div>
 </body>
 </html>
+<style> .currency:after{ content: ' VND'; } </style>
+<script>
+$('* b').each(function () {
+    var item = $(this).text();
+    var num = Number(item).toLocaleString('vi');
+
+    if (Number(item) < 0) {
+        num = num.replace('-', '');
+    }
+
+    $(this).text(num);
+});
+</script>

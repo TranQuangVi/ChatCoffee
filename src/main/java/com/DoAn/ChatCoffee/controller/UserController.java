@@ -2,6 +2,7 @@ package com.DoAn.ChatCoffee.controller;
 
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
+import com.DoAn.ChatCoffee.service.GioHangService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import jakarta.validation.Valid;
@@ -13,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-
-
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +24,9 @@ import java.util.regex.Pattern;
 public class UserController {
     @Autowired
     private ITaiKhoanRepository iTaiKhoanRepository;
+
+    @Autowired
+    private GioHangService gioHangService;
 
     @Autowired
     private TaiKhoanService taiKhoanService;
@@ -108,6 +110,9 @@ public class UserController {
         else
             taikhoan.setPassword(new BCryptPasswordEncoder().encode(taikhoan.getPassword()));
         taiKhoanService.save(taikhoan);
+
+        gioHangService.themGioHang(taikhoan);
+
 
         return "redirect:/user/login";
     }

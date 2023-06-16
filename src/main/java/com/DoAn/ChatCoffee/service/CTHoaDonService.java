@@ -2,7 +2,6 @@ package com.DoAn.ChatCoffee.service;
 
 import com.DoAn.ChatCoffee.entity.CTGiohang;
 import com.DoAn.ChatCoffee.entity.CTHoaDon;
-import com.DoAn.ChatCoffee.entity.Giohang;
 import com.DoAn.ChatCoffee.entity.Hoadon;
 import com.DoAn.ChatCoffee.repository.ICTHoaDonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,8 @@ import java.util.List;
 @Service
 public class CTHoaDonService {
     @Autowired
-    ICTHoaDonRepository ctHoaDonRepository;
+    protected ICTHoaDonRepository ctHoaDonRepository;
+
 
     public void save (List<CTGiohang> ctGiohangs, Hoadon hoadon){
         for (CTGiohang item: ctGiohangs) {
@@ -24,6 +24,12 @@ public class CTHoaDonService {
             ctHoaDonRepository.save(ctHoaDon);
         }
     }
+    public List<CTHoaDon> getAllCTHoaDon(){
+        return  ctHoaDonRepository.findAll();
+
+    }
+
+
 
 
 }

@@ -57,7 +57,7 @@
                   </thead>
                   <tbody>
                   <tr data-id="1" style="cursor: pointer;" th:each = "sanpham: ${dssanpham}">
-                    <td class="text-center"><img th:src="@{${sanpham.anh}}" alt="" class="avatar-sm rounded-circle "></td>
+                    <td class="text-center"><img th:src="${sanpham.anh}" alt="" class="avatar-sm rounded-circle "></td>
                     <td>
                       <h5 th:text = "${sanpham.TenSP}" class="text-truncate font-size-14"></h5>
                     </td>
@@ -87,7 +87,7 @@
                 </table>
                 <div th:if="${totalPages > 0}">
                   <div class="row col-sm-10">
-                    <div class="col-sm-2">Số trang: [[${totalItems}]]</div>
+                    <div class="col-sm-2">Tổng số sản phẩm: [[${totalItems}]]</div>
                     <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                       <li  th:if="${totalPages > 0}" class="page-link"
                            th:each="pageNumber : ${pageNumbers}">

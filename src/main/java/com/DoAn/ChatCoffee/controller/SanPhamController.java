@@ -34,6 +34,7 @@ public class SanPhamController {
         if(pageNo != null)
             return pageproduct(model,search,pageNo);
         return pageproduct(model,search,1);
+
     }
     @GetMapping("/page/{pageNo}")
     public String pageproduct(Model model, String search, @PathVariable(value = "pageNo") int pageNo ) {

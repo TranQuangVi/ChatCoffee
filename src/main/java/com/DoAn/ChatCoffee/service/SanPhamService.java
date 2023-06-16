@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,13 +37,14 @@ public class SanPhamService {
         this.sanPhamRepository.deleteById(product_id);
     }
 
-    public List<Sanpham> getSearchListProduct(String search){
+   /* public List<Sanpham> getSearchListProduct(String search){
         if(search != null){
             return sanPhamRepository.search(search);
         }
         return sanPhamRepository.findAll();
-    }
-
+    }*/
+    //Page ListProduct
+   
     //Page ListProduct
     public Page<Sanpham> findPaginated(int pageNo, int pageSize){
         Pageable pageable = PageRequest.of(pageNo-1, pageSize);

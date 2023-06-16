@@ -3,7 +3,6 @@ package com.DoAn.ChatCoffee.service;
 import com.DoAn.ChatCoffee.entity.CTGiohang;
 import com.DoAn.ChatCoffee.entity.CTHoaDon;
 import com.DoAn.ChatCoffee.entity.Hoadon;
-import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.ICTHoaDonRepository;
 import com.DoAn.ChatCoffee.repository.IHoaDonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,18 +34,14 @@ public class HoaDonService {
 
     }
 
-    public List<Hoadon> gethoadonchoduyet() {
-        return hoaDonRepository.gethoadonchoduyet();
-    }
+    public  List<Hoadon> getListByTrangThai(String trangthai){
+        if(trangthai==null|| trangthai=="Tất cả"){
 
-    public List<Hoadon> gethoadondanggiao() {
-        return hoaDonRepository.gethoadondanggiao();
-    }
+            return  hoaDonRepository.findAll();
+        }
+        return  hoaDonRepository.getListByTrangThai(trangthai);
 
-    public List<Hoadon> gethoadondahoanthanh() {
-        return hoaDonRepository.gethoadondahoanthanh();
     }
-
 
     public void save(Hoadon hoadon) {
         hoaDonRepository.save(hoadon);

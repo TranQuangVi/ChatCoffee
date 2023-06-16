@@ -1,5 +1,7 @@
 package com.DoAn.ChatCoffee.service;
 
+import com.DoAn.ChatCoffee.entity.CTGiohang;
+import com.DoAn.ChatCoffee.entity.CTHoaDon;
 import com.DoAn.ChatCoffee.entity.Hoadon;
 import com.DoAn.ChatCoffee.entity.Taikhoan;
 import com.DoAn.ChatCoffee.repository.ICTHoaDonRepository;
@@ -12,45 +14,64 @@ import java.util.List;
 @Service
 public class HoaDonService {
     @Autowired
-      private IHoaDonRepository hoaDonRepository;
+    private IHoaDonRepository hoaDonRepository;
 
 
     @Autowired
     ICTHoaDonRepository ctHoaDonRepository;
-    public Hoadon getHoaDonByUserName(String username){
+
+    public Hoadon getHoaDonByUserName(String username) {
         return hoaDonRepository.getHoaDonByUserName(username);
     }
 
-    public List<Hoadon> getListHoaDonByUserName(String username, String trangthai){
-        if (trangthai==null)
+    public List<Hoadon> getListHoaDonByUserName(String username, String trangthai) {
+        if (trangthai == null)
             return hoaDonRepository.getListHoaDonByUserName(username);
-        return hoaDonRepository.getListByUserNameVaTrangThai(username,trangthai);
-    }
-    public List<Hoadon> getAllHoaDon(){
-        return  hoaDonRepository.findAll();
-
+        return hoaDonRepository.getListByUserNameVaTrangThai(username, trangthai);
     }
 
-    public  List<Hoadon> gethoadonchoduyet(){
-        return  hoaDonRepository.gethoadonchoduyet();
+    public List<Hoadon> getAllHoaDon() {
+        return hoaDonRepository.findAll();
+
     }
-    public  List<Hoadon> gethoadondanggiao(){
-        return  hoaDonRepository.gethoadondanggiao();
+
+    public List<Hoadon> gethoadonchoduyet() {
+        return hoaDonRepository.gethoadonchoduyet();
     }
-  public  List<Hoadon> gethoadondahoanthanh(){
-    return  hoaDonRepository.gethoadondahoanthanh();
-}
+
+    public List<Hoadon> gethoadondanggiao() {
+        return hoaDonRepository.gethoadondanggiao();
+    }
+
+    public List<Hoadon> gethoadondahoanthanh() {
+        return hoaDonRepository.gethoadondahoanthanh();
+    }
 
 
-
-    public void save(Hoadon hoadon){
+    public void save(Hoadon hoadon) {
         hoaDonRepository.save(hoadon);
     }
 
-    public int slHoaDonByUserNameVaTrangThai(String username, String trangthai){
-     //   List<Hoadon> hoadons = getListHoaDonByUserName(username);
-        int sl = hoaDonRepository.getListByUserNameVaTrangThai(username,trangthai).size();
+    public int slHoaDonByUserNameVaTrangThai(String username, String trangthai) {
+        //   List<Hoadon> hoadons = getListHoaDonByUserName(username);
+        int sl = hoaDonRepository.getListByUserNameVaTrangThai(username, trangthai).size();
         return sl;
+    }
+
+    // tính tổng tiền trong chi tiết HD
+    public Long tongTienTrongGioHang(List<CTGiohang> ctGiohangs) {
+        Long tongtien=0L;
+        for (var ct : ctGiohangs) {
+            tongtien += ct.getSoluong() * ct.getSanpham().getGia();
+        }
+        return tongtien;
+    }
+    public Long tongSoluongTrongGioHang(List<CTGiohang> ctGiohangs) {
+        Long tongSL=0L;
+        for (var ct : ctGiohangs) {
+            tongSL += ct.getSoluong();
+        }
+        return tongSL;
     }
 
 }

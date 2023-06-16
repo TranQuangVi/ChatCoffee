@@ -35,7 +35,9 @@ public class GioHangController {
     private QuanLyVanChuyenService vanChuyenService;
     @GetMapping
     public String index(Model model, Authentication authentication){
-        model.addAttribute("ctGiohangs", CTGioHangService.getGioHangByUserName(authentication.getName()));
+        List<CTGiohang> ctGiohangs= CTGioHangService.getGioHangByUserName(authentication.getName());
+        model.addAttribute("ctGiohangs", ctGiohangs);
+        model.addAttribute("TongTien", hoaDonService.tongTienTrongGioHang(ctGiohangs));
         return "GioHang/index";
     }
 
@@ -75,6 +77,7 @@ public class GioHangController {
         model.addAttribute("taikhoan", taikhoan);
         model.addAttribute("thanhtoans", thanhToanService.getAllThanhToan());
         model.addAttribute("vanchuyens", vanChuyenService.getAllVanChuyen());
+        model.addAttribute("TongTien", hoaDonService.tongTienTrongGioHang(CTGioHangService.getGioHangByUserName(taikhoan.getUsername())));
         return "giohang/hoadon";
     }
 
@@ -85,11 +88,15 @@ public class GioHangController {
         hoadon.setTaikhoan(taiKhoanService.getTaiKhoanByUserName(authentication.getName()));
         hoadon.setNgaydat(LocalDate.now());
         hoadon.setNgaygiao(LocalDate.now());
-        hoadon.setTonggia(5000L);
-        hoadon.setTongsoluong(333L);
+        hoadon.setTonggia(hoaDonService.tongTienTrongGioHang(ctGiohangs));
+        hoadon.setTongsoluong(hoaDonService.tongSoluongTrongGioHang(ctGiohangs));
         hoadon.setTrangthai("Chờ duyệt");
         hoaDonService.save(hoadon);
         ctHoaDonService.save(ctGiohangs,hoadon);
+        // xóa giỏ hàng
+
+        // trừ số lượng còn
+
         return "redirect:/user/hoa-don";
     }
 }

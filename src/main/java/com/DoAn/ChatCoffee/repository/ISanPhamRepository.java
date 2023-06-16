@@ -1,8 +1,11 @@
 package com.DoAn.ChatCoffee.repository;
 
 import com.DoAn.ChatCoffee.entity.Sanpham;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,9 +37,13 @@ public interface ISanPhamRepository extends JpaRepository<Sanpham,Long> {
     @Query("SELECT tp FROM Sanpham tp ORDER BY tp.TenSP desc")
     List<Sanpham> getSanphamtuZA();
 
-
+    @Query("SELECT s FROM Sanpham s WHERE s.TenSP LIKE %:searchstring%")
+    Page<Sanpham> searchPage(@Param("searchstring") String searchstring, Pageable pageable);
     @Query("SELECT p FROM Sanpham p WHERE p.TenSP LIKE %?1%")
     List<Sanpham> search(String keyword);
+
+    @Query("SELECT  sp FROM  Sanpham sp  ORDER BY sp.Sldaban desc")
+    List<Sanpham> SoLuongBanGiamDan();
 
 
 

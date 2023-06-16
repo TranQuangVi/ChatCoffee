@@ -92,6 +92,7 @@
                                         <div class="position-relative">
                                             <input class="form-control border-0" placeholder="Tìm kiếm..." type="text"
                                                    name="search" id="search" size="50" th:value="${search}" required/>
+
                                             <i class="bx bx-search-alt search-icon"></i>
                                         </div>
                                     </div>
@@ -158,15 +159,34 @@
                                 <!--<ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">-->
                                 <div th:if="${totalPages > 0}">
                                     <div class="row col-sm-10">
-                                        <div class="col-sm-2">Số trang: [[${totalItems}]]</div>
+                                        <div class="col-sm-2">Số sản phẩm: [[${totalItems}]]</div>
                                         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                                             <li th:if="${totalPages > 0}" class="page-link"
                                                 th:each="pageNumber : ${pageNumbers}">
-                                                <a th:href="@{'/san-pham/page/' + ${pageNumber}}"
+                                                <a th:href="@{'/san-pham/page/'+ ${pageNumber}}"
                                                    th:text=${pageNumber}
                                                    th:class="${pageNumber==currentPage + 1} ? active"
                                                    class="page-link"
                                                 ></a>
+                                            </li>
+                                        </ul>
+                                        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                            <li th:if="${totalPages > 0}" class="page-link"
+                                                th:each="pageNumber : ${pageNumbers}">
+
+                                                <form class="mt-4 mt-sm-0 float-sm-end d-sm-flex align-items-center"
+                                                      th:action="@{/san-pham}">
+                                                    <div class="search-box me-2">
+                                                        <div class="position-relative">
+                                                            <input class="form-control border-0"  type="hidden"
+                                                                   name="pageNo" id="pageNo"  th:value="${pageNumber}"  />
+                                                            <input class="form-control border-0"  type="hidden"
+                                                                   name="searchString" id="searchString"  th:value="e"  />
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" th:text=${pageNumber} th:class="${pageNumber==currentPage + 1} ? active"
+                                                            class="page-link"></button>
+                                                </form>
                                             </li>
                                         </ul>
                                     </div>

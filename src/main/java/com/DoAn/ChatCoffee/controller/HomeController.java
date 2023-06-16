@@ -29,9 +29,9 @@ public class HomeController {
 
     @GetMapping
     public String homePage(Model model){
-        // Hiển thị Menu tất cả sản phẩm nổi bật (sanpham ==8)
-        List<Sanpham>  sanphams = sanPhamService.getAllProduct();
-        Collections.shuffle(sanphams);
+        // Hiển thị Menu tất cả sản phẩm nổi bật (Top 8 sp, sort theo SL bán)
+
+        List<Sanpham>  sanphams = sanPhamService.SoLuongBanGiamDan();
         int sanpham = 8;
         if(sanphams.size() > sanpham){
             sanphams = sanphams.subList(0,sanpham);

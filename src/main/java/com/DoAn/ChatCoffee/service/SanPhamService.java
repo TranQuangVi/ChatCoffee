@@ -48,6 +48,13 @@ public class SanPhamService {
         Pageable pageable = PageRequest.of(pageNo-1, pageSize);
         return this.sanPhamRepository.findAll(pageable);
     }
+    public Page<Sanpham> findPaginated(int pageNo, int pageSize, String searchstring) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        if (searchstring == null)
+            return this.sanPhamRepository.findAll(pageable);
+        Page<Sanpham> searchResult = sanPhamRepository.searchPage(searchstring, pageable);
+        return searchResult;
+    }
 
     // lấy sản phẩm theo ID loại
 
@@ -95,5 +102,9 @@ public class SanPhamService {
         return sanphams;
     }
 
+    //Top 8 sản phẩm có lượt bán cáo nhất
+    public List<Sanpham> SoLuongBanGiamDan(){
+        return sanPhamRepository.SoLuongBanGiamDan();
+    }
 
 }

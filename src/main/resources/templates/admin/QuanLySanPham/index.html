@@ -57,13 +57,13 @@
                   </thead>
                   <tbody>
                   <tr data-id="1" style="cursor: pointer;" th:each = "sanpham: ${dssanpham}">
-                    <td class="text-center"><img th:src="@{${sanpham.anh}}" alt="" class="avatar-sm rounded-circle "></td>
+                    <td class="text-center"><img th:src="${sanpham.anh}" alt="" class="avatar-sm rounded-circle "></td>
                     <td>
                       <h5 th:text = "${sanpham.TenSP}" class="text-truncate font-size-14"></h5>
                     </td>
                     <td th:text = "${sanpham.loaisanpham.TenLoai}"></td>
                     <td th:text = "${sanpham.thuonghieu.MaTH}"></td>
-                    <td th:text = "${sanpham.Gia}"></td>
+                    <td ><b class="currency" th:text = "${sanpham.Gia}"></b></td>
                     <td th:text = "${sanpham.Soluong}"></td>
                     <td th:text = "${sanpham.trangthai}"></td>
                     <td>
@@ -75,10 +75,6 @@
                            onclick="return confirm('Bạn có chắc muốn xóa không?')"  class="btn btn-outline-secondary btn-sm delete" title="Delete">
                           <i class="fa fa-trash"></i>
                         </a>
-                        <a th:href ="@{/admin/quan-ly-san-pham/chitietsp/{id}(id=${sanpham.id})}"
-                           class="btn btn-outline-secondary btn-sm " title="ChiTiet">
-                          <i class="fa fa-trash"></i>
-                        </a>
 
                       </div>
                     </td>
@@ -87,7 +83,7 @@
                 </table>
                 <div th:if="${totalPages > 0}">
                   <div class="row col-sm-10">
-                    <div class="col-sm-2">Số trang: [[${totalItems}]]</div>
+                    <div class="col-sm-2">Tổng số sản phẩm: [[${totalItems}]]</div>
                     <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                       <li  th:if="${totalPages > 0}" class="page-link"
                            th:each="pageNumber : ${pageNumbers}">
@@ -119,3 +115,16 @@
 <div th:replace="admin/layout_admin :: link-js"></div>
 </body>
 </html>
+<style> .currency:after{ content: ' VND'; } </style>
+<script>
+$('* b').each(function () {
+    var item = $(this).text();
+    var num = Number(item).toLocaleString('vi');
+
+    if (Number(item) < 0) {
+        num = num.replace('-', '');
+    }
+
+    $(this).text(num);
+});
+</script>

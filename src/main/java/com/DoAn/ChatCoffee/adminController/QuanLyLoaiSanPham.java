@@ -43,8 +43,6 @@ public class QuanLyLoaiSanPham {
 
     @GetMapping()
     public String index(Model model){
-        //List<Loaisanpham> Loais = loaiSanPhamService.getAllCategories();
-        //model.addAttribute("Loais",Loais);
         return page(model, 1);
     }
 
@@ -77,9 +75,4 @@ public class QuanLyLoaiSanPham {
         return "redirect:/admin/QuanLyLoaiSanPham";
 
     }
-
-//    @GetMapping("/deleteCategory")
-//    public String deleteCategory(){
-//        return "admin/managerCategory/deleteCategory";
-//    }
 }

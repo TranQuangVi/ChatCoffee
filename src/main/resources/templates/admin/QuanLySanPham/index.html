@@ -57,7 +57,7 @@
                   </thead>
                   <tbody>
                   <tr data-id="1" style="cursor: pointer;" th:each = "sanpham: ${dssanpham}">
-                    <td class="text-center"><img th:src="@{${sanpham.anh}}" alt="" class="avatar-sm rounded-circle "></td>
+                    <td class="text-center"><img th:src="${sanpham.anh}" alt="" class="avatar-sm rounded-circle "></td>
                     <td>
                       <h5 th:text = "${sanpham.TenSP}" class="text-truncate font-size-14"></h5>
                     </td>

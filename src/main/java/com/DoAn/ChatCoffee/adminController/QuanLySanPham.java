@@ -1,6 +1,8 @@
 package com.DoAn.ChatCoffee.adminController;
 
 import com.DoAn.ChatCoffee.entity.Sanpham;
+import com.DoAn.ChatCoffee.entity.Taikhoan;
+import com.DoAn.ChatCoffee.repository.ISanPhamRepository;
 import com.DoAn.ChatCoffee.service.LoaiSanPhamService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.ThuongHieuService;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +30,9 @@ import java.util.stream.IntStream;
 public class QuanLySanPham {
     @Autowired
     private SanPhamService sanPhamService;
+
+    @Autowired
+    private ISanPhamRepository sanPhamRepositoryPham;
     @Autowired
     private LoaiSanPhamService loaiSanPhamService;
     @Autowired
@@ -69,16 +75,20 @@ public class QuanLySanPham {
     public String addSubmit( @ModelAttribute("sanpham") Sanpham sanpham, @RequestParam("image") MultipartFile file) throws IOException{
         sanPhamService.saveProduct(sanpham);
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName== "")
+       /* if(fileName== "")
             fileName = "coffee12.png";
         else
-            fileName = "coffee"+sanpham.getId().toString()+".png";
-        String uploadDir = "src/main/resources/static/images/products/";
-        saveFile(uploadDir, fileName, file);
-
+            fileName = "coffee"+sanpham.getId().toString()+".png";*/
         sanpham.setAnh("/images/products/"+fileName);
+
+        Sanpham savesp = sanPhamRepositoryPham.save(sanpham);
+
+        String uploadDir = "src/main/resources/static/images/products/";
+
+        saveFile(uploadDir, fileName, file);
         sanPhamService.saveProduct(sanpham);
         return  "redirect:/admin/quan-ly-san-pham";
+       // return new RedirectView ("/admin/quan-ly-san-pham", true);
 
     }
 
@@ -102,9 +112,6 @@ public class QuanLySanPham {
         return "redirect:/admin/quan-ly-san-pham";
     }
 
-    @GetMapping("/uploadimage") public String displayUploadForm() {
-        return "admin/QuanLySanPham/up";
-    }
 
     public static void saveFile(String uploadDir, String fileName,
                                 MultipartFile multipartFile) throws IOException {

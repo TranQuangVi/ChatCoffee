@@ -32,7 +32,7 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Thêm mới</h4>
-                <form action="/admin/quan-ly-san-pham/add" th:object="${sanpham} " enctype="multipart/form-data"  method="post">
+                <form th:action="@{/admin/quan-ly-san-pham/add}" th:object="${sanpham} "  method="post" enctype="multipart/form-data">
                   <div class ="form-group ">
                     <label class="form-label"> Tên sản phẩm: </label>
                     <br>
@@ -60,7 +60,8 @@
                     </select>
                   </div><br>
                   <div class="form-group">
-                    <input type="file" name="image" accept="image/*" class="form-control-file">
+                   <input type="file" name="image" accept="image/*"  class="form-control-file" >
+<!--                    <input type="file" name="image" th:field="*{anh}">-->
                   </div><br>
 
                   <div class ="form-group">

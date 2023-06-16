@@ -13,11 +13,18 @@ import org.springframework.stereotype.Service;
 public class CustomUserDetailService implements UserDetailsService {
     @Autowired
     private ITaiKhoanRepository iTaiKhoanRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Taikhoan tk = iTaiKhoanRepository.findByUsername(username);
         if (tk == null)
             throw new UsernameNotFoundException("Không tìm thấy người dùng");
-        return new CustomUserDetail(tk, iTaiKhoanRepository) ;
+        return new CustomUserDetail(tk, iTaiKhoanRepository);
+    }
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+        Taikhoan tk = iTaiKhoanRepository.findByEmail(email);
+        if (tk == null)
+            throw new UsernameNotFoundException("Không tìm thấy người dùng");
+        return new CustomUserDetail(tk, iTaiKhoanRepository);
     }
 }

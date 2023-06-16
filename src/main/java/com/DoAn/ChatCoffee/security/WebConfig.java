@@ -40,16 +40,14 @@ public class WebConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/assets/**", "/css/**","/images/**","/js/**","/libs/**", "/","/user/register", "/error")
+                        .requestMatchers("/assets/**", "/css/**", "/images/**", "/js/**", "/libs/**", "/", "/user/register", "/error")
                         .permitAll()
                         .requestMatchers("/admin/**")
                         .hasAnyAuthority("ADMIN")
                         .requestMatchers("/**")
                         .permitAll()
-
                         .anyRequest().authenticated()
                 )
-
                 .logout(logout -> logout.logoutUrl("/logout")
                         .logoutSuccessUrl("/user/login")
                         .deleteCookies("JSESSIONID")
@@ -57,9 +55,10 @@ public class WebConfig {
                         .clearAuthentication(true)
                         .permitAll()
                 )
-                .formLogin(formLogin -> formLogin.loginPage("/login")
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/user/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/",true)
+                        .defaultSuccessUrl("/google", true)
                         .permitAll()
                 )
                 .rememberMe(rememberMe -> rememberMe
@@ -68,7 +67,6 @@ public class WebConfig {
                         .userDetailsService(userDetailsService())
                 )
                 .oauth2Login();
-
         return http.build();
     }
 

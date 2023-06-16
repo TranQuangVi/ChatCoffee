@@ -35,7 +35,7 @@ public class SanPhamController {
     @GetMapping("/page/{pageNo}")
     public String pageproduct(Model model, @Param("search") String search, @PathVariable(value = "pageNo") int pageNo ) {
         int pageSize= 6;
-        Page<Sanpham> page=sanPhamService.findPaginated(pageNo, pageSize);/////////////////////
+        Page<Sanpham> page=sanPhamService.findPaginated(pageNo, pageSize);
         model.addAttribute("pageSize", pageSize);
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());

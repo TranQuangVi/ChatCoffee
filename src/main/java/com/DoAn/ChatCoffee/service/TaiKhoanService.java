@@ -8,6 +8,8 @@ import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -82,5 +84,14 @@ public class TaiKhoanService {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
         return this.taiKhoanRepository.findAll(pageable);
     }
+    public void savegg(Taikhoan tk) {
+        taiKhoanRepository.save(tk);
+        Long taiKhoanId = taiKhoanRepository.getUserIdByUsername(tk.getUsername());
+        Long roleId = itaiRoleRepository.getRoleIdByName("USER");
+        if (taiKhoanId != 0 && roleId != 0) {
+            taiKhoanRepository.addRoleToUser(taiKhoanId, roleId);
+        }
+    }
+
 
 }

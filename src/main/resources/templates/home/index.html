@@ -66,12 +66,8 @@
                                 <div class="col-lg-4" th:each = "loaisp: ${listLoais}">
                                     <div class="menu-item">
                                         <div class="menu-item-content">
-<!--                                            <div class="menu-item-img">-->
 
-<!--                                                <img src="images/brands/coffee.jpg" />-->
-                                           <!--     <img src="assets/img/menu/01.jpg" alt="">-->
-<!--                                            </div>-->
-                                            <div class="menu-item-info">
+                                            <div class="menu-item-custom">
                                                 <h5 >    <a th:href="@{/loai/{id}(id=${loaisp.id})}" th:text="${loaisp.TenLoai}" > </a></h5>
 
                                                 <p ></p>
@@ -140,14 +136,6 @@
                                             </div>
                                         </div>
                                         <div class="shop-item-info">
-                                         <!--   <div class="shop-item-rate">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                            </div>-->
-<!--                                            <a th:href="@{/san-pham/thuonghieu/{id}(id=${th.MaTH})}" th:text="${th.TenTH}" >  </a></i>-->
                                             <a th:href="@{/chi-tiet/{id}(id=${sanpham.id})}">
                                                 <div  class="shop-item-title"  th:text = "${sanpham.TenSP} " ></div>
                                             </a>

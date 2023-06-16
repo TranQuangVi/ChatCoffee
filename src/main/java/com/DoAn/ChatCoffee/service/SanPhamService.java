@@ -28,6 +28,9 @@ public class SanPhamService {
     public void saveProduct(Sanpham product){
         sanPhamRepository.save(product);
     }
+     void privateSaveProduct(Sanpham product){
+        sanPhamRepository.save(product);
+    }
 
     public void deleteProductByID(Long product_id){
         this.sanPhamRepository.deleteById(product_id);

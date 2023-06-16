@@ -5,248 +5,453 @@
 <body data-topbar="dark" data-layout="horizontal">
 <!-- Begin page -->
 <div id="layout-wrapper">
-  <header th:replace="layout :: header-page"></header>
-  <div th:replace="layout :: topnav"></div>
-
-  <!--Nội dung-->
-
-  <div class="main-content">
-
-    <div class="page-content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-4">
-            <div class="card overflow-hidden">
-              <div class="bg-primary bg-soft">
+    <header th:replace="layout :: header-page"></header>
+    <div th:replace="layout :: topnav"></div>
+    <!--Nội dung-->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
                 <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card overflow-hidden">
+                            <div class="bg-primary bg-soft">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="text-primary p-2" style="width: 116%;">
+                                            <h5 class=" text-primary">Xin chào !</h5>
+                                            <div class="text-right">
 
-                  <div class="col-8">
-                    <div class="text-primary p-2" style="width: 116%;">
-                      <h5 class=" text-primary">Xin chào !</h5>
-                      <div class="text-right">
-
-                        <h5 class=" text-primary " th:text ="${taikhoan.fullname}"></h5>
-                      </div>
-                      <p>Chúc bạn có một trải nghiệm mua hàng ...</p>
-                    </div>
-                  </div>
-                  <div class="col-4 align-self-end">
-                    <img src="/assets/images/profile-img.png" alt="" class="img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="card-body pt-0">
-                <div class="row">
-                  <div class="col-sm-4 text-center">
-                    <div class="avatar-md profile-user-wid mb-4">
-
-                      <img src="/images/avatar-default.png" alt="" class="img-thumbnail rounded-circle">
-                    </div>
-                    <h5 class="font-size-15" style="margin-left: -25px;"  th:text ="${taikhoan.fullname}"></h5>
-                    <p class="text-muted mb-0 text-truncate"></p>
-                  </div>
-
-                  <div class="col-sm-8">
-                    <div class="pt-4">
-
-                      <div class="row">
-                        <div class="col-5" style="text-align: center">
-                          <h5 class="font-size-15" >125</h5>
-                          <p class="text-muted mb-0" >Lượt mua</p>
+                                                <h5 class=" text-primary " th:text="${taikhoan.fullname}"></h5>
+                                            </div>
+                                            <p>Chúc bạn có một trải nghiệm mua hàng ...</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 align-self-end">
+                                        <img src="/assets/images/profile-img.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="row">
+                                    <div class="col-sm-4 text-center">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                            <img src="/images/avatar-default.png" alt=""
+                                                 class="img-thumbnail rounded-circle">
+                                        </div>
+                                        <h5 class="font-size-15" style="margin-left: -25px;"
+                                            th:text="${taikhoan.fullname}"></h5>
+                                        <p class="text-muted mb-0 text-truncate"></p>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="pt-4">
+                                            <div class="row">
+                                                <div class="col-7" style="text-align: center">
+                                                    <p class="text-muted mb-0">Tổng sản phẩm đăng đặt</p>
+                                                    <h5 class="font-size-15" th:text="${slSPDaDat}"></h5>
+                                                </div>
+                                                <div class="col-5">
+                                                    <h5 class="font-size-15 " style="text-align: center">47</h5>
+                                                    <p class="text-muted mb-0">Sản phẩm ưu thích</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-7">
-                          <h5 class="font-size-15 " style="text-align: center">47</h5>
-                          <p class="text-muted mb-0">Sản phẩm ưu thích</p>
+                        <!-- end card -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-4">Thông tin</h4>
+                                <div class="table-responsive">
+                                    <form th:action="@{/user/edit}" th:object="${taikhoan}" method="post"
+                                          class="outer-repeater">
+                                        <input type="hidden" class="form-control" th:field="*{id}" value="taikhoan.id">
+                                        <input type="hidden" class="form-control" th:field="*{password}"
+                                               value="taikhoan.password">
+                                        <input type="hidden" class="form-control" th:field="*{username}"
+                                               value="taikhoan.username">
+                                        <table class="table table-nowrap mb-0">
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">Họ tên :</th>
+                                                <td><input type="text" class="form-control" th:field="*{fullname}"
+                                                           id="fullname" value="taikhoan.fullname"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Số điện thoại :</th>
+                                                <td><input type="text" class="form-control" th:field="*{phonenumber}"
+                                                           id="phonenumber" value="taikhoan.phonenumber"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Email :</th>
+                                                <td><input type="text" class="form-control" th:field="*{email}"
+                                                           id="email" value="taikhoan.email"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Ngày sinh :</th>
+                                                <td><input type="date" class="form-control" th:field="*{dateofbirth}"
+                                                           id="dateofbirth" value="taikhoan.dateofbirth"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Địa chỉ :</th>
+                                                <td>adwfqfdqw</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <button type="submit" class="btn btn-primary" value="Save"
+                                                style="margin-top: 30px; margin-left: 10px;">Cập nhật
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                     <!-- <div class="mt-4">
-                        <a href="javascript: void(0);" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                      </div>-->
+                        <!-- end card -->
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- end card -->
+                    <div class="col-xl-8">
+                        <div class="row icon-demo-content text-center ">
+                            <div class="col-lg-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body ">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1 ">
+                                                <a th:if="${slSPChoXacNhan}" class="badge bg-success float-end font-size-15" th:text="${slSPChoXacNhan}"></a>
+                                                <a class=" d-block" href="#">
+                                                    <i class="bx bx-paste" style="font-size: 45px" > </i>
+                                                    <p class="text-muted fw-medium mb-2">Chờ xác nhận</p>
+                                                </a>
 
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title mb-4">Thông tin</h4>
-                <div class="table-responsive" >
-                  <form th:action ="@{/user/edit}" th:object = "${taikhoan}" method = "post" class="outer-repeater">
-                    <input type="hidden" class="form-control" th:field="*{id}" value="taikhoan.id" >
-                    <input type="hidden" class="form-control" th:field="*{password}" value="taikhoan.password" >
-                    <input type="hidden" class="form-control" th:field="*{username}" value="taikhoan.username" >
-                  <table class="table table-nowrap mb-0">
-                    <tbody>
-                    <tr>
-                      <th scope="row">Họ tên :</th>
-                      <td>  <input type="text" class="form-control" th:field="*{fullname}" id="fullname" value="taikhoan.fullname"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Số điện thoại :</th>
-                      <td> <input type="text" class="form-control" th:field="*{phonenumber}" id="phonenumber" value="taikhoan.phonenumber"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Email :</th>
-                      <td> <input type="text" class="form-control" th:field="*{email}" id="email" value="taikhoan.email"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Ngày sinh :</th>
-                      <td> <input type="date" class="form-control" th:field="*{dateofbirth}" id="dateofbirth" value="taikhoan.dateofbirth"></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Địa chỉ :</th>
-                      <td >adwfqfdqw</td>
-                    </tr>
-                    </tbody>
-                  </table>
-                    <button type="submit" class="btn btn-primary" value="Save" style="margin-top: 30px; margin-left: 10px;">Cập nhật</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <!-- end card -->
-            <!-- end card -->
-          </div>
-
-          <div class="col-xl-8">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mini-stats-wid">
-                  <div class="card-body">
-                    <div class="d-flex">
-                      <div class="flex-grow-1">
-                        <p class="text-muted fw-medium mb-2">Sản phẩm đã mua</p>
-                        <h4 class="mb-0">125</h4>
-                      </div>
-
-                      <div class="flex-shrink-0 align-self-center">
-                        <a href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Chi tiết</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mini-stats-wid">
-                  <div class="card-body">
-                    <div class="d-flex">
-                      <div class="flex-grow-1">
-                        <p class="text-muted fw-medium mb-2">Sản phẩm giỏ hàng</p>
-                        <h4 class="mb-0">12</h4>
-                      </div>
-                      <div class="flex-shrink-0 align-self-center">
-                        <a href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Chi tiết</a>
-                      </div>
-
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="card mini-stats-wid">
-                  <div class="card-body">
-                    <div class="d-flex">
-                      <div class="flex-grow-1">
-                        <p class="text-muted fw-medium mb-2">Số hóa đơn</p>
-                        <h4 class="mb-0">99</h4>
-                      </div>
-
-                      <div class="flex-shrink-0 align-self-center">
-                        <a href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Chi tiết</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title mb-4">Hóa đơn của bạn</h4>
-                <div class="table-responsive">
-                  <table class="table table-nowrap table-hover mb-0">
-                    <thead>
-                    <tr>
-                      <th scope="col">STT</th>
-                      <th scope="col">Sản phẩm</th>
-                      <th scope="col">Ngày mua</th>
-                      <th scope="col">Ngày nhận</th>
-                      <th scope="col">Tổng tiền</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Cà phê hòa tan vị đắng ngọt ngào</td>
-                      <td>10/06/2023</td>
-                      <td>14/06/2023</td>
-                      <td>150.000VND</td>
-                    </tr>
-
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-            <!--Đề xuất-->
-            <div class="card">
-              <div class="card-body" style="position: relative;">
-                <h4 class="card-title mb-4">Đề xuất</h4>
-                <div class="row"  >
-
-
-                  <div th:each = "product: ${listProducts}" class="col-xl-4 col-md-6">
-                    <div class="card " style="background-color: aliceblue;">
-                      <div class="card-body">
-                        <div class="favorite-icon">
-                          <a href="javascript:void(0)"><i class="uil uil-heart-alt fs-18"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <a th:if="${slSPChoLayHang}" class="badge bg-success float-end font-size-15" th:text="${slSPChoLayHang}"></a>
+                                                <i class="bx bx-archive" style="font-size: 45px"></i>
+                                                <p class="text-muted fw-medium mb-2">Chờ lấy hàng</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="card mini-stats-wid">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="flex-grow-1">
+                                                <a th:if="${slSPDangGiao}" class="badge bg-success float-end font-size-15" th:text="${slSPDangGiao}"></a>
+                                                <i class="bx bxs-truck" style="font-size: 45px"></i>
+                                                <p class="text-muted fw-medium mb-2">Đang giao</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img src="https://themesbrand.com/skote-springboot/layouts/assets/images/companies/adobe-photoshop.svg" alt="" height="50" class="mb-3">
-                        <h5 class="fs-17 mb-2"><a href="job-details.html" class="text-dark"  th:text = "${product.TenSP}"></a> <small class="text-muted fw-normal"></small></h5>
-                        <ul class="list-inline mb-0">
-                          <li class="list-inline-item">
-                            <p class="text-muted fs-14 mb-1">Skote Technology Pvt.Ltd</p>
-                          </li>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-4">Lịch sử mua hàng</h4>
+                                <div>
+                                    <div class="chat-conversation p-3">
+                                        <ul class="list-unstyled mb-0" data-simplebar="init"
+                                            style="max-height: 200px;">
+                                            <div class="simplebar-wrapper" style="margin: 0px;">
+                                                <div class="simplebar-height-auto-observer-wrapper">
+                                                    <div class="simplebar-height-auto-observer"></div>
+                                                </div>
+                                                <div class="simplebar-mask">
+                                                    <div class="simplebar-offset"
+                                                         style="right: -16.8px; bottom: 0px;">
+                                                        <div class="simplebar-content-wrapper"
+                                                             style="height: auto; overflow: hidden scroll;">
+                                                            <div class="simplebar-content" style="padding: 0px;">
+                                                                   <!-- <div class="table-responsive">
+                                                                        <table class="table table-nowrap table-hover mb-0">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>STT</th>
+                                                                                <th scope="col">Tên khách hàng</th>
+                                                                                <th scope="col">Giá</th>
+                                                                                <th scope="col">Số lượng đã mua</th>
+                                                                                <th scope="col">Thành tiền</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr th:each="hoadon: ${dsHDDaMua}">
+                                                                                <td ></td>
+                                                                                <td th:text="${hoadon.taikhoan.fullname}"></td>
+                                                                                <td th:text="${hoadon.Gia}"></td>
+                                                                                <td th:text="${hoadon.Gia}"></td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>-->
+                                                                    <div class="table-responsive">
+                                                                        <table class="table align-middle table-nowrap">
+                                                                            <thead class="table-light">
+                                                                            <tr>
+                                                                                <th class="align-middle">Số hóa đơn</th>
+                                                                                <th class="align-middle">Tên Khách hàng</th>
+                                                                                <th class="align-middle">Ngày đặt</th>
+                                                                                <th class="align-middle">Tổng giá</th>
+                                                                                <th class="align-middle">Xem chi tiết</th>
+                                                                                <th class="align-middle"></th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr th:each=" hoadondamua,row: ${dsHDDaMua}">
+                                                                                <td th:text="${hoadondamua.id}" name="id" id="id"></td>
+                                                                                <td th:text="${hoadondamua.taikhoan.fullname}"></td>
+                                                                                <td th:text="${hoadondamua.ngaydat}"></td>
+                                                                                <td th:text="${hoadondamua.tonggia}"></td>
+                                                                                <td>
+                                                                                    <!-- Button trigger modal -->
+                                                                                    <button type="button" class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" th:data-bs-target="'.orderdetailsModals' + ${hoadondamua.id}">
+                                                                                        click vào đây
+                                                                                    </button>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <div class="d-flex gap-3">
+                                                                                        <a href="javascript:void(0);" class="text-success"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                                                                        <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-delete font-size-18"></i></a>
+                                                                                    </div>
+                                                                                </td>
 
-                          <li class="list-inline-item">
-                            <p class="text-muted fs-14 mb-0"  th:text = "${product.Gia}"></p>
-                          </li>
-                        </ul>
-                        <div class="mt-3 hstack gap-2">
-                          <span class="badge rounded-1 badge-soft-success">Full Time</span>
-                          <span class="badge rounded-1 badge-soft-warning">Urgent</span>
-                          <span class="badge rounded-1 badge-soft-info">Private</span>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="simplebar-placeholder"
+                                                     style="width: auto; height: 645px;"></div>
+                                            </div>
+                                            <div class="simplebar-track simplebar-horizontal"
+                                                 style="visibility: hidden;">
+                                                <div class="simplebar-scrollbar"
+                                                     style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                                            </div>
+                                            <div class="simplebar-track simplebar-vertical"
+                                                 style="visibility: visible;">
+                                                <div class="simplebar-scrollbar"
+                                                     style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mt-4 hstack gap-2">
-                          <a href="job-details.html" class="btn btn-soft-success w-100">View Profile</a>
-                          <a href="#applyJobs" data-bs-toggle="modal" class="btn btn-soft-primary w-100">Apply Now</a>
+                        <!--Đề xuất-->
+                        <div class="card">
+                            <div class="card-body" style="position: relative;">
+                                <div class="w-100 user-chat">
+                                    <div class="card">
+                                        <div class="p-4 border-bottom ">
+                                            <div class="row">
+                                                <div class="col-md-4 col-9">
+                                                    <h5 class="font-size-15 mb-1">Đề xuất</h5>
+                                                </div>
+                                                <div class="col-md-8 col-3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="chat-conversation p-3">
+                                                <ul class="list-unstyled mb-0" data-simplebar="init"
+                                                    style="max-height: 486px;">
+                                                    <div class="simplebar-wrapper" style="margin: 0px;">
+                                                        <div class="simplebar-height-auto-observer-wrapper">
+                                                            <div class="simplebar-height-auto-observer"></div>
+                                                        </div>
+                                                        <div class="simplebar-mask">
+                                                            <div class="simplebar-offset"
+                                                                 style="right: -16.8px; bottom: 0px;">
+                                                                <div class="simplebar-content-wrapper"
+                                                                     style="height: auto; overflow: hidden scroll;">
+                                                                    <div class="simplebar-content"
+                                                                         style="padding: 0px;">
+                                                                        <li>
+                                                                            <div class="row">
+                                                                                <div th:each="product: ${listProducts}"
+                                                                                     class="col-xl-4 col-md-6 col-lg-4">
+                                                                                    <div class="card "
+                                                                                         style="background-color: aliceblue;">
+                                                                                        <div class="card-body">
+                                                                                            <div class="favorite-icon">
+                                                                                                <a href="javascript:void(0)"><i
+                                                                                                        class="uil uil-heart-alt fs-18"></i></a>
+                                                                                            </div>
+                                                                                            <img src="https://themesbrand.com/skote-springboot/layouts/assets/images/companies/adobe-photoshop.svg"
+                                                                                                 alt="" height="50"
+                                                                                                 class="mb-3">
+                                                                                            <h5 class="fs-17 mb-2"><a
+                                                                                                    href="job-details.html"
+                                                                                                    class="text-dark"
+                                                                                                    th:text="${product.TenSP}"></a>
+                                                                                                <small class="text-muted fw-normal"></small>
+                                                                                            </h5>
+                                                                                            <ul class="list-inline mb-0">
+                                                                                                <li class="list-inline-item">
+                                                                                                    <p class="text-muted fs-14 mb-1">
+                                                                                                        Skote Technology
+                                                                                                        Pvt.Ltd</p>
+                                                                                                </li>
+
+                                                                                                <li class="list-inline-item">
+                                                                                                    <p class="text-muted fs-14 mb-0"
+                                                                                                       th:text="${product.Gia}"></p>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                            <div class="mt-3 hstack gap-2">
+                                                                                                <span class="badge rounded-1 badge-soft-success">Full Time</span>
+                                                                                                <span class="badge rounded-1 badge-soft-warning">Urgent</span>
+                                                                                                <span class="badge rounded-1 badge-soft-info">Private</span>
+                                                                                            </div>
+                                                                                            <div class="mt-4 hstack gap-2">
+                                                                                                <a href="job-details.html"
+                                                                                                   class="btn btn-soft-success w-100">View
+                                                                                                    Profile</a>
+                                                                                                <a href="#applyJobs"
+                                                                                                   data-bs-toggle="modal"
+                                                                                                   class="btn btn-soft-primary w-100">Apply
+                                                                                                    Now</a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </li>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="simplebar-placeholder"
+                                                             style="width: auto; height: 645px;"></div>
+                                                    </div>
+                                                    <div class="simplebar-track simplebar-horizontal"
+                                                         style="visibility: hidden;">
+                                                        <div class="simplebar-scrollbar"
+                                                             style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                                                    </div>
+                                                    <div class="simplebar-track simplebar-vertical"
+                                                         style="visibility: visible;">
+                                                        <div class="simplebar-scrollbar"
+                                                             style="height: 366px; transform: translate3d(0px, 0px, 0px); display: block;"></div>
+                                                    </div>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
+
                     </div>
-                  </div>
-                  <!--end col-->
-
                 </div>
-              </div>
-            </div>
+                <!-- end row -->
+                <div th:each=" hoadondamua: ${dsHDDaMua}">
+                        <!-- Button trigger modal -->
+                         <div th:class="'modal fade orderdetailsModals' + ${hoadondamua.id}" tabindex="-1" aria-labelledby="orderdetailsModalLabel&quot;" style="display: none;" aria-hidden="true">
+                             <div class="modal-dialog modal-dialog-centered" role="document">
+                                 <div class="modal-content">
+                                     <div class="modal-header">
+                                         <h5 class="modal-title" id="orderdetailsModalLabel&quot;">Chi tiết hóa đơn</h5>
+                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                     </div>
+                                     <div class="modal-body">
+                                         <div class="row">
+                                             <div class="col-6">
+                                                 <p class="mb-2">Mã hóa đơn: <span class="text-primary" th:text="${hoadondamua.id}"></span></p>
+                                                 <p class="mb-4">Tên khách hàng: <span class="text-primary" th:text="${hoadondamua.taikhoan.fullname}"></span></p>
+                                                 <p class="mb-4">Số điện thoại đặt: <span class="text-primary" th:text="${hoadondamua.sdt}"></span></p>
+                                             </div>
+                                             <div class="col-6">
+                                                 <p class="mb-2">Ngày đặt: <span class="text-primary" th:text="${hoadondamua.ngaydat}"></span></p>
+                                                 <p class="mb-4">Ngày giao: <span class="text-primary" th:text="${hoadondamua.ngaygiao}"></span></p>
+                                                 <p class="mb-4">Địa chỉ: <span class="text-primary" th:text="${hoadondamua.diachinhan}"></span></p>
+                                             </div>
+                                         </div>
 
-          </div>
+                                         <div class="table-responsive">
+                                             <table class="table align-middle table-nowrap">
+                                                 <thead>
+                                                 <!-- dsCTHDDaMua: lấy tất cả CTHD theo hoadon.id và trạng thái=="hoàn thành"-->
+                                                 <!--<tr th:each=" cthoadon: ${dsCTHDDaMua}">
+                                                     <div th:if="${cthoadon.hoadon.id}==${hoadondamua.id}">
+                                                         <th scope="col" th:text="${cthoadon.sanpham.TenSP}"></th>
+                                                         <th scope="col" th:text="${cthoadon.sanpham.Gia}"></th>
+                                                         <th scope="col" th:text="${cthoadon.soluong}"></th>
+                                                     </div>
+                                                 </tr>-->
+                                                 <tr>
+                                                     <th>Ảnh</th>
+                                                     <th>Tên sản phẩm</th>
+                                                     <th>Tổng giá</th>
+                                                 </tr>
+                                                 </thead>
+                                                 <tbody>
+                                                 <tr th:each=" cthoadon: ${dsCTHDDaMua}">
+                                                     <div th:if="${cthoadon.hoadon.id}==${hoadondamua.id}">
+                                                     <th scope="row">
+                                                         <div>
+                                                             <img src="assets/images/product/img-7.png" alt="" class="avatar-sm">
+                                                         </div>
+                                                     </th>
+                                                     <td>
+                                                         <div>
+                                                             <h5 class="text-truncate font-size-14" th:text="${cthoadon.sanpham.TenSP}"></h5>
+                                                             <p class="text-muted mb-0" th:text="${cthoadon.sanpham.Gia} +' x '+${cthoadon.soluong}"></p>
+                                                         </div>
+                                                     </td>
+                                                     <td th:text="${cthoadon.sanpham.Gia * cthoadon.soluong}"></td></div>
+                                                 </tr>
+                                                 <tr>
+                                                     <td colspan="2">
+                                                         <h6 class="m-0 text-right">Sub Total:</h6>
+                                                     </td>
+                                                     <td>
+                                                         $ 400
+                                                     </td>
+                                                 </tr>
+
+                                                 <tr>
+                                                     <td colspan="2">
+                                                         <h6 class="m-0 text-right">Total:</h6>
+                                                     </td>
+                                                     <td>
+                                                         $ 400
+                                                     </td>
+                                                 </tr>
+                                                 </tbody>
+                                             </table>
+                                         </div>
+                                     </div>
+                                     <div class="modal-footer">
+                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                </div>
+            </div> <!-- container-fluid -->
         </div>
-        <!-- end row -->
+        <!-- End Page-content -->
 
-      </div> <!-- container-fluid -->
     </div>
-    <!-- End Page-content -->
-
-  </div>
-  <!--Hết nội dung-->
+    <!--Hết nội dung-->
 </div>
-<!--<footer th:replace="layout :: footer"></footer>-->
+<footer th:replace="layout :: footer"></footer>
 
 <div th:replace="layout :: link-js"></div>
 

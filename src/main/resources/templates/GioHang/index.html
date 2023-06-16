@@ -5,100 +5,87 @@
 <body data-topbar="dark" data-layout="horizontal">
 <!-- Begin page -->
 <div id="layout-wrapper">
-  <header th:replace="layout :: header-page"></header>
-  <div th:replace="layout :: topnav"></div>
+    <header th:replace="layout :: header-page"></header>
+    <div th:replace="layout :: topnav"></div>
 
-  <!--Nội dung-->
-  <div class="main-content">
-    <div class="page-content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-          </div>
-        </div>
-        <!-- end row -->
-        <div class="card">
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table align-middle mb-0 table-nowrap">
-                <thead class="table-light">
-                <tr>
-                  <th>Ảnh</th>
-                  <th>Tên sản phẩm</th>
-                  <th>Giá</th>
-                  <th>Số lượng</th>
-                  <th colspan="2">Tổng giá</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each = "ctGiohang: ${ctGiohangs}">
-                  <td >
-                    <a th:href="@{/san-pham/chi-tiet/{id}(id=${ctGiohang.sanpham.id})}">
-                    <img th:src="${ctGiohang.sanpham.Anh}" alt="product-img" title="product-img" class="avatar-md"></a>
-                  </td>
-                  <td>
-                    <h5 class="font-size-14 text-truncate">
-                      <a class="text-dark" th:text = "${ctGiohang.sanpham.TenSP}" th:href="@{/san-pham/chi-tiet/{id}(id=${ctGiohang.sanpham.id})}" ></a>
-                    </h5>
-                    <p class="mb-0"><span class="fw-medium" th:text = "'Khối lượng: '+${ctGiohang.sanpham.Khoiluong}"></span></p>
-                  </td>
-                  <td th:text = "${ctGiohang.sanpham.Gia} + ' $'">
-
-                  </td>
-                  <form th:action="@{/gio-hang/cap-nhat-gio-hang}" method="post">
-                    <td>
-                    <div class="me-3" style="width: 120px;">
-                      <input type="hidden" name="id" th:value="${ctGiohang.sanpham.id}" >
-
-                      <input type="number" th:value="${ctGiohang.soluong}" name="soluong" class="form-control">
-
+    <!--Nội dung-->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0 table-nowrap">
+                                <thead class="table-light">
+                                <tr>
+                                    <th>Ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th colspan="2">Tổng giá</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="ctGiohang: ${ctGiohangs}">
+                                    <td>
+                                        <a th:href="@{/san-pham/chi-tiet/{id}(id=${ctGiohang.sanpham.id})}">
+                                            <img th:src="${ctGiohang.sanpham.Anh}" alt="product-img" title="product-img"
+                                                 class="avatar-md"></a>
+                                    </td>
+                                    <td>
+                                        <h5 class="font-size-14 text-truncate">
+                                            <a class="text-dark" th:text="${ctGiohang.sanpham.TenSP}"
+                                               th:href="@{/san-pham/chi-tiet/{id}(id=${ctGiohang.sanpham.id})}"></a>
+                                        </h5>
+                                        <p class="mb-0"><span class="fw-medium"
+                                                              th:text="'Khối lượng: '+${ctGiohang.sanpham.Khoiluong}"></span>
+                                        </p>
+                                    </td>
+                                    <td th:text="${ctGiohang.sanpham.Gia} + ' $'">
+                                    </td>
+                                    <form th:action="@{/gio-hang/cap-nhat-gio-hang}" method="post">
+                                        <td>
+                                            <div class="me-3" style="width: 120px;">
+                                                <input type="hidden" name="id" th:value="${ctGiohang.sanpham.id}">
+                                                <input type="number" th:value="${ctGiohang.soluong}" name="soluong"
+                                                       class="form-control">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a class="text-dark"
+                                               th:text="${ctGiohang.sanpham.Gia*ctGiohang.soluong}"></a>
+                                        </td>
+                                        <td style="width: 100px">
+                                            <button type="submit" class="btn btn-outline-secondary btn-sm edit"><i
+                                                    class="bx bx-check"></i></button>
+                                            <a th:href="@{/gio-hang/xoa-san-pham/{id}(id=${ctGiohang.sanpham.id})}"
+                                               class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                <i class="bx bx-trash"></i>
+                                            </a>
+                                        </td>
+                                    </form>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-sm-6">
+                                <a href="/san-pham" class="btn text-muted d-none d-sm-inline-block btn-link">
+                                    <i class="mdi mdi-arrow-left me-1"></i> Quay về  </a>
+                            </div> <!-- end col -->
+                            <div class="col-sm-6">
+                                <div class="text-sm-end mt-2 mt-sm-0">
+                                    <a href="/gio-hang/tao-don-hang" class="btn btn-success">
+                                        <i class="mdi mdi-cart-arrow-right me-1"></i> Mua ngay </a>
+                                </div>
+                            </div> <!-- end col -->
+                        </div> <!-- end row-->
                     </div>
-
-
-
-                  </td>
-                  <td>
-                    <a class="text-dark" th:text ="${ctGiohang.sanpham.Gia*ctGiohang.soluong}"></a>
-                  </td>
-<!--                  <td>
-                    <a href="javascript:void(0);" class="action-icon text-danger"> <i class="mdi mdi-trash-can font-size-18"></i></a>
-
-                  </td>-->
-                  <td style="width: 100px">
-                    <!--<a  th:href="@{/gio-hang/cap-nhat-gio-hang/{id}/{soluong}(id=${ctGiohang.sanpham.id}, soluong=${ctGiohang.soluong})}"
-                       class="btn btn-outline-secondary btn-sm edit" title="Update">
-                      <i class="bx bx-check"></i>
-                    </a>-->
-
-                    <button type="submit"  class="btn btn-outline-secondary btn-sm edit"> <i class="bx bx-check"></i></button>
-                    <a th:href="@{/gio-hang/xoa- san-pham/{id}(id=${ctGiohang.sanpham.id})}"
-                            class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                      <i class="bx bx-trash"></i>
-                    </a>
-                  </td>
-                  </form>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="row mt-4">
-              <div class="col-sm-6">
-                <a href="/san-pham" class="btn btn-secondary">
-                  <i class="mdi mdi-arrow-left me-1"></i> Quay về </a>
-              </div> <!-- end col -->
-              <div class="col-sm-6">
-                <div class="text-sm-end mt-2 mt-sm-0">
-                  <a href="/gio-hang/tao-don-hang" class="btn btn-success">
-                    <i class="mdi mdi-cart-arrow-right me-1"></i> Mua ngay </a>
                 </div>
-              </div> <!-- end col -->
-            </div> <!-- end row-->
-          </div>
+            </div> <!-- container-fluid -->
         </div>
-      </div> <!-- container-fluid -->
     </div>
-  </div>
-  <!--Hết nội dung-->
+    <!--Hết nội dung-->
 </div>
 <footer th:replace="layout :: footer"></footer>
 

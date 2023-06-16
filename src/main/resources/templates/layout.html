@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns:th = "http://www.thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
       lang="en">
 
@@ -11,15 +11,17 @@
     <meta content="Themesbrand" name="author"/>
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-  <!-- Bootstrap Css -->
-  <link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" />
-  <!-- Icons Css-->
-  <link href="/assets/css/icons.min.css" rel="stylesheet"  />
-  <!-- App Css-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet"  />
-  <link href="/assets/css/style.css" id="style" rel="stylesheet"  />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap Css -->
+    <link href="/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet"/>
+    <!-- Icons Css-->
+    <link href="/assets/css/icons.min.css" rel="stylesheet"/>
+    <!-- App Css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="/assets/css/app.min.css" id="app-style" rel="stylesheet"/>
+    <link href="/assets/css/style.css" id="style" rel="stylesheet"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
@@ -29,10 +31,11 @@
 <div id="layout-wrapper">
     <header id="page-topbar" th:fragment="header-page">
 
-        <div class="navbar-header" >
+        <div class="navbar-header">
             <div class="logo_shop">
                 <a href="/"> <img class="rounded-circle" src="/images/background/CHAT.png"
-                     alt="Header Avatar" style="object-fit: cover; width: 220px; display: flex; margin-left: -150px;"></a>
+                                  alt="Header Avatar"
+                                  style="object-fit: cover; width: 220px; display: flex; margin-left: -150px;"></a>
             </div>
             <div class="d-flex">
                 <!-- LOGO -->
@@ -57,11 +60,11 @@
                 </div>
 
 
-                <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                <button type="button"
+                        class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                        data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
                     <i class="fa fa-fw fa-bars"></i>
                 </button>
-
-
 
 
             </div>
@@ -69,34 +72,31 @@
             <div class="d-flex">
 
                 <div class="dropdown d-inline-block d-lg-none ms-2">
-                    <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                    <button type="button" class="btn header-item noti-icon waves-effect"
+                            id="page-header-search-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="mdi mdi-magnify"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                          aria-labelledby="page-header-search-dropdown">
-
                         <form class="p-3">
                             <div class="form-group m-0">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search ..." aria-label="Search input">
-
-                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>s
+                                    <input type="text" class="form-control" placeholder="Search ..."
+                                           aria-label="Search input">
+                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i>
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-
-
-
                 <div class="dropdown d-none d-lg-inline-block ms-1">
                     <button class="btn header-item noti-icon waves-effect">
-                    <a href="/gio-hang">
-                        <i class="bx bx-cart-alt"></i>
-                    </a></button>
+                        <a href="/gio-hang">
+                            <i class="bx bx-cart-alt"></i>
+                        </a></button>
                 </div>
-
                 <div class="dropdown d-none d-lg-inline-block ms-1">
                     <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
                         <i class="bx bx-fullscreen"></i>
@@ -104,7 +104,8 @@
                 </div>
 
                 <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
+                    <button type="button" class="btn header-item noti-icon waves-effect"
+                            id="page-header-notifications-dropdown"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="bx bx-bell bx-tada"></i>
                         <span class="badge bg-danger rounded-pill">3</span>
@@ -132,51 +133,10 @@
                                     <div class="flex-grow-1">
                                         <h6 class="mb-1" key="t-your-order">Your order is placed</h6>
                                         <div class="font-size-12 text-muted">
-                                            <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="javascript: void(0);" class="text-reset notification-item">
-                                <div class="d-flex">
-                                    <img src="assets/images/users/avatar-3.jpg"
-                                         class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">James Lemire</h6>
-                                        <div class="font-size-12 text-muted">
-                                            <p class="mb-1" key="t-simplified">It will seem like simplified English.</p>
-                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">1 hours ago</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="javascript: void(0);" class="text-reset notification-item">
-                                <div class="d-flex">
-                                    <div class="avatar-xs me-3">
-                                                <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                    <i class="bx bx-badge-check"></i>
-                                                </span>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1" key="t-shipped">Your item is shipped</h6>
-                                        <div class="font-size-12 text-muted">
-                                            <p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="javascript: void(0);" class="text-reset notification-item">
-                                <div class="d-flex">
-                                    <img src="assets/images/users/avatar-4.jpg"
-                                         class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                    <div class="flex-grow-1">
-                                        <h6 class="mb-1">Salena Layfield</h6>
-                                        <div class="font-size-12 text-muted">
-                                            <p class="mb-1" key="t-occidental">As a skeptical Cambridge friend of mine occidental.</p>
-                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">1 hours ago</span></p>
+                                            <p class="mb-1" key="t-grammer">If several languages coalesce the
+                                                grammar</p>
+                                            <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 min ago</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -184,32 +144,34 @@
                         </div>
                         <div class="p-2 border-top d-grid">
                             <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                                <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">View More..</span>
+                                <i class="mdi mdi-arrow-right-circle me-1"></i> <span
+                                    key="t-view-more">View More..</span>
                             </a>
                         </div>
                     </div>
                 </div>
 
 
+                <button sec:authorize="!isAuthenticated()" type="button" class="btn header-item waves-effect"
+                        id="page-header-user">
+                    <a class=" text-white" href="/user/login"> <span
+                            key="t-logout">Đăng nhập</span></a>
+                </button>
 
-                    <button sec:authorize="!isAuthenticated()" type="button" class="btn header-item waves-effect" id="page-header-user">
-                        <a class=" text-white" href="/user/login"> <span
-                                key="t-logout">Đăng nhập</span></a>
+                <div class="dropdown d-inline-block" sec:authorize="isAuthenticated()">
+                    <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="/images/background/CHAT.png"
+                             alt="Header Avatar">
+                        <a href="/user" class="d-none d-xl-inline-block ms-1" key="t-logout"> <span
+                                sec:authentication="name"></span></a>
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
-
-                    <div class="dropdown d-inline-block" sec:authorize="isAuthenticated()">
-                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="/images/background/CHAT.png"
-                                 alt="Header Avatar">
-                            <a href="/user" class="d-none d-xl-inline-block ms-1" key="t-logout"> <span sec:authentication="name"></span></a>
-                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                        </button>
-                    <div class="dropdown-menu dropdown-menu-end" >
+                    <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <a class="dropdown-item" href="/user"><i class="bx bx-user font-size-16 align-middle me-1"></i>
                             <span key="t-profile">Cá nhân</span></a>
-                        <a  class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i>
+                        <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i>
                             <span key="t-my-wallet">Hóa đơn</span></a>
                         <a sec:authorize="hasAnyAuthority('ADMIN')" class="dropdown-item d-block" href="/admin"><i
                                 class="bx bx-wrench font-size-16 align-middle me-1"></i> <span
@@ -219,17 +181,16 @@
                         <div class="dropdown-divider"></div>
 
 
-                        <a  class="dropdown-item text-danger" >
+                        <a class="dropdown-item text-danger">
                             <form th:action="@{/logout}" method="post">
                                 <button class="btn btn-outline-danger" type="submit"> Đăng xuất</button>
-                            </form> <span
-                                key="t-logout"></span></a>
+                            </form>
+                            <span
+                                    key="t-logout"></span></a>
 
 
                     </div>
                 </div>
-
-
 
 
                 <div class="dropdown d-inline-block">
@@ -249,14 +210,15 @@
                     <ul class="navbar-nav" style="color:var(--bs-menu-item-color)">
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="/" id="topnav-dashboard" role="button" >
+                            <a class="nav-link dropdown-toggle arrow-none" href="/" id="topnav-dashboard" role="button">
                                 <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Trang chủ</span>
                             </a>
 
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="/san-pham" id="topnav-uielement" role="button">
+                            <a class="nav-link dropdown-toggle arrow-none" href="/san-pham" id="topnav-uielement"
+                               role="button">
                                 <i class="bx bx-tone me-2"></i>
                                 <span key="t-ui-elements"> Sản phẩm</span>
                             </a>
@@ -265,26 +227,31 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
                             >
-                                <i class="bx bx-customize me-2"></i><span key="t-apps">Loại sản phẩm</span> <div class="arrow-down"></div>
+                                <i class="bx bx-customize me-2"></i><span key="t-apps">Loại sản phẩm</span>
+                                <div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
                                 <div class="dropdown">
                                     <a class="dropdown-item dropdown-toggle arrow-none" href="#"
                                        role="button">
-                                        <span key="t-calendar">Loại 1</span> <div class="arrow-down"></div>
+                                        <span key="t-calendar">Loại 1</span>
+                                        <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                        <a href="calendar.html" class="dropdown-item" key="t-tui-calendar">sản phẩm 1 </a>
+                                        <a href="calendar.html" class="dropdown-item" key="t-tui-calendar">sản phẩm
+                                            1 </a>
                                     </div>
                                 </div>
                                 <div class="dropdown">
                                     <a class="dropdown-item dropdown-toggle arrow-none" href="#"
                                        role="button">
-                                        <span key="t-calendar">Loại 2</span> <div class="arrow-down"></div>
+                                        <span key="t-calendar">Loại 2</span>
+                                        <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                        <a href="calendar-full.html" class="dropdown-item" key="t-full-calender">Sản phẩm 2</a>
+                                        <a href="calendar-full.html" class="dropdown-item" key="t-full-calender">Sản
+                                            phẩm 2</a>
                                     </div>
                                 </div>
                             </div>
@@ -294,25 +261,30 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
                             >
-                                <i class="bx bx-collection me-2"></i><span key="t-components">Thương hiệu</span> <div class="arrow-down"></div>
+                                <i class="bx bx-collection me-2"></i><span key="t-components">Thương hiệu</span>
+                                <div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-components">
                                 <div class="dropdown">
                                     <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
                                        role="button">
-                                        <span key="t-forms">Thương hiệu 1</span> <div class="arrow-down"></div>
+                                        <span key="t-forms">Thương hiệu 1</span>
+                                        <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-form">
-                                        <a href="form-elements.html" class="dropdown-item" key="t-form-elements">Sản phẩm 1</a>
+                                        <a href="form-elements.html" class="dropdown-item" key="t-form-elements">Sản
+                                            phẩm 1</a>
                                     </div>
                                 </div>
                                 <div class="dropdown">
                                     <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
                                        role="button">
-                                        <span key="t-tables">Thương hiệu 2</span> <div class="arrow-down"></div>
+                                        <span key="t-tables">Thương hiệu 2</span>
+                                        <div class="arrow-down"></div>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="topnav-table">
-                                        <a href="tables-basic.html" class="dropdown-item" key="t-basic-tables">Sản phẩm 2</a>
+                                        <a href="tables-basic.html" class="dropdown-item" key="t-basic-tables">Sản phẩm
+                                            2</a>
                                     </div>
                                 </div>
                             </div>
@@ -326,94 +298,101 @@
     </div>
 
     <!--Nội dung-->
-    <div th:insert = "~{::${content}}"></div>
+    <div th:insert="~{::${content}}"></div>
     <!--Hết nội dung-->
 
 </div>
 
 
-  <!--Nội dung-->
-  <div th:insert = "~{::${content}}"></div>
-  <!--Hết nội dung-->
+<!--Nội dung-->
+<div th:insert="~{::${content}}"></div>
+<!--Hết nội dung-->
 
 </div>
 <!-- END layout-wrapper -->
 
 
-    <footer class="footer-area" th:fragment="footer" style="background-color: #123;  position: relative;">
-      <div class="footer-widget">
+<footer class="footer-area" th:fragment="footer" style="background-color: #123;  position: relative;">
+    <div class="footer-widget">
         <div class="container">
-          <div class="row footer-widget-wrapper pt-100 pb-70">
-            <div class="col-md-6 col-lg-4">
-              <div class="footer-widget-box about-us">
-                <a href="#" class="footer-logo">
-                  <img src="/images/background/CHAT.png" alt="" style="width: 245px;  object-fit: cover; height: 105px;">
-                </a>
+            <div class="row footer-widget-wrapper pt-100 pb-70">
+                <div class="col-md-6 col-lg-4">
+                    <div class="footer-widget-box about-us">
+                        <a href="#" class="footer-logo">
+                            <img src="/images/background/CHAT.png" alt=""
+                                 style="width: 245px;  object-fit: cover; height: 105px;">
+                        </a>
 
-                <ul class="footer-contact">
-                  <li><i class="fa-sharp fa-solid fa-phone"></i>0988474747</li>
-                  <li><i class="fa-solid fa-location-dot" style="color: #c7a17a;"></i>Tăng Nhơn Phú A, TP Thủ Đức</li>
-                  <li><a href="#"><i class="far fa-envelope"></i>chatcoffee@gmail.com</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-2">
-              <div class="footer-widget-box list">
-                <h4 class="footer-widget-title" style="text-align: center; margin-top: 25px;  margin-bottom: 30px; color: #fff;">Giới thiệu</h4>
-                <ul class="footer-list">
-                  <li><a href="#"><i class="fas fa-caret-right"></i> Về chúng tôi</a></li>
-                  <li><a href="#"><i class="fas fa-caret-right"></i> Sản phẩm</a></li>
-                  <li><a href="#"><i class="fas fa-caret-right"></i> Chuyện cà phê</a></li>
-                  <li><a href="#"><i class="fas fa-caret-right"></i> Cửa hàng</a></li>
-                  <li><a href="#"><i class="fas fa-caret-right"></i> Tuyển dụng</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="footer-widget-box list">
-                <h4 class="footer-widget-title" style="text-align: center; margin-top: 25px;  margin-bottom: 30px; color: #fff;">Giờ mở cửa</h4>
-                <div class="footer-opening-hour">
-                  <div class="opening-shape-1"></div>
-                  <div class="opening-shape-2"></div>
-                  <div class="opening-shape-3"></div>
-                  <ul>
-                    <li><span class="day">Thứ 2:</span><span class="time"> 9 giờ - 18 giờ</span></li>
-                    <li><span class="day">Thứ 3:</span><span class="time"> 9 giờ - 18 giờ</span></li>
-                    <li><span class="day">Thứ 4:</span><span class="time"> 9 giờ - 18 giờ</span></li>
-                    <li><span class="day">Thứ 5:</span><span class="time"> 9 giờ - 18 giờ</span></li>
-                    <li><span class="day">Thứ 6:</span><span class="time"> 9 giờ - 18 giờ</span></li>
-                    <li><span class="day">Thứ 7:</span><span class="time"> 9 giờ - 18 giờ</span></li>
-                    <li><span class="day">CN:</span><span class="closed"> Đóng cửa</span></li>
-                  </ul>
+                        <ul class="footer-contact">
+                            <li><i class="fa-sharp fa-solid fa-phone"></i>0988474747</li>
+                            <li><i class="fa-solid fa-location-dot" style="color: #c7a17a;"></i>Tăng Nhơn Phú A, TP Thủ
+                                Đức
+                            </li>
+                            <li><a href="#"><i class="far fa-envelope"></i>chatcoffee@gmail.com</a></li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="footer-widget-box list">
+                        <h4 class="footer-widget-title"
+                            style="text-align: center; margin-top: 25px;  margin-bottom: 30px; color: #fff;">Giới
+                            thiệu</h4>
+                        <ul class="footer-list">
+                            <li><a href="#"><i class="fas fa-caret-right"></i> Về chúng tôi</a></li>
+                            <li><a href="#"><i class="fas fa-caret-right"></i> Sản phẩm</a></li>
+                            <li><a href="#"><i class="fas fa-caret-right"></i> Chuyện cà phê</a></li>
+                            <li><a href="#"><i class="fas fa-caret-right"></i> Cửa hàng</a></li>
+                            <li><a href="#"><i class="fas fa-caret-right"></i> Tuyển dụng</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget-box list">
+                        <h4 class="footer-widget-title"
+                            style="text-align: center; margin-top: 25px;  margin-bottom: 30px; color: #fff;">Giờ mở
+                            cửa</h4>
+                        <div class="footer-opening-hour">
+                            <div class="opening-shape-1"></div>
+                            <div class="opening-shape-2"></div>
+                            <div class="opening-shape-3"></div>
+                            <ul>
+                                <li><span class="day">Thứ 2:</span><span class="time"> 9 giờ - 18 giờ</span></li>
+                                <li><span class="day">Thứ 3:</span><span class="time"> 9 giờ - 18 giờ</span></li>
+                                <li><span class="day">Thứ 4:</span><span class="time"> 9 giờ - 18 giờ</span></li>
+                                <li><span class="day">Thứ 5:</span><span class="time"> 9 giờ - 18 giờ</span></li>
+                                <li><span class="day">Thứ 6:</span><span class="time"> 9 giờ - 18 giờ</span></li>
+                                <li><span class="day">Thứ 7:</span><span class="time"> 9 giờ - 18 giờ</span></li>
+                                <li><span class="day">CN:</span><span class="closed"> Đóng cửa</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="footer-widget-box list">
+                        <div class="mt-4">
+                            <h4 class="text-white mb-3" style="text-align: center;">Mạng xã hội</h4>
+                            <ul class="footer-social mt-1">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="bx bxl-instagram-alt" style="font-size:18px"></i></a></li>
+                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-              <div class="footer-widget-box list">
-                  <div class="mt-4">
-                    <h4 class="text-white mb-3" style="text-align: center;">Mạng xã hội</h4>
-                    <ul class="footer-social mt-1">
-                      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="bx bxl-instagram-alt" style="font-size:18px"></i></a></li>
-                      <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    </ul>
-                  </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
 
-    </footer>
+</footer>
 
 <!-- JAVASCRIPT -->
 <div th:fragment="link-js">
-  <script th:src="@{/libs/jquery.min.js}"></script>
-  <script type="text/javascript" th:src="@{/libs/bootstrap.bundle.min.js}"></script>
-  <script type="text/javascript" th:src="@{/libs/metisMenu.min.js}"></script>
-  <script type="text/javascript" th:src="@{/libs/simplebar.min.js}"></script>
-  <script type="text/javascript" th:src="@{/libs/waves.min.js}"></script>
+    <script th:src="@{/libs/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/libs/bootstrap.bundle.min.js}"></script>
+    <script type="text/javascript" th:src="@{/libs/metisMenu.min.js}"></script>
+    <script type="text/javascript" th:src="@{/libs/simplebar.min.js}"></script>
+    <script type="text/javascript" th:src="@{/libs/waves.min.js}"></script>
 
     <script th:src="@{/libs/apexcharts.min.js}"></script>
 

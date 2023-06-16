@@ -1,7 +1,10 @@
 package com.DoAn.ChatCoffee.controller;
 
 import com.DoAn.ChatCoffee.entity.Taikhoan;
+import com.DoAn.ChatCoffee.repository.ICTHoaDonRepository;
 import com.DoAn.ChatCoffee.repository.ITaiKhoanRepository;
+import com.DoAn.ChatCoffee.service.GioHangService;
+import com.DoAn.ChatCoffee.service.HoaDonService;
 import com.DoAn.ChatCoffee.service.SanPhamService;
 import com.DoAn.ChatCoffee.service.TaiKhoanService;
 import jakarta.validation.Valid;
@@ -25,20 +28,32 @@ import java.util.regex.Pattern;
 public class UserController {
     @Autowired
     private ITaiKhoanRepository iTaiKhoanRepository;
-
+    @Autowired
+    HoaDonService hoaDonService;
     @Autowired
     private TaiKhoanService taiKhoanService;
     @Autowired
     private SanPhamService sanPhamService;
+    @Autowired
+    GioHangService gioHangService;
+    @Autowired
+    ICTHoaDonRepository ctHoaDonRepository;
     @GetMapping
     public String index(Model model, Authentication authentication){
         model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(taiKhoanService.getTaiKhoanByUserName(authentication.getName()).getId()));
         model.addAttribute("listProducts", sanPhamService.getAllProduct());
+        model.addAttribute("slSPChoXacNhan", hoaDonService.slHoaDonByUserNameVaTrangThai(authentication.getName(), "Chờ duyệt"));
+        model.addAttribute("slSPChoLayHang", hoaDonService.slHoaDonByUserNameVaTrangThai(authentication.getName(), "Chờ lấy hàng"));
+        model.addAttribute("slSPDangGiao", hoaDonService.slHoaDonByUserNameVaTrangThai(authentication.getName(), "Đang giao"));
+        model.addAttribute("slSPDaDat", hoaDonService.getListHoaDonByUserName(authentication.getName(),null).size());
+        model.addAttribute("dsCTHDDaMua", ctHoaDonRepository.getListSPByUserNameVaTrangThai(authentication.getName(), "Hoàn thành"));
+        model.addAttribute("dsHDDaMua", hoaDonService.getListHoaDonByUserName(authentication.getName(), "Hoàn thành"));
         return "user/index";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id ,Model model) {
+        //todo: muốn cái gì dựa trên cái gì,-->đầu vào là gì---> kết quả là gì
         model.addAttribute("taikhoan", taiKhoanService.getTaikhoanByID(id));
         model.addAttribute("listProducts", sanPhamService.getAllProduct());
         return "user/index";
@@ -108,7 +123,7 @@ public class UserController {
         else
             taikhoan.setPassword(new BCryptPasswordEncoder().encode(taikhoan.getPassword()));
         taiKhoanService.save(taikhoan);
-
+        gioHangService.themGioHang(taikhoan);
         return "redirect:/user/login";
     }
 }

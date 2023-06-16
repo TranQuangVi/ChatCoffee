@@ -63,13 +63,14 @@
                                                         </div>
 
                                                         <div class="form-group row mb-4">
-                                                            <label for="billing-phone" class="col-md-2 col-form-label">Số
+                                                            <label class="col-md-2 col-form-label">Số
                                                                 điện thoại</label>
                                                             <div class="col-md-10">
                                                                 <input type="number" class="form-control"
-                                                                       th:field="*{sdt}"
+                                                                       name="sdt"
+                                                                       id="sdt"
                                                                        placeholder="Số điện thoại đặt hàng"
-                                                                       value="taikhoan.phonenumber">
+                                                                       th:value="${taikhoan.phonenumber}">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row mb-4">
@@ -87,8 +88,7 @@
 
                                                         <div class="form-group row mb-0">
                                                             <label for="example-textarea"
-                                                                   class="col-md-2 col-form-label">Lời
-                                                                nhắn:</label>
+                                                                   class="col-md-2 col-form-label">Lời nhắn:</label>
                                                             <div class="col-md-10">
                                                             <textarea class="form-control" id="example-textarea"
                                                                       rows="3"
@@ -102,34 +102,30 @@
                                             <div class="tab-pane fade" id="v-pills-payment" role="tabpanel"
                                                  aria-labelledby="v-pills-payment-tab">
                                                 <div>
-
-                                                    <h5 class="mt-5 mb-3 font-size-15">Hình thức vận chuyển</h5>
                                                     <div>
-                                                        <div class="form-check form-check-inline font-size-16"
-                                                             th:each="vanchuyen: ${vanchuyens}">
-                                                            <input class="form-check-input" type="radio"
-                                                                   th:value="${vanchuyen.MaVC}"
-                                                                   name="vanchuyen" th:id="${vanchuyen.MaVC}">
-                                                            <label class="form-check-label font-size-13"
-                                                                   th:for="${vanchuyen.MaVC}"
-                                                                   th:text="${vanchuyen.TenVC}"><i
-                                                                    class="fab fa-cc-paypal me-1 font-size-20 align-top"></i>
-                                                                Ví Paypal</label>
+                                                        <h5 class="mt-3 mb-2 font-size-15">Hình thức vận chuyển</h5>
+                                                        <div>
+                                                            <div class="form-check form-check-inline font-size-16"
+                                                                 th:each="vanchuyen: ${vanchuyens}">
+                                                                <input class="form-check-input" type="radio"
+                                                                       th:value="${vanchuyen.MaVC}"
+                                                                       name="vanchuyen" th:id="${vanchuyen.MaVC}"
+                                                                       th:text="${vanchuyen.TenVC}">
+
+                                                            </div>
                                                         </div>
                                                     </div>
-
-                                                    <h4 class="card-title">Phương thức thanh toán</h4>
                                                     <div>
-                                                        <div class="form-check form-check-inline font-size-16"
-                                                             th:each="thanhtoan: ${thanhtoans}">
-                                                            <input class="form-check-input" type="radio"
-                                                                   th:value="${thanhtoan.id}"
-                                                                   name="thanhtoan" th:id="${thanhtoan.id}">
-                                                            <label class="form-check-label font-size-13"
-                                                                   th:for="${thanhtoan.id}"
-                                                                   th:text="${thanhtoan.hinhthuc}"><i
-                                                                    class="fab fa-cc-paypal me-1 font-size-20 align-top"></i>
-                                                                Ví Paypal</label>
+                                                        <h5 class="mt-3 mb-2 font-size-15">Phương thức thanh toán</h5>
+                                                        <div>
+                                                            <div class="form-check form-check-inline font-size-16"
+                                                                 th:each="thanhtoan: ${thanhtoans}">
+                                                                <input class="form-check-input" type="radio"
+                                                                       th:value="${thanhtoan.id}"
+                                                                       name="thanhtoan" th:id="${thanhtoan.id}"
+                                                                       th:text="${thanhtoan.hinhthuc}">
+
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -229,8 +225,33 @@
         bodyTag: "section",
         transitionEffect: "slide"
     });
+</script>
+<script>
+    function addToCart(element) {
+	var productParent = $(element).closest('div.product-item');
 
+	var price = $(productParent).find('.price span').text();
+	var productName = $(productParent).find('.productname').text();
+	var quantity = $(productParent).find('.product-quantity').val();
 
+	var cartItem = {
+		productName: productName,
+		price: price,
+		quantity: quantity
+	};
+	var cartItemJSON = JSON.stringify(cartItem);
+
+	var cartArray = new Array();
+	// If javascript shopping cart session is not empty
+	if (sessionStorage.getItem('shopping-cart')) {
+		cartArray = JSON.parse(sessionStorage.getItem('shopping-cart'));
+	}
+	cartArray.push(cartItemJSON);
+
+	var cartJSON = JSON.stringify(cartArray);
+	sessionStorage.setItem('shopping-cart', cartJSON);
+	showCartTable();
+}
 </script>
 
 </body>

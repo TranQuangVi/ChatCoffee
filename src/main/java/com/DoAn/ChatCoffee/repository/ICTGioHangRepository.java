@@ -18,6 +18,10 @@ public interface ICTGioHangRepository extends JpaRepository<CTGiohang, CartDetai
     @Transactional
     @Query("DELETE FROM CTGiohang ct WHERE ct.sanpham.id = :idsp AND ct.giohang.MaGH = :idGH")
     void deleteProductInCart(@Param("idsp")Long idsp, @Param("idGH") Long idGH);
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM CTGiohang ct WHERE ct.giohang.MaGH = :idGH")
+    void clearCart(@Param("idGH") Long idGH);
 
     @Query("SELECT ct FROM CTGiohang ct WHERE ct.giohang.taikhoan.username = :username ")
     List<CTGiohang> getGioHangByUserName(@Param("username")String username);

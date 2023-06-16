@@ -54,14 +54,19 @@ public class GioHangController {
         return "redirect:/gio-hang";
     }
 
-    @GetMapping("/xoa- san-pham/{id}")
+    @GetMapping("/xoa-san-pham/{id}")
     public String xoaSanPham(Authentication authentication,  @PathVariable Long id){
         Sanpham product = sanPhamService.getProductByID(id);
         Giohang giohang = gioHangService.getGioHangByUserName(authentication.getName());
         CTGioHangService.xoaSanPhamTrongGH(product.getId(),giohang.getMaGH());
         return  "redirect:/gio-hang";
     }
-
+    @GetMapping("/xoa-tat-ca-san-pham")
+    public String xoaTatCaSanPham(Authentication authentication){
+        Giohang giohang = gioHangService.getGioHangByUserName(authentication.getName());
+        CTGioHangService.xoaTatCaSP(giohang.getMaGH());
+        return  "redirect:/gio-hang";
+    }
     @GetMapping("/tao-don-hang")
     public String muaForm(Authentication authentication, Model model){
         Taikhoan taikhoan = taiKhoanService.getTaiKhoanByUserName(authentication.getName());
@@ -73,28 +78,18 @@ public class GioHangController {
         return "giohang/hoadon";
     }
 
-    // tài khoản lasy authen,
-    // thoonng khác lấy từ modelAtt trên view post
     @PostMapping("/luu-don-hang")
     public String muaSubmit(@ModelAttribute("taikhoan") Taikhoan taikhoan,
                             @ModelAttribute("hoadon") Hoadon hoadon, Authentication authentication){
         List<CTGiohang> ctGiohangs= CTGioHangService.getGioHangByUserName(authentication.getName());
-        //hoadon.setSdt(taikhoan.getPhonenumber());
         hoadon.setTaikhoan(taiKhoanService.getTaiKhoanByUserName(authentication.getName()));
         hoadon.setNgaydat(LocalDate.now());
         hoadon.setNgaygiao(LocalDate.now());
-        //hoadon.setThanhtoan(thanhtoan);
-        //hoadon.setVanchuyen(vanchuyen);
-        //hoadon.setDiachinhan("");
         hoadon.setTonggia(5000L);
         hoadon.setTongsoluong(333L);
         hoadon.setTrangthai("Chờ duyệt");
         hoaDonService.save(hoadon);
         ctHoaDonService.save(ctGiohangs,hoadon);
- /*       for (CTGiohang item:ctGiohangs
-             ) {
-
-        }*/
         return "redirect:/user/hoa-don";
     }
 }

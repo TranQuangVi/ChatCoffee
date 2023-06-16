@@ -25,5 +25,9 @@ public class CTHoaDonService {
         }
     }
 
+    public List<CTHoaDon> getListSPByUserNameVaTrangThai(String username, String trangthai){
+        return ctHoaDonRepository.getListSPByUserNameVaTrangThai(username,trangthai);
+    }
+
 
 }

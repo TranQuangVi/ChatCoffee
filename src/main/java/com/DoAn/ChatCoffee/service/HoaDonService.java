@@ -41,7 +41,15 @@ public class HoaDonService {
     return  hoaDonRepository.gethoadondahoanthanh();
 }
 
-
+    public Long SoHD(){
+        return  hoaDonRepository.getCountHoaDonDuyet();
+    }
+    public Long SoHDDangGiao(){
+        return  hoaDonRepository.getCountHoaDonGiao();
+    }
+    public Long SoHDHT(){
+        return  hoaDonRepository.getCountHoaDonHoanthanh();
+    }
 
     public void save(Hoadon hoadon){
         hoaDonRepository.save(hoadon);

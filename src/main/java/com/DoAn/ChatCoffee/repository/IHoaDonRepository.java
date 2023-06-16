@@ -26,8 +26,12 @@ public interface IHoaDonRepository extends JpaRepository<Hoadon, Long> {
     @Query("SELECT d FROM Hoadon d WHERE d.trangthai = 'Đã hoàn thành'")
     List<Hoadon> gethoadondahoanthanh();
 
-
-
+    @Query("SELECT COUNT(*)  FROM Hoadon b WHERE b.trangthai = 'Chờ duyệt' ")
+    Long getCountHoaDonDuyet();
+    @Query("SELECT COUNT(*)  FROM Hoadon b WHERE b.trangthai = 'Đang giao' ")
+    Long getCountHoaDonGiao();
+    @Query("SELECT COUNT(*)  FROM Hoadon b WHERE b.trangthai = 'Đã hoàn thành' ")
+    Long getCountHoaDonHoanthanh();
 
 
 }

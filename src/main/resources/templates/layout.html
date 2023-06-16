@@ -37,6 +37,12 @@
                                   alt="Header Avatar"
                                   style="object-fit: cover; width: 220px; display: flex; margin-left: -150px;"></a>
             </div>
+            <form class="app-search d-none d-lg-block">
+                <div class="position-relative">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                    <span class="bx bx-search-alt"></span>
+                </div>
+            </form>
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box">
@@ -91,7 +97,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="dropdown d-none d-lg-inline-block ms-1">
+                <div sec:authorize="isAuthenticated()" class="dropdown d-none d-lg-inline-block ms-1">
                     <button class="btn header-item noti-icon waves-effect">
                         <a href="/gio-hang">
                             <i class="bx bx-cart-alt"></i>
@@ -215,7 +221,20 @@
                             </a>
 
                         </li>
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-new"
+                               role="button">
+                                <i class="bx bx-food-menu"></i>
+                                <span key="t-ui-elements"> Giới thiệu</span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-news"
+                               role="button">
+                                <i class="bx bx-news"></i>
+                                <span key="t-ui-elements"> Tin tức</span>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle arrow-none" href="/san-pham" id="topnav-uielement"
                                role="button">
@@ -224,71 +243,7 @@
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
-                            >
-                                <i class="bx bx-customize me-2"></i><span key="t-apps">Loại sản phẩm</span>
-                                <div class="arrow-down"></div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                                <div class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#"
-                                       role="button">
-                                        <span key="t-calendar">Loại 1</span>
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                        <a href="calendar.html" class="dropdown-item" key="t-tui-calendar">sản phẩm
-                                            1 </a>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#"
-                                       role="button">
-                                        <span key="t-calendar">Loại 2</span>
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                        <a href="calendar-full.html" class="dropdown-item" key="t-full-calender">Sản
-                                            phẩm 2</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
-                            >
-                                <i class="bx bx-collection me-2"></i><span key="t-components">Thương hiệu</span>
-                                <div class="arrow-down"></div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="topnav-components">
-                                <div class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
-                                       role="button">
-                                        <span key="t-forms">Thương hiệu 1</span>
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-form">
-                                        <a href="form-elements.html" class="dropdown-item" key="t-form-elements">Sản
-                                            phẩm 1</a>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
-                                       role="button">
-                                        <span key="t-tables">Thương hiệu 2</span>
-                                        <div class="arrow-down"></div>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="topnav-table">
-                                        <a href="tables-basic.html" class="dropdown-item" key="t-basic-tables">Sản phẩm
-                                            2</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
 
 
                     </ul>

@@ -112,9 +112,6 @@ public class QuanLySanPham {
         return "redirect:/admin/quan-ly-san-pham";
     }
 
-    @GetMapping("/uploadimage") public String displayUploadForm() {
-        return "admin/QuanLySanPham/up";
-    }
 
     public static void saveFile(String uploadDir, String fileName,
                                 MultipartFile multipartFile) throws IOException {

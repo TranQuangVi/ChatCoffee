@@ -177,5 +177,11 @@ public class Taikhoan {
         this.dateofbirth = dateofbirth;
     }
 
+    public Giohang getGiohang() {
+        return giohang;
+    }
 
+    public void setGiohang(Giohang giohang) {
+        this.giohang = giohang;
+    }
 }

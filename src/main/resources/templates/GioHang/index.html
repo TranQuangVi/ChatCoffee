@@ -41,7 +41,7 @@
                                                               th:text="'Khối lượng: '+${ctGiohang.sanpham.Khoiluong}"></span>
                                         </p>
                                     </td>
-                                    <td ><b class="currency" th:text="${ctGiohang.sanpham.Gia}"></b></td>
+                                    <td ><span class="currency" th:text="${ctGiohang.sanpham.Gia}"></span></td>
                                     <form th:action="@{/gio-hang/cap-nhat-gio-hang}" method="post">
                                         <td>
                                             <div class="me-3" style="width: 120px;">
@@ -51,7 +51,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a class="text-dark"><b class="currency" th:text="${ctGiohang.sanpham.Gia*ctGiohang.soluong}"></b></a>
+                                            <a class="text-dark"><span class="currency" th:text="${ctGiohang.sanpham.Gia*ctGiohang.soluong}"></span></a>
                                         </td>
                                         <td style="width: 100px">
                                             <button type="submit" class="btn btn-outline-secondary btn-sm edit"><i
@@ -68,7 +68,7 @@
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th colspan="2">Tổng tiền: <b class="currency" th:text="${TongTien}"></b></th>
+                                    <th colspan="2">Tổng tiền: <span class="currency" th:text="${TongTien}"></span></th>
                                 </tr>
                                 </tbody>
                             </table>

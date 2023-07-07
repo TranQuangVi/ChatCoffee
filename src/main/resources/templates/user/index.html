@@ -45,14 +45,11 @@
                                     <div class="col-sm-8">
                                         <div class="pt-4">
                                             <div class="row">
-                                                <div class="col-7" style="text-align: center">
-                                                    <p class="text-muted mb-0">Tổng sản phẩm đăng đặt</p>
+                                                <div class="col-12" style="text-align: center">
+                                                    <p class="text-muted mb-0">Tổng sản phẩm đã đặt</p>
                                                     <h5 class="font-size-15" th:text="${slSPDaDat}"></h5>
                                                 </div>
-                                                <div class="col-5">
-                                                    <h5 class="font-size-15 " style="text-align: center">47</h5>
-                                                    <p class="text-muted mb-0">Sản phẩm ưu thích</p>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -93,10 +90,7 @@
                                                 <td><input type="date" class="form-control" th:field="*{dateofbirth}"
                                                            id="dateofbirth" value="taikhoan.dateofbirth"></td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">Địa chỉ :</th>
-                                                <td>adwfqfdqw</td>
-                                            </tr>
+
                                             </tbody>
                                         </table>
                                         <button type="submit" class="btn btn-primary" value="Save"
@@ -228,7 +222,8 @@
                                                                                                         id="idds"></td>
                                                                                                     <td th:text="${dsduyet.taikhoan.fullname}"></td>
                                                                                                     <td th:text="${dsduyet.ngaydat}"></td>
-                                                                                                    <td th:text="${dsduyet.tonggia}"></td>
+                                                                                                    <td >
+                                                                                                    <b th:text="${dsduyet.tonggia}"></b></td>
                                                                                                     <td>
                                                                                                         <!-- Button trigger modal -->
                                                                                                         <button type="button"
@@ -314,7 +309,7 @@
                                                                                                         id="idlay"></td>
                                                                                                     <td th:text="${dschoLay.taikhoan.fullname}"></td>
                                                                                                     <td th:text="${dschoLay.ngaydat}"></td>
-                                                                                                    <td th:text="${dschoLay.tonggia}"></td>
+                                                                                                    <td><b th:text="${dschoLay.tonggia}"></b></td>
                                                                                                     <td>
                                                                                                         <!-- Button trigger modal -->
                                                                                                         <button type="button"
@@ -400,7 +395,8 @@
                                                                                                         id="idgiao"></td>
                                                                                                     <td th:text="${dsdangGiao.taikhoan.fullname}"></td>
                                                                                                     <td th:text="${dsdangGiao.ngaydat}"></td>
-                                                                                                    <td th:text="${dsdangGiao.tonggia}"></td>
+                                                                                                    <td>
+                                                                                                    <b th:text="${dsdangGiao.tonggia}"></b></td>
                                                                                                     <td>
                                                                                                         <!-- Button trigger modal -->
                                                                                                         <button type="button"
@@ -481,7 +477,8 @@
                                                                                 id="id"></td>
                                                                             <td th:text="${hoadondamua.taikhoan.fullname}"></td>
                                                                             <td th:text="${hoadondamua.ngaydat}"></td>
-                                                                            <td th:text="${hoadondamua.tonggia}"></td>
+                                                                            <td >
+                                                                            <b th:text="${hoadondamua.tonggia}"></b></td>
                                                                             <td>
                                                                                 <!-- Button trigger modal -->
                                                                                 <button type="button"
@@ -576,8 +573,10 @@
                                                                                             <ul class="list-inline mb-0">
 
                                                                                                 <li class="list-inline-item text-center">
-                                                                                                    <h6 class="text-center fs-14 mb-0"
-                                                                                                       th:text="${product.Gia} + ' VND'"></h6>
+                                                                                                    <h6 class="text-center fs-14 mb-0">
+                                                                                                        <b th:text="${product.Gia}"></b>VND
+                                                                                                    </h6>
+
                                                                                                 </li>
                                                                                             </ul>
                                                                                             <div class="mt-4 hstack gap-2">
@@ -712,7 +711,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát
                                     </button>
                                 </div>
                             </div>

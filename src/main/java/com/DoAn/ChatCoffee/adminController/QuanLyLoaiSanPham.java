@@ -23,7 +23,7 @@ public class QuanLyLoaiSanPham {
 
     @GetMapping("/page/{pageNo}")
     public String page(Model model, @PathVariable(value = "pageNo") int pageNo){
-        int pageSize= 1;
+        int pageSize= 3;
         Page<Loaisanpham> page=loaiSanPhamService.findPaginated(pageNo, pageSize);
         model.addAttribute("pageSize", pageSize);
         model.addAttribute("currentPage", pageNo);

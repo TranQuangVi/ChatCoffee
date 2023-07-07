@@ -27,18 +27,16 @@ public class SanPhamController {
     @Autowired
     private ThuongHieuService thuongHieuService;
     @GetMapping
-    public String product(Model model, @Param("searchString") String search, @Param("pageNo") Integer pageNo) {
+    public String product(Model model, @Param("searchString") String search) {
         /*model.addAttribute("listProducts", sanPhamService.getSearchListProduct(search));*/
         //search="e";
         model.addAttribute("search",search);
-        if(pageNo != null)
-            return pageproduct(model,search,pageNo);
         return pageproduct(model,search,1);
 
     }
     @GetMapping("/page/{pageNo}")
     public String pageproduct(Model model, String search, @PathVariable(value = "pageNo") int pageNo ) {
-        int pageSize= 1;
+        int pageSize= 12;
         Page<Sanpham> page=sanPhamService.findPaginated(pageNo, pageSize, search);
         model.addAttribute("pageSize", pageSize);
         model.addAttribute("currentPage", pageNo);

@@ -22,11 +22,8 @@ public class Thanhtoan {
     private  String hinhthuc;
 
     // trỏ khóa ngoại đên order
-    @OneToMany(mappedBy = "Thanhtoan",cascade = CascadeType.ALL)
-    private List<Hoadon> Hoadons;
-
-
-
+    @OneToMany(mappedBy = "thanhtoan",cascade = CascadeType.ALL)
+    private List<Hoadon> hoadons;
 
 
 

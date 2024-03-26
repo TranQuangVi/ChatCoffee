@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head-link"></head>
+
+<body data-topbar="dark" data-layout="horizontal">
+<!-- Begin page -->
+<div id="layout-wrapper">
+    <header th:replace="layout :: header-page"></header>
+    <div th:replace="layout :: topnav"></div>
+
+    <!--Nội dung-->
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xl-7">
+                                        <div class="product-detai-imgs">
+                                            <div class="row">
+                                                <div class="col-md-7 offset-md-1 col-sm-9 col-8" th:object="${sanpham}">
+                                                    <div class="card card-body text-center">
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane fade show active" role="tabpanel"
+                                                                 aria-labelledby="product-1-tab">
+                                                                <div>
+                                                                    <img th:src="${sanpham.anh}" alt=""
+                                                                         class="img-fluid mx-auto d-block">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="mt-3 text-center">
+                                                        <a th:href="@{/gio-hang/them-san-pham/{id}(id=${sanpham.id})}"
+                                                           class="btn btn-primary"> Thêm vào giỏ hàng</a>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-5">
+                                        <div class="mt-4 mt-xl-3">
+
+                                            <h1 th:text="${sanpham.TenSP}" class="mt-1 mb-3"></h1>
+
+
+                                            <h5 class="mb-4">Giá :
+                                                <b th:text="${sanpham.Gia}"></b></h5>
+
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        <p th:text="'Dạng sản phẩm: '+ ${sanpham.dangSP}"
+                                                           class="text-muted"><i
+                                                                class="bx bx-unlink font-size-16 align-middle text-primary me-1"></i>
+                                                        </p>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        <p th:text="'Khối lượng: '+ ${sanpham.Khoiluong}"
+                                                           class="text-muted"><i
+                                                                class="bx bx-cog font-size-16 align-middle text-primary me-1"></i>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row">
+                                    <div class="mt-5 col-6">
+                                        <h5 class="mb-3 text-center">Chi tiết sản phẩm</h5>
+
+                                        <div class="table-responsive">
+                                            <table class="table mb-0 table-bordered">
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row" style="width: 400px;">Loại sản phẩm </th>
+                                                    <td th:text="${sanpham.loaisanpham.TenLoai}"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Thương hiệu </th>
+                                                    <td th:text="${sanpham.thuonghieu.TenTH}"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Hạn sử dụng</th>
+                                                    <td th:text=" ${sanpham.HSD}" ></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Số lượng </th>
+                                                    <td th:text=" ${sanpham.Soluong}"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Xuất xứ </th>
+                                                    <td th:text=" ${sanpham.xuatxu}"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 col-6">
+                                        <h5 class="mb-3 text-center" >Mô tả sản phẩm</h5>
+                                        <p th:text=" ${sanpham.mota}"></p>
+                                    </div>
+                                    <!-- end Specifications -->
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
+                </div>
+            </div> <!-- container-fluid -->
+        </div>
+    </div>
+    <!--Hết nội dung-->
+</div>
+<footer th:replace="layout :: footer"></footer>
+
+<div th:replace="layout :: link-js"></div>
+
+</body>
+
+</html>

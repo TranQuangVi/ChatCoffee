@@ -12,22 +12,22 @@ public class CTGiohang {
     CartDetailsKey id;
 
     @ManyToOne
-    @MapsId("CartMaHD")
-    @JoinColumn(name = "MaHD")
+   // @MapsId("giohang")
+    @JoinColumn(name = "giohang")
     Giohang giohang;
 
     @ManyToOne
-    @MapsId("ProductId")
-    @JoinColumn(name = "id")
+    //@MapsId("sanpham")
+    @JoinColumn(name = "sanpham")
     Sanpham sanpham;
 
-    @Column(name = "TongTien")
-    private int TongTien;
+  /*  @Column(name = "TongTien")
+    private int TongTien;*/
 
     @Column(name = "TongSL")
-    private int TongSL;
+    private int soluong;
 
-    @Column(name = "TongSP")
-    private int TongSP;
+    /*@Column(name = "TongSP")
+    private int TongSP;*/
 
 }

@@ -16,7 +16,7 @@ public class Thuonghieu {
     private Long MaTH;
 
     @Column(name = "TenTH")
-    @NotEmpty(message = "Tên thương hiệu không được để trống!")
+    @NotEmpty(message = "Không được để trống")
     @Size(max = 50)
     private String TenTH;
 
@@ -28,6 +28,6 @@ public class Thuonghieu {
     @Size(max = 100)
     private String AnhTH;
 
-    @OneToMany(mappedBy = "thuonghieus", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "thuonghieu", cascade = CascadeType.ALL)
     private List<Sanpham> sanphams;
 }
